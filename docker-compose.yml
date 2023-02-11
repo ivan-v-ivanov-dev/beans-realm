@@ -1,0 +1,57 @@
+services:
+
+# PostreSQL
+  postgres:
+    image: postgres
+    container_name: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_MULTIPLE_DATABASES: storage,keycloakdb
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    volumes:
+      - ./bash_script:/docker-entrypoint-initdb.d
+
+# PostgreSQL UI client
+  adminer:
+    image: adminer
+    container_name: postgres_adminer
+    restart: always
+    ports:
+      - 8082:8080
+
+# Keycloak Security Authentication
+  keycloak:
+    image: jboss/keycloak
+    container_name: keycloak
+    depends_on:
+      - postgres
+    ports:
+      - 8081:8080
+    environment:
+      DB_VENDOR: POSTGRES
+      DB_ADDR: postgres
+      DB_PORT: 5432
+      DB_SCHEMA: public
+      DB_DATABASE: keycloakdb
+      DB_USER: root
+      DB_PASSWORD: root
+
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+      KEYCLOAK_IMPORT: /realm/keycloak-realm-settings.json
+      KEYCLOAK_MIGRATION_ACTION: IMPORT
+    volumes:
+      - ./keycloak-realm-settings.json:/realm/keycloak-realm-settings.json
+
+# MongoDB
+  mongo:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_DATABASE: storage
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
