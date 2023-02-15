@@ -17,11 +17,10 @@ services:
   adminer:
     image: adminer
     container_name: postgres_adminer
-    restart: always
     ports:
       - 8082:8080
 
-# Keycloak Security Authentication
+  # Keycloak Security Authentication
   keycloak:
     image: jboss/keycloak
     container_name: keycloak
@@ -53,5 +52,3 @@ services:
       - 27017:27017
     environment:
       MONGO_INITDB_DATABASE: storage
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root
