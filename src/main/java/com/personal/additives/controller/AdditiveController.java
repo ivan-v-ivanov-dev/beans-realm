@@ -8,9 +8,7 @@ import com.personal.additives.service.contracts.DeviceService;
 import com.personal.additives.service.contracts.TagService;
 import com.personal.additives.service.contracts.TypeService;
 import com.personal.additives.service.contracts.UserService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -48,9 +46,9 @@ public class AdditiveController {
         return this.deviceService.findAllOrderedByNameAsc();
     }
 
-    @GetMapping("/users")
-    public List<User> findAllUsers() {
-        return this.userService.findAllOrderedByUsernameAsc();
+    @PostMapping("/users")
+    public List<User> findAllUsers(@RequestParam(required = false) boolean enabled) {
+        return this.userService.findAllUsersOrderedByUsernameAsc(enabled);
     }
 
 }
