@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface UserService {
 
-    List<User> findAllUsers(boolean enabled);
+    List<User> findAllUsers(boolean enabled, String username);
 }

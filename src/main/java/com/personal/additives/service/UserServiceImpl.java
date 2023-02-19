@@ -17,7 +17,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findAllUsers(boolean enabled) {
-        return this.userRepository.findAllUsersOrderedByUsernameAsc(enabled);
+    public List<User> findAllUsers(boolean enabled, String username) {
+        return this.userRepository.findAllUsersOrderedByUsernameAsc(enabled, username);
     }
 }

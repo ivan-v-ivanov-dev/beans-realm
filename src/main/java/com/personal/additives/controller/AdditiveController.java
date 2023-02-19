@@ -47,8 +47,9 @@ public class AdditiveController {
     }
 
     @PostMapping("/users")
-    public List<User> findAllUsers(@RequestParam(required = false) boolean enabled) {
-        return this.userService.findAllUsers(enabled);
+    public List<User> findAllUsers(@RequestParam(required = false) boolean enabled,
+                                   @RequestParam(required = false) String username) {
+        return this.userService.findAllUsers(enabled, username);
     }
 
 }
