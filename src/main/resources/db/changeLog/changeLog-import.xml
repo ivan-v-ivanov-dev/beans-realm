@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="12345" author="ivanZ">
+
+        <!-- User import -->
+
+        <insert tableName="users">
+            <column name="id" value="1"/>
+            <column name="username" value="admin"/>
+            <column name="image"/>
+            <column name="enabled" value="true"/>
+            <column name="admin" value="true"/>
+        </insert>
+
+        <insert tableName="users">
+            <column name="id" value="2"/>
+            <column name="username" value="user1"/>
+            <column name="image"/>
+            <column name="enabled" value="true"/>
+            <column name="admin" value="false"/>
+        </insert>
+
+        <insert tableName="users">
+            <column name="id" value="3"/>
+            <column name="username" value="user2"/>
+            <column name="image"/>
+            <column name="enabled" value="true"/>
+            <column name="admin" value="false"/>
+        </insert>
+
+        <insert tableName="users">
+            <column name="id" value="4"/>
+            <column name="username" value="user3"/>
+            <column name="image"/>
+            <column name="enabled" value="true"/>
+            <column name="admin" value="false"/>
+        </insert>
+
+        <insert tableName="users">
+            <column name="id" value="5"/>
+            <column name="username" value="user4"/>
+            <column name="image"/>
+            <column name="enabled" value="true"/>
+            <column name="admin" value="false"/>
+        </insert>
+
+        <insert tableName="users">
+            <column name="id" value="6"/>
+            <column name="username" value="user5"/>
+            <column name="image"/>
+            <column name="enabled" value="true"/>
+            <column name="admin" value="false"/>
+        </insert>
+
+        <insert tableName="users">
+            <column name="id" value="7"/>
+            <column name="username" value="user6"/>
+            <column name="image"/>
+            <column name="enabled" value="true"/>
+            <column name="admin" value="false"/>
+        </insert>
+
+        <insert tableName="users">
+            <column name="id" value="8"/>
+            <column name="username" value="user7"/>
+            <column name="image"/>
+            <column name="enabled" value="true"/>
+            <column name="admin" value="false"/>
+        </insert>
+
+        <insert tableName="users">
+            <column name="id" value="9"/>
+            <column name="username" value="user8"/>
+            <column name="image"/>
+            <column name="enabled" value="true"/>
+            <column name="admin" value="false"/>
+        </insert>
+
+        <insert tableName="users">
+            <column name="id" value="10"/>
+            <column name="username" value="user9"/>
+            <column name="image"/>
+            <column name="enabled" value="true"/>
+            <column name="admin" value="false"/>
+        </insert>
+
+        <insert tableName="users">
+            <column name="id" value="11"/>
+            <column name="username" value="user10"/>
+            <column name="image"/>
+            <column name="enabled" value="false"/>
+            <column name="admin" value="false"/>
+        </insert>
+
+        <!-- Types import -->
+
+        <insert tableName="types">
+            <column name="id" value="1"/>
+            <column name="name" value="Game"/>
+        </insert>
+
+        <insert tableName="types">
+            <column name="id" value="2"/>
+            <column name="name" value="Plugin"/>
+        </insert>
+
+        <insert tableName="types">
+            <column name="id" value="3"/>
+            <column name="name" value="Database Software"/>
+        </insert>
+
+        <insert tableName="types">
+            <column name="id" value="4"/>
+            <column name="name" value="Driver"/>
+        </insert>
+
+        <insert tableName="types">
+            <column name="id" value="5"/>
+            <column name="name" value="Application Software"/>
+        </insert>
+
+        <insert tableName="types">
+            <column name="id" value="6"/>
+            <column name="name" value="Operating systems"/>
+        </insert>
+
+        <!-- Tags import -->
+
+        <insert tableName="tags">
+            <column name="id" value="1"/>
+            <column name="name" value="New"/>
+        </insert>
+
+        <insert tableName="tags">
+            <column name="id" value="2"/>
+            <column name="name" value="Most downloaded"/>
+        </insert>
+
+        <insert tableName="tags">
+            <column name="id" value="3"/>
+            <column name="name" value="Top rated"/>
+        </insert>
+
+        <!-- Devices import -->
+
+        <insert tableName="devices">
+            <column name="id" value="1"/>
+            <column name="name" value="TV"/>
+        </insert>
+
+        <insert tableName="devices">
+            <column name="id" value="2"/>
+            <column name="name" value="Mobile phone"/>
+        </insert>
+
+        <insert tableName="devices">
+            <column name="id" value="3"/>
+            <column name="name" value="PC"/>
+        </insert>
+
+        <!-- Statuses import -->
+
+        <insert tableName="statuses">
+            <column name="id" value="1"/>
+            <column name="name" value="Approved"/>
+        </insert>
+
+        <insert tableName="statuses">
+            <column name="id" value="2"/>
+            <column name="name" value="Waiting approval"/>
+        </insert>
+
+        <insert tableName="statuses">
+            <column name="id" value="3"/>
+            <column name="name" value="Banned"/>
+        </insert>
+
+        <!-- Versions import -->
+
+        <insert tableName="versions">
+            <column name="id" value="1"/>
+            <column name="name" value="1.0.1"/>
+            <column name="content"/>
+            <column name="upload_date"/>
+            <column name="modifications" value="Reported bugs fixed"/>
+            <column name="repository_url" value="https://github.com/ivanovbiol/unknown-name"/>
+            <column name="sha256_checksum" value="e37f3debe7f93d10c53ddbac2d40bba47d76a33bf3ec3fd21e196b5319059f7f"/>
+            <column name="status_id" value="1"/>
+            <column name="download_count" value="4"/>
+        </insert>
+
+        <insert tableName="versions">
+            <column name="id" value="2"/>
+            <column name="name" value="1.1.1"/>
+            <column name="content"/>
+            <column name="upload_date"/>
+            <column name="modifications" value="New UX"/>
+            <column name="repository_url" value="https://github.com/ivanovbiol/unknown-name"/>
+            <column name="sha256_checksum" value="e37f3debe7f93d10c53ddbac2d40bba47d76a33bf3ec3fd21e196b5319059f7f"/>
+            <column name="status_id" value="2"/>
+            <column name="download_count" value="63"/>
+        </insert>
+
+        <insert tableName="versions">
+            <column name="id" value="3"/>
+            <column name="name" value="2.1"/>
+            <column name="content"/>
+            <column name="upload_date"/>
+            <column name="modifications" value="Device connection optimisation"/>
+            <column name="repository_url" value="https://github.com/ivanovbiol/unknown-name"/>
+            <column name="sha256_checksum" value="e37f3debe7f93d10c53ddbac2d40bba47d76a33bf3ec3fd21e196b5319059f7f"/>
+            <column name="status_id" value="3"/>
+            <column name="download_count" value="71"/>
+        </insert>
+
+        <!-- Additives import -->
+
+        <insert tableName="additives">
+            <column name="id" value="1"/>
+            <column name="name" value="House of Mighty Heroes"/>
+            <column name="image"/>
+            <column name="creator_id" value="2"/>
+            <column name="device_id" value="3"/>
+            <column name="type_id" value="1"/>
+            <column name="tag_id" value="1"/>
+            <column name="description" value="New game adventure"/>
+        </insert>
+
+        <!-- Additives_Versions import -->
+
+        <insert tableName="additives_versions">
+            <column name="id" value="1"/>
+            <column name="additive_id" value="1"/>
+            <column name="version_id" value="1"/>
+        </insert>
+
+        <insert tableName="additives_versions">
+            <column name="id" value="2"/>
+            <column name="additive_id" value="1"/>
+            <column name="version_id" value="2"/>
+        </insert>
+
+        <insert tableName="additives_versions">
+            <column name="id" value="3"/>
+            <column name="additive_id" value="1"/>
+            <column name="version_id" value="3"/>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>
