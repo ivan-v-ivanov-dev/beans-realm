@@ -52,4 +52,18 @@ public class AdditiveController {
         return this.userService.findAllUsers(enabled, username);
     }
 
+    @PostMapping("/users")
+    public User createUser(@RequestBody User user) {
+        return this.userService.create(user);
+    }
+
+    @PutMapping("/users")
+    public User updateUser(@RequestBody User user) {
+        return this.userService.update(user);
+    }
+
+    @DeleteMapping("/users")
+    public void deleteUser(@RequestBody User user) {
+        this.userService.delete(user);
+    }
 }
