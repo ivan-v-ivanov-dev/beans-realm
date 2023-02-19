@@ -20,7 +20,7 @@ public class TypeServiceImpl implements TypeService {
     }
 
     @Override
-    public List<Type> findAllOrderedByNameAsc() {
+    public List<Type> findAll() {
         return this.typeRepository.findAll(Sort.by(NAME).ascending());
     }
 }

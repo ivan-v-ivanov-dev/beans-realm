@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface TagService {
 
-    List<Tag> findAllOrderedByNameAsc();
+    List<Tag> findAll();
 }

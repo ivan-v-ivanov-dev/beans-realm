@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface UserService {
 
-    List<User> findAllUsersOrderedByUsernameAsc(boolean enabled);
+    List<User> findAllUsers(boolean enabled);
 }

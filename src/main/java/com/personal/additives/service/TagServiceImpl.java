@@ -20,7 +20,7 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public List<Tag> findAllOrderedByNameAsc() {
+    public List<Tag> findAll() {
         return this.tagRepository.findAll(Sort.by(NAME).ascending());
     }
 }

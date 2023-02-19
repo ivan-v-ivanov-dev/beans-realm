@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface TypeService {
 
-    List<Type> findAllOrderedByNameAsc();
+    List<Type> findAll();
 }

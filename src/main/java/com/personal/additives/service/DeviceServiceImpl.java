@@ -20,7 +20,7 @@ public class DeviceServiceImpl implements DeviceService {
     }
 
     @Override
-    public List<Device> findAllOrderedByNameAsc() {
+    public List<Device> findAll() {
         return this.deviceRepository.findAll(Sort.by(NAME).ascending());
     }
 }

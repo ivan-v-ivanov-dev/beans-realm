@@ -33,22 +33,22 @@ public class AdditiveController {
 
     @GetMapping("/types")
     public List<Type> findAllTypes() {
-        return typeService.findAllOrderedByNameAsc();
+        return typeService.findAll();
     }
 
     @GetMapping("/tags")
     public List<Tag> findAllTags() {
-        return this.tagService.findAllOrderedByNameAsc();
+        return this.tagService.findAll();
     }
 
     @GetMapping("/devices")
     public List<Device> findAllDevices() {
-        return this.deviceService.findAllOrderedByNameAsc();
+        return this.deviceService.findAll();
     }
 
     @PostMapping("/users")
     public List<User> findAllUsers(@RequestParam(required = false) boolean enabled) {
-        return this.userService.findAllUsersOrderedByUsernameAsc(enabled);
+        return this.userService.findAllUsers(enabled);
     }
 
 }
