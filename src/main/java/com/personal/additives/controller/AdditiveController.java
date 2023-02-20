@@ -15,17 +15,20 @@ public class AdditiveController {
     private final DeviceService deviceService;
     private final UserService userService;
     private final AdditiveService additiveService;
+    private final VersionService versionService;
 
     public AdditiveController(TypeService typeService,
                               TagService tagService,
                               DeviceService deviceService,
                               UserService userService,
-                              AdditiveService additiveService) {
+                              AdditiveService additiveService,
+                              VersionService versionService) {
         this.typeService = typeService;
         this.tagService = tagService;
         this.deviceService = deviceService;
         this.userService = userService;
         this.additiveService = additiveService;
+        this.versionService = versionService;
     }
 
     @GetMapping("/types")
@@ -83,4 +86,10 @@ public class AdditiveController {
     public List<Additive> findAdditivesByStatus(@RequestParam String status, @RequestParam int offset) {
         return this.additiveService.findByStatus(status, offset);
     }
+
+    @PostMapping("/versions/filter")
+    public List<Version> filterVersions(@RequestParam String additive) {
+        return this.versionService.findByAdditive(additive);
+    }
+
 }

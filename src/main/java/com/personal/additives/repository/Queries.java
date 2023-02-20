@@ -38,6 +38,14 @@ public class Queries {
                     "(:username is null OR username = :username) " +
                     "ORDER BY u.username ASC";
 
+    public static final String FILTER_ADDITIVE_APPROVED_VERSIONS =
+            "SELECT v FROM Version v " +
+                    "JOIN v.additive ad " +
+                    "JOIN v.status s " +
+                    "WHERE ad.name = :additive AND " +
+                    "s.name = 'Approved' " +
+                    "ORDER BY v.name DESC";
+
     private Queries() {
     }
 }
