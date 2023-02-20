@@ -69,4 +69,14 @@ public class AdditiveController {
         return this.additiveService.create(additive);
     }
 
+    @PostMapping("/additives/filter")
+    public List<Additive> filterAdditives(@RequestParam(required = false) String additive,
+                                          @RequestParam(required = false) String creator,
+                                          @RequestParam(required = false) String tag,
+                                          @RequestParam(required = false) String type,
+                                          @RequestParam(required = false) String device,
+                                          @RequestParam int offset) {
+        return this.additiveService.filter(additive, creator, tag, type, device, offset);
+    }
+
 }
