@@ -1,13 +1,7 @@
 package com.personal.additives.controller;
 
-import com.personal.additives.models.Device;
-import com.personal.additives.models.Tag;
-import com.personal.additives.models.Type;
-import com.personal.additives.models.User;
-import com.personal.additives.service.contracts.DeviceService;
-import com.personal.additives.service.contracts.TagService;
-import com.personal.additives.service.contracts.TypeService;
-import com.personal.additives.service.contracts.UserService;
+import com.personal.additives.models.*;
+import com.personal.additives.service.contracts.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,15 +14,18 @@ public class AdditiveController {
     private final TagService tagService;
     private final DeviceService deviceService;
     private final UserService userService;
+    private final AdditiveService additiveService;
 
     public AdditiveController(TypeService typeService,
                               TagService tagService,
                               DeviceService deviceService,
-                              UserService userService) {
+                              UserService userService,
+                              AdditiveService additiveService) {
         this.typeService = typeService;
         this.tagService = tagService;
         this.deviceService = deviceService;
         this.userService = userService;
+        this.additiveService = additiveService;
     }
 
     @GetMapping("/types")
@@ -52,18 +49,24 @@ public class AdditiveController {
         return this.userService.findAllUsers(enabled, username);
     }
 
-    @PostMapping("/users")
+    @PostMapping("/users/create")
     public User createUser(@RequestBody User user) {
         return this.userService.create(user);
     }
 
-    @PutMapping("/users")
+    @PutMapping("/users/update")
     public User updateUser(@RequestBody User user) {
         return this.userService.update(user);
     }
 
-    @DeleteMapping("/users")
+    @DeleteMapping("/users/delete")
     public void deleteUser(@RequestBody User user) {
         this.userService.delete(user);
     }
+
+    @PostMapping("/additive/create")
+    public Additive createAdditive(@RequestBody Additive additive) {
+        return this.additiveService.create(additive);
+    }
+
 }

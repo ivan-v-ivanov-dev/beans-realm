@@ -1,5 +1,6 @@
 package com.personal.additives.service;
 
+import com.personal.additives.models.Additive;
 import com.personal.additives.repository.postgres.AdditiveRepository;
 import com.personal.additives.service.contracts.AdditiveService;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,11 @@ public class AdditiveServiceImpl implements AdditiveService {
 
     public AdditiveServiceImpl(AdditiveRepository additiveRepository) {
         this.additiveRepository = additiveRepository;
+    }
+
+    @Override
+    public Additive create(Additive additive) {
+        return this.additiveRepository.save(additive);
     }
 
 }
