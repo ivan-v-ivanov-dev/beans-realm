@@ -21,4 +21,8 @@ public class VersionServiceImpl implements VersionService {
         return this.versionRepository.filter(additive);
     }
 
+    @Override
+    public List<Version> filterVersionsForApproval(String additive) {
+        return this.versionRepository.filterVersionsForApproval(additive);
+    }
 }

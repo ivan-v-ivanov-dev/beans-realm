@@ -92,4 +92,8 @@ public class AdditiveController {
         return this.versionService.findByAdditive(additive);
     }
 
+    @PostMapping("/versions/additive")
+    public List<Version> filterVersionsForApproval(@RequestParam String additive) {
+        return this.versionService.filterVersionsForApproval(additive);
+    }
 }

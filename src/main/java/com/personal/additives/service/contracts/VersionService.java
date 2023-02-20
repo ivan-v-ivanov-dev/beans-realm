@@ -8,4 +8,6 @@ public interface VersionService {
 
     List<Version> findByAdditive(String additive);
 
+    List<Version> filterVersionsForApproval(String additive);
+
 }

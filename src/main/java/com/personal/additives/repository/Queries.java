@@ -46,6 +46,14 @@ public class Queries {
                     "s.name = 'Approved' " +
                     "ORDER BY v.name DESC";
 
+    public static final String FILTER_ADDITIVE_TO_APPROVE =
+            "SELECT v FROM Version v " +
+                    "JOIN v.additive ad " +
+                    "JOIN v.status s " +
+                    "WHERE ad.name = :additive AND " +
+                    "s.name NOT LIKE 'Approved' " +
+                    "ORDER BY v.name DESC";
+
     private Queries() {
     }
 }
