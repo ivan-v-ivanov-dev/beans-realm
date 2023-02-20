@@ -26,4 +26,9 @@ public class AdditiveServiceImpl implements AdditiveService {
                                  String device, int offset) {
         return this.additiveRepository.filter(additive, creator, tag, type, device, offset);
     }
+
+    @Override
+    public List<Additive> findByStatus(String status, int offset) {
+        return this.additiveRepository.findByStatus(status, offset);
+    }
 }

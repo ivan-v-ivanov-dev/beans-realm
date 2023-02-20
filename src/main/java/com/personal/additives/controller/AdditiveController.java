@@ -79,4 +79,8 @@ public class AdditiveController {
         return this.additiveService.filter(additive, creator, tag, type, device, offset);
     }
 
+    @PostMapping("/additives/filter/status")
+    public List<Additive> findAdditivesByStatus(@RequestParam String status, @RequestParam int offset) {
+        return this.additiveService.findByStatus(status, offset);
+    }
 }

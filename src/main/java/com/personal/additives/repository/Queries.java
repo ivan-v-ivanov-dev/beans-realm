@@ -21,6 +21,16 @@ public class Queries {
                     "ORDER BY ad.name ASC " +
                     "LIMIT 10 OFFSET :offset";
 
+    public static final String FIND_ADDITIVE_BY_STATUS =
+            "SELECT * FROM additives ad " +
+                    "WHERE ad.id IN ( " +
+                    "   SELECT ve.additive_id " +
+                    "   FROM versions ve " +
+                    "   JOIN statuses s ON ve.status_id = s.id " +
+                    "   WHERE s.name = :status) " +
+                    "ORDER BY ad.name ASC " +
+                    "LIMIT 10 OFFSET :offset";
+
     public static final String FILTER_USERS =
             "SELECT u FROM User u " +
                     "WHERE u.admin = false AND " +

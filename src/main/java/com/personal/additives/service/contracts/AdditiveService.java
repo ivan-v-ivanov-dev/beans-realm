@@ -10,4 +10,6 @@ public interface AdditiveService {
 
     List<Additive> filter(String additive, String creator, String tag, String type, String device, int offset);
 
+    List<Additive> findByStatus(String status,int offset);
+
 }
