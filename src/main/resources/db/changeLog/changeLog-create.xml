@@ -14,7 +14,7 @@
                 <constraints nullable="false" unique="true"/>
             </column>
             <column name="image" type="blob">
-                <constraints nullable="true" unique="true"/>
+                <constraints nullable="true" unique="false"/>
             </column>
             <column name="creator_id" type="int">
                 <constraints nullable="false" unique="false"/>
@@ -26,7 +26,7 @@
                 <constraints nullable="false" unique="false"/>
             </column>
             <column name="tag_id" type="int">
-                <constraints nullable="false" unique="false"/>
+                <constraints nullable="true" unique="false"/>
             </column>
             <column name="description" type="text">
                 <constraints nullable="false" unique="false"/>
@@ -102,18 +102,6 @@
                                  referencedTableName="tags"
                                  referencedColumnNames="id"/>
 
-        <createTable tableName="additives_versions">
-            <column autoIncrement="true" name="id" type="int">
-                <constraints primaryKey="true"/>
-            </column>
-            <column name="additive_id" type="int">
-                <constraints nullable="false"/>
-            </column>
-            <column name="version_id" type="int">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-
         <createTable tableName="versions">
             <column autoIncrement="true" name="id" type="int">
                 <constraints primaryKey="true"/>
@@ -123,6 +111,12 @@
             </column>
             <column name="content" type="blob">
                 <constraints nullable="true" unique="false"/>
+            </column>
+            <column name="additive_id" type="int">
+                <constraints nullable="false" unique="false"/>
+            </column>
+            <column name="status_id" type="int">
+                <constraints nullable="false" unique="false"/>
             </column>
             <column name="upload_date" type="date">
                 <constraints nullable="true" unique="false"/>
@@ -134,9 +128,6 @@
                 <constraints nullable="false" unique="false"/>
             </column>
             <column name="sha256_checksum" type="varchar(100)">
-                <constraints nullable="false" unique="false"/>
-            </column>
-            <column name="status_id" type="int">
                 <constraints nullable="false" unique="false"/>
             </column>
             <column name="download_count" type="int" defaultValue="0">
@@ -153,16 +144,16 @@
             </column>
         </createTable>
 
-        <addForeignKeyConstraint baseTableName="additives_versions"
+        <addForeignKeyConstraint baseTableName="versions"
                                  baseColumnNames="additive_id"
-                                 constraintName="pk_additives_versions_additives"
+                                 constraintName="pk_versions_additives"
                                  referencedTableName="additives"
                                  referencedColumnNames="id"/>
 
-        <addForeignKeyConstraint baseTableName="additives_versions"
-                                 baseColumnNames="version_id"
-                                 constraintName="pk_additives_versions_versions"
-                                 referencedTableName="versions"
+        <addForeignKeyConstraint baseTableName="versions"
+                                 baseColumnNames="status_id"
+                                 constraintName="pk_versions_statuses"
+                                 referencedTableName="statuses"
                                  referencedColumnNames="id"/>
 
     </changeSet>

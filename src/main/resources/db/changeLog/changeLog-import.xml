@@ -179,44 +179,6 @@
             <column name="name" value="Banned"/>
         </insert>
 
-        <!-- Versions import -->
-
-        <insert tableName="versions">
-            <column name="id" value="1"/>
-            <column name="name" value="1.0.1"/>
-            <column name="content"/>
-            <column name="upload_date"/>
-            <column name="modifications" value="Reported bugs fixed"/>
-            <column name="repository_url" value="https://github.com/ivanovbiol/unknown-name"/>
-            <column name="sha256_checksum" value="e37f3debe7f93d10c53ddbac2d40bba47d76a33bf3ec3fd21e196b5319059f7f"/>
-            <column name="status_id" value="1"/>
-            <column name="download_count" value="4"/>
-        </insert>
-
-        <insert tableName="versions">
-            <column name="id" value="2"/>
-            <column name="name" value="1.1.1"/>
-            <column name="content"/>
-            <column name="upload_date"/>
-            <column name="modifications" value="New UX"/>
-            <column name="repository_url" value="https://github.com/ivanovbiol/unknown-name"/>
-            <column name="sha256_checksum" value="e37f3debe7f93d10c53ddbac2d40bba47d76a33bf3ec3fd21e196b5319059f7f"/>
-            <column name="status_id" value="2"/>
-            <column name="download_count" value="63"/>
-        </insert>
-
-        <insert tableName="versions">
-            <column name="id" value="3"/>
-            <column name="name" value="2.1"/>
-            <column name="content"/>
-            <column name="upload_date"/>
-            <column name="modifications" value="Device connection optimisation"/>
-            <column name="repository_url" value="https://github.com/ivanovbiol/unknown-name"/>
-            <column name="sha256_checksum" value="e37f3debe7f93d10c53ddbac2d40bba47d76a33bf3ec3fd21e196b5319059f7f"/>
-            <column name="status_id" value="3"/>
-            <column name="download_count" value="71"/>
-        </insert>
-
         <!-- Additives import -->
 
         <insert tableName="additives">
@@ -230,24 +192,45 @@
             <column name="description" value="New game adventure"/>
         </insert>
 
-        <!-- Additives_Versions import -->
+        <!-- Versions import -->
 
-        <insert tableName="additives_versions">
+        <insert tableName="versions">
             <column name="id" value="1"/>
+            <column name="name" value="1.0.1"/>
+            <column name="content"/>
             <column name="additive_id" value="1"/>
-            <column name="version_id" value="1"/>
+            <column name="status_id" value="1"/>
+            <column name="upload_date"/>
+            <column name="modifications" value="Reported bugs fixed"/>
+            <column name="repository_url" value="https://github.com/ivanovbiol/unknown-name"/>
+            <column name="sha256_checksum" value="e37f3debe7f93d10c53ddbac2d40bba47d76a33bf3ec3fd21e196b5319059f7f"/>
+            <column name="download_count" value="4"/>
         </insert>
 
-        <insert tableName="additives_versions">
+        <insert tableName="versions">
             <column name="id" value="2"/>
+            <column name="name" value="1.1.1"/>
+            <column name="content"/>
             <column name="additive_id" value="1"/>
-            <column name="version_id" value="2"/>
+            <column name="status_id" value="2"/>
+            <column name="upload_date"/>
+            <column name="modifications" value="New UX"/>
+            <column name="repository_url" value="https://github.com/ivanovbiol/unknown-name"/>
+            <column name="sha256_checksum" value="e37f3debe7f93d10c53ddbac2d40bba47d76a33bf3ec3fd21e196b5319059f7f"/>
+            <column name="download_count" value="63"/>
         </insert>
 
-        <insert tableName="additives_versions">
+        <insert tableName="versions">
             <column name="id" value="3"/>
+            <column name="name" value="2.1"/>
+            <column name="content"/>
             <column name="additive_id" value="1"/>
-            <column name="version_id" value="3"/>
+            <column name="status_id" value="3"/>
+            <column name="upload_date"/>
+            <column name="modifications" value="Device connection optimisation"/>
+            <column name="repository_url" value="https://github.com/ivanovbiol/unknown-name"/>
+            <column name="sha256_checksum" value="e37f3debe7f93d10c53ddbac2d40bba47d76a33bf3ec3fd21e196b5319059f7f"/>
+            <column name="download_count" value="71"/>
         </insert>
 
     </changeSet>
