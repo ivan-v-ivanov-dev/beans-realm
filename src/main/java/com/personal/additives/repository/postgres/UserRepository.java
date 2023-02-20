@@ -7,9 +7,10 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
+import static com.personal.additives.repository.Queries.FILTER_USERS;
+
 public interface UserRepository extends JpaRepository<User, Integer> {
 
-    @Query("SELECT u FROM User u WHERE u.admin = false AND u.enabled = :enabled AND " +
-            "(:username is null OR username = :username) ORDER BY u.username ASC")
+    @Query(FILTER_USERS)
     List<User> findAllUsersOrderedByUsernameAsc(boolean enabled, @Param("username") String username);
 }
