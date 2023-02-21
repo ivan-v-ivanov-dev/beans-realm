@@ -13,7 +13,7 @@
             <column name="name" type="varchar(50)">
                 <constraints nullable="false" unique="true"/>
             </column>
-            <column name="image" type="blob">
+            <column name="image" type="text">
                 <constraints nullable="true" unique="false"/>
             </column>
             <column name="creator_id" type="int">
@@ -40,8 +40,8 @@
             <column name="username" type="varchar(20)">
                 <constraints nullable="false" unique="true"/>
             </column>
-            <column name="image" type="blob">
-                <constraints nullable="true" unique="true"/>
+            <column name="image" type="text">
+                <constraints nullable="true" unique="false"/>
             </column>
             <column name="enabled" type="boolean" defaultValueBoolean="false">
                 <constraints nullable="false" unique="false"/>
@@ -107,9 +107,9 @@
                 <constraints primaryKey="true"/>
             </column>
             <column name="name" type="varchar(50)">
-                <constraints nullable="false" unique="true"/>
+                <constraints nullable="false" unique="false"/>
             </column>
-            <column name="content" type="blob">
+            <column name="content" type="text">
                 <constraints nullable="true" unique="false"/>
             </column>
             <column name="additive_id" type="int">
@@ -131,7 +131,7 @@
                 <constraints nullable="false" unique="false"/>
             </column>
             <column name="download_count" type="int" defaultValue="0">
-                <constraints nullable="false" unique="false"/>
+                <constraints nullable="true" unique="false"/>
             </column>
         </createTable>
 
