@@ -48,9 +48,11 @@ public class Additive {
     @Column(name = "upload_date")
     private Date uploadDate;
 
+    @JsonIgnore
     @Column(name = "total_voters")
     private int totalVoters;
 
+    @JsonIgnore
     @Column(name = "total_score")
     private int totalScore;
 }
