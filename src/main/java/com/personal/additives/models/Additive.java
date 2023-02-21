@@ -1,5 +1,6 @@
 package com.personal.additives.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,6 +22,7 @@ public class Additive {
     @Column(name = "name")
     private String name;
 
+    @JsonIgnore
     @Column(name = "image")
     private String image;
 
@@ -45,4 +47,10 @@ public class Additive {
 
     @Column(name = "upload_date")
     private Date uploadDate;
+
+    @Column(name = "total_voters")
+    private int totalVoters;
+
+    @Column(name = "total_score")
+    private int totalScore;
 }
