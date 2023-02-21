@@ -20,9 +20,8 @@ public class Additive {
     @Column(name = "name")
     private String name;
 
-    @Lob
     @Column(name = "image")
-    private byte[] image;
+    private String image;
 
     @OneToOne
     @JoinColumn(name = "creator_id")

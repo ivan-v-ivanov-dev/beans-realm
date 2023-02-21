@@ -24,7 +24,7 @@ public class User {
     private String username;
 
     @Column(name = "image")
-    private byte[] image;
+    private String image;
 
     @Column(name = "enabled")
     private boolean enabled;
