@@ -2,6 +2,35 @@ package com.personal.additives.repository;
 
 public class Queries {
 
+    public static final String FIND_LAST_SIX_UPLOADED_ADDITIVES =
+            "SELECT * FROM additives ad " +
+                    "WHERE ad.id IN ( " +
+                    "    SELECT ve.additive_id " +
+                    "    FROM versions ve " +
+                    "    JOIN statuses s ON ve.status_id = s.id " +
+                    "    WHERE s.name = 'Approved') " +
+                    "ORDER BY ad.upload_date DESC " +
+                    "LIMIT 6";
+
+    public static final String FIND_FIRST_SIX_MOST_DOWNLOADED_ADDITIVES =
+            "SELECT * FROM additives ad " +
+                    "WHERE ad.id IN ( " +
+                    "    SELECT ve.additive_id " +
+                    "    FROM versions ve " +
+                    "    JOIN statuses s ON ve.status_id = s.id " +
+                    "    WHERE s.name = 'Approved') " +
+                    "ORDER BY ( " +
+                    "    SELECT SUM(ver.download_count) " +
+                    "    FROM versions ver " +
+                    "    JOIN statuses s ON ver.status_id = s.id " +
+                    "    WHERE s.name = 'Approved' AND " +
+                    "    ver.additive_id = ad.id ) DESC LIMIT 6";
+
+    public static final String FIND_FIRST_SIX_TOP_RATED_ADDITIVES =
+            "SELECT * FROM additives ad " +
+            "ORDER BY ad. total_score / ad.total_voters " +
+            "DESC LIMIT 6";
+
     public static final String FILTER_ADDITIVE =
             "SELECT * FROM additives ad " +
                     "JOIN users us ON ad.creator_id = us.id " +

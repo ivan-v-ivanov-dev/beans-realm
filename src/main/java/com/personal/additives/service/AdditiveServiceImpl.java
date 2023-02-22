@@ -17,6 +17,21 @@ public class AdditiveServiceImpl implements AdditiveService {
     }
 
     @Override
+    public List<Additive> latest() {
+        return this.additiveRepository.latest();
+    }
+
+    @Override
+    public List<Additive> mostDownloaded() {
+        return this.additiveRepository.mostDownloaded();
+    }
+
+    @Override
+    public List<Additive> topRated() {
+        return this.additiveRepository.topRated();
+    }
+
+    @Override
     public Additive create(Additive additive) {
         return this.additiveRepository.save(additive);
     }
