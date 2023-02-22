@@ -21,6 +21,9 @@ public interface AdditiveRepository extends JpaRepository<Additive, Integer> {
     @Query(value = FIND_FIRST_SIX_TOP_RATED_ADDITIVES, nativeQuery = true)
     List<Additive> topRated();
 
+    @Query(value = FIND_APPROVED_BEANS_COUNT, nativeQuery = true)
+    int beansCount();
+
     @Query(value = FILTER_ADDITIVE, nativeQuery = true)
     List<Additive> filter(@Param(ADDITIVE) String additive, @Param(CREATOR) String creator,
                           @Param(TAG) String tag, @Param(TYPE) String type,

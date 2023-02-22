@@ -32,6 +32,11 @@ public class AdditiveServiceImpl implements AdditiveService {
     }
 
     @Override
+    public int beansCount() {
+        return this.additiveRepository.beansCount();
+    }
+
+    @Override
     public Additive create(Additive additive) {
         return this.additiveRepository.save(additive);
     }

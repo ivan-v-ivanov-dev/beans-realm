@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface UserService {
 
+    int userCount();
+
     List<User> findAllUsers(boolean enabled, String username);
 
     User create(User user);

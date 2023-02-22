@@ -12,6 +12,8 @@ public interface AdditiveService {
 
     List<Additive> topRated();
 
+    int beansCount();
+
     Additive create(Additive additive);
 
     List<Additive> filter(String additive, String creator, String tag, String type, String device, int offset);

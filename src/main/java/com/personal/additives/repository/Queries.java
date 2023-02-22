@@ -28,8 +28,20 @@ public class Queries {
 
     public static final String FIND_FIRST_SIX_TOP_RATED_ADDITIVES =
             "SELECT * FROM additives ad " +
-            "ORDER BY ad. total_score / ad.total_voters " +
-            "DESC LIMIT 6";
+                    "ORDER BY ad. total_score / ad.total_voters " +
+                    "DESC LIMIT 6";
+
+    public static final String FIND_APPROVED_BEANS_COUNT =
+            "SELECT COUNT(*) FROM additives ad " +
+                    "WHERE ad.id IN ( " +
+                    "   SELECT v.additive_id FROM versions v " +
+                    "   JOIN statuses s ON v.status_id = s.id " +
+                    "   WHERE s.name = 'Approved')";
+
+    public static final String FIND_TOTAL_APPROVED_BEAN_DOWNLOADS =
+            "SELECT SUM(v.download_count) FROM versions v " +
+                    "   JOIN statuses s ON v.status_id = s.id " +
+                    "   WHERE s.name = 'Approved' ";
 
     public static final String FILTER_ADDITIVE =
             "SELECT * FROM additives ad " +
@@ -59,6 +71,11 @@ public class Queries {
                     "   WHERE s.name = :status) " +
                     "ORDER BY ad.name ASC " +
                     "LIMIT 10 OFFSET :offset";
+
+    public static final String FIND_ENABLED_USER_COUNT =
+            "SELECT COUNT(u.id) FROM users u " +
+                    "WHERE u.enabled = true AND " +
+                    "u.admin = false ";
 
     public static final String FILTER_USERS =
             "SELECT u FROM User u " +

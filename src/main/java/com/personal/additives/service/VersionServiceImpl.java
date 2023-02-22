@@ -17,6 +17,11 @@ public class VersionServiceImpl implements VersionService {
     }
 
     @Override
+    public int totalDownloadCount() {
+        return this.versionRepository.totalDownloadCount();
+    }
+
+    @Override
     public List<Version> findByAdditive(String additive) {
         return this.versionRepository.filter(additive);
     }

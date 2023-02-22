@@ -17,6 +17,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public int userCount() {
+        return this.userRepository.userCount();
+    }
+
+    @Override
     public List<User> findAllUsers(boolean enabled, String username) {
         return this.userRepository.findAllUsersOrderedByUsernameAsc(enabled, username);
     }
