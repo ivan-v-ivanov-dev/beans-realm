@@ -40,7 +40,7 @@ dependencyManagement {
 dockerCompose {
     useComposeFiles = ['docker-compose.yml']
     isRequiredBy bootRun
-    projectName = "additives"
+    projectName = "beans"
 }
 
 repositories {

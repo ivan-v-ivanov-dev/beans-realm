@@ -140,9 +140,9 @@
             <column name="name" value="Banned"/>
         </insert>
 
-        <!-- Additives import -->
+        <!-- Beans import -->
 
-        <insert tableName="additives">
+        <insert tableName="beans">
             <column name="id" value="1"/>
             <column name="name" value="House of Mighty Heroes"/>
             <column name="image" value="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAArwAAAK8CAIAAACC2PsUAAAAAXNSR0IArs4c6QAAAARnQU1BAACx
@@ -300,7 +300,7 @@ RU5ErkJggg=="/>
             <column name="total_score" value="40"/>
         </insert>
 
-        <insert tableName="additives">
+        <insert tableName="beans">
             <column name="id" value="2"/>
             <column name="name" value="Game_2"/>
             <column name="image" value="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAArwAAAK8CAIAAACC2PsUAAAAAXNSR0IArs4c6QAAAARnQU1BAACx
@@ -432,7 +432,7 @@ ABHRAABERAMAEBENAEBENAAAEdEAAAT+99//Bwvqy0cYmGjhAAAAAElFTkSuQmCC"/>
             <column name="total_score" value="15"/>
         </insert>
 
-        <insert tableName="additives">
+        <insert tableName="beans">
             <column name="id" value="3"/>
             <column name="name" value="Game_3"/>
             <column name="image" value="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAArwAAAK8CAIAAACC2PsUAAAAAXNSR0IArs4c6QAAAARnQU1BAACx
@@ -566,7 +566,7 @@ TkSuQmCC"/>
             <column name="total_score" value="180"/>
         </insert>
 
-        <insert tableName="additives">
+        <insert tableName="beans">
             <column name="id" value="4"/>
             <column name="name" value="Game_4"/>
             <column name="image" value="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAArwAAAK8CAIAAACC2PsUAAAAAXNSR0IArs4c6QAAAARnQU1BAACx
@@ -695,7 +695,7 @@ EBENAEBENAAAEdEAAEREAwAQEQ0AQEQ0AACB//33/zqEGPVWp8CsAAAAAElFTkSuQmCC"/>
             <column name="total_score" value="120"/>
         </insert>
 
-        <insert tableName="additives">
+        <insert tableName="beans">
             <column name="id" value="5"/>
             <column name="name" value="Game_5"/>
             <column name="image" value="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAArwAAAK8CAIAAACC2PsUAAAAAXNSR0IArs4c6QAAAARnQU1BAACx
@@ -828,7 +828,7 @@ PRmx7FVH8iQAAAAASUVORK5CYII="/>
             <column name="total_score" value="36"/>
         </insert>
 
-        <insert tableName="additives">
+        <insert tableName="beans">
             <column name="id" value="6"/>
             <column name="name" value="OS_1"/>
             <column name="image" value="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAArwAAAK8CAIAAACC2PsUAAAAAXNSR0IArs4c6QAAAARnQU1BAACx
@@ -1113,7 +1113,7 @@ AAgRGgCAEKEBAAgRGgCAEKEBAAj4v//5f+/7f5Y6jMavAAAAAElFTkSuQmCC"/>
             <column name="total_score" value="120"/>
         </insert>
 
-        <insert tableName="additives">
+        <insert tableName="beans">
             <column name="id" value="7"/>
             <column name="name" value="OS_2"/>
             <column name="image" value="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAArwAAAK8CAIAAACC2PsUAAAAAXNSR0IArs4c6QAAAARnQU1BAACx
@@ -1415,7 +1415,7 @@ ABAiNAAAAf/3v/8PUWSwE7An84wAAAAASUVORK5CYII="/>
             <column name="id" value="1"/>
             <column name="name" value="1"/>
             <column name="content"/>
-            <column name="additive_id" value="1"/>
+            <column name="bean_id" value="1"/>
             <column name="status_id" value="1"/>
             <column name="upload_date" value="2020-02-12"/>
             <column name="modifications" value="First version release"/>
@@ -1428,7 +1428,7 @@ ABAiNAAAAf/3v/8PUWSwE7An84wAAAAASUVORK5CYII="/>
             <column name="id" value="2"/>
             <column name="name" value="1.1.1"/>
             <column name="content"/>
-            <column name="additive_id" value="1"/>
+            <column name="bean_id" value="1"/>
             <column name="status_id" value="2"/>
             <column name="upload_date" value="2021-07-23"/>
             <column name="modifications" value="New UX"/>
@@ -1441,7 +1441,7 @@ ABAiNAAAAf/3v/8PUWSwE7An84wAAAAASUVORK5CYII="/>
             <column name="id" value="3"/>
             <column name="name" value="2.1"/>
             <column name="content"/>
-            <column name="additive_id" value="1"/>
+            <column name="bean_id" value="1"/>
             <column name="status_id" value="3"/>
             <column name="upload_date" value="2023-01-09"/>
             <column name="modifications" value="Device connection optimisation"/>
@@ -1456,7 +1456,7 @@ ABAiNAAAAf/3v/8PUWSwE7An84wAAAAASUVORK5CYII="/>
             <column name="id" value="4"/>
             <column name="name" value="1"/>
             <column name="content"/>
-            <column name="additive_id" value="2"/>
+            <column name="bean_id" value="2"/>
             <column name="status_id" value="1"/>
             <column name="upload_date" value="2021-08-14"/>
             <column name="modifications" value="First version release"/>
@@ -1469,7 +1469,7 @@ ABAiNAAAAf/3v/8PUWSwE7An84wAAAAASUVORK5CYII="/>
             <column name="id" value="5"/>
             <column name="name" value="1.1.12"/>
             <column name="content"/>
-            <column name="additive_id" value="2"/>
+            <column name="bean_id" value="2"/>
             <column name="status_id" value="1"/>
             <column name="upload_date" value="2021-12-03"/>
             <column name="modifications" value="Fixed graphics"/>
@@ -1482,7 +1482,7 @@ ABAiNAAAAf/3v/8PUWSwE7An84wAAAAASUVORK5CYII="/>
             <column name="id" value="6"/>
             <column name="name" value="1"/>
             <column name="content"/>
-            <column name="additive_id" value="2"/>
+            <column name="bean_id" value="2"/>
             <column name="status_id" value="2"/>
             <column name="upload_date" value="2023-02-15"/>
             <column name="modifications" value="New Heroes"/>
@@ -1497,7 +1497,7 @@ ABAiNAAAAf/3v/8PUWSwE7An84wAAAAASUVORK5CYII="/>
             <column name="id" value="7"/>
             <column name="name" value="1"/>
             <column name="content"/>
-            <column name="additive_id" value="3"/>
+            <column name="bean_id" value="3"/>
             <column name="status_id" value="1"/>
             <column name="upload_date" value="2021-04-16"/>
             <column name="modifications" value="First version release"/>
@@ -1510,7 +1510,7 @@ ABAiNAAAAf/3v/8PUWSwE7An84wAAAAASUVORK5CYII="/>
             <column name="id" value="8"/>
             <column name="name" value="1.1.15"/>
             <column name="content"/>
-            <column name="additive_id" value="3"/>
+            <column name="bean_id" value="3"/>
             <column name="status_id" value="1"/>
             <column name="upload_date" value="2022-06-21"/>
             <column name="modifications" value="Improved graphics"/>
@@ -1525,7 +1525,7 @@ ABAiNAAAAf/3v/8PUWSwE7An84wAAAAASUVORK5CYII="/>
             <column name="id" value="9"/>
             <column name="name" value="1"/>
             <column name="content"/>
-            <column name="additive_id" value="4"/>
+            <column name="bean_id" value="4"/>
             <column name="status_id" value="1"/>
             <column name="upload_date" value="2020-07-21"/>
             <column name="modifications" value="First version release"/>
@@ -1538,7 +1538,7 @@ ABAiNAAAAf/3v/8PUWSwE7An84wAAAAASUVORK5CYII="/>
             <column name="id" value="10"/>
             <column name="name" value="1.1.56"/>
             <column name="content"/>
-            <column name="additive_id" value="4"/>
+            <column name="bean_id" value="4"/>
             <column name="status_id" value="1"/>
             <column name="upload_date" value="2021-03-01"/>
             <column name="modifications" value="Modifications"/>
@@ -1551,7 +1551,7 @@ ABAiNAAAAf/3v/8PUWSwE7An84wAAAAASUVORK5CYII="/>
             <column name="id" value="11"/>
             <column name="name" value="2.0.36"/>
             <column name="content"/>
-            <column name="additive_id" value="4"/>
+            <column name="bean_id" value="4"/>
             <column name="status_id" value="1"/>
             <column name="upload_date" value="2022-11-24"/>
             <column name="modifications" value="Lorem ipsum"/>
@@ -1566,7 +1566,7 @@ ABAiNAAAAf/3v/8PUWSwE7An84wAAAAASUVORK5CYII="/>
             <column name="id" value="12"/>
             <column name="name" value="1"/>
             <column name="content"/>
-            <column name="additive_id" value="5"/>
+            <column name="bean_id" value="5"/>
             <column name="status_id" value="1"/>
             <column name="upload_date" value="2022-05-04"/>
             <column name="modifications" value="Lorem ipsum"/>
@@ -1579,7 +1579,7 @@ ABAiNAAAAf/3v/8PUWSwE7An84wAAAAASUVORK5CYII="/>
             <column name="id" value="13"/>
             <column name="name" value="1.2.86"/>
             <column name="content"/>
-            <column name="additive_id" value="5"/>
+            <column name="bean_id" value="5"/>
             <column name="status_id" value="1"/>
             <column name="upload_date" value="2022-07-25"/>
             <column name="modifications" value="Lorem ipsum"/>
@@ -1592,7 +1592,7 @@ ABAiNAAAAf/3v/8PUWSwE7An84wAAAAASUVORK5CYII="/>
             <column name="id" value="14"/>
             <column name="name" value="2.5.98"/>
             <column name="content"/>
-            <column name="additive_id" value="5"/>
+            <column name="bean_id" value="5"/>
             <column name="status_id" value="1"/>
             <column name="upload_date" value="2022-09-12"/>
             <column name="modifications" value="Lorem ipsum"/>
@@ -1605,7 +1605,7 @@ ABAiNAAAAf/3v/8PUWSwE7An84wAAAAASUVORK5CYII="/>
             <column name="id" value="15"/>
             <column name="name" value="3.1.56"/>
             <column name="content"/>
-            <column name="additive_id" value="5"/>
+            <column name="bean_id" value="5"/>
             <column name="status_id" value="1"/>
             <column name="upload_date" value="2022-10-11"/>
             <column name="modifications" value="Lorem ipsum"/>
@@ -1618,7 +1618,7 @@ ABAiNAAAAf/3v/8PUWSwE7An84wAAAAASUVORK5CYII="/>
             <column name="id" value="16"/>
             <column name="name" value="4.8.7"/>
             <column name="content"/>
-            <column name="additive_id" value="5"/>
+            <column name="bean_id" value="5"/>
             <column name="status_id" value="1"/>
             <column name="upload_date" value="2023-1-18"/>
             <column name="modifications" value="Lorem ipsum"/>
@@ -1633,7 +1633,7 @@ ABAiNAAAAf/3v/8PUWSwE7An84wAAAAASUVORK5CYII="/>
             <column name="id" value="17"/>
             <column name="name" value="1"/>
             <column name="content"/>
-            <column name="additive_id" value="6"/>
+            <column name="bean_id" value="6"/>
             <column name="status_id" value="1"/>
             <column name="upload_date" value="2020-07-21"/>
             <column name="modifications" value="Lorem Ipsum"/>
@@ -1646,7 +1646,7 @@ ABAiNAAAAf/3v/8PUWSwE7An84wAAAAASUVORK5CYII="/>
             <column name="id" value="18"/>
             <column name="name" value="1.6.8"/>
             <column name="content"/>
-            <column name="additive_id" value="6"/>
+            <column name="bean_id" value="6"/>
             <column name="status_id" value="1"/>
             <column name="upload_date" value="2021-07-21"/>
             <column name="modifications" value="Lorem Ipsum"/>
@@ -1659,7 +1659,7 @@ ABAiNAAAAf/3v/8PUWSwE7An84wAAAAASUVORK5CYII="/>
             <column name="id" value="19"/>
             <column name="name" value="2.1"/>
             <column name="content"/>
-            <column name="additive_id" value="6"/>
+            <column name="bean_id" value="6"/>
             <column name="status_id" value="1"/>
             <column name="upload_date" value="2021-08-11"/>
             <column name="modifications" value="Bug Fix"/>
@@ -1672,7 +1672,7 @@ ABAiNAAAAf/3v/8PUWSwE7An84wAAAAASUVORK5CYII="/>
             <column name="id" value="20"/>
             <column name="name" value="3.0"/>
             <column name="content"/>
-            <column name="additive_id" value="6"/>
+            <column name="bean_id" value="6"/>
             <column name="status_id" value="1"/>
             <column name="upload_date" value="2021-12-21"/>
             <column name="modifications" value="Latest Version"/>
@@ -1687,7 +1687,7 @@ ABAiNAAAAf/3v/8PUWSwE7An84wAAAAASUVORK5CYII="/>
             <column name="id" value="21"/>
             <column name="name" value="1"/>
             <column name="content"/>
-            <column name="additive_id" value="7"/>
+            <column name="bean_id" value="7"/>
             <column name="status_id" value="1"/>
             <column name="upload_date" value="2019-08-16"/>
             <column name="modifications" value="First Version release"/>
@@ -1700,7 +1700,7 @@ ABAiNAAAAf/3v/8PUWSwE7An84wAAAAASUVORK5CYII="/>
             <column name="id" value="22"/>
             <column name="name" value="1.6.7"/>
             <column name="content"/>
-            <column name="additive_id" value="7"/>
+            <column name="bean_id" value="7"/>
             <column name="status_id" value="1"/>
             <column name="upload_date" value="2020-09-21"/>
             <column name="modifications" value="Second Version release"/>
@@ -1713,7 +1713,7 @@ ABAiNAAAAf/3v/8PUWSwE7An84wAAAAASUVORK5CYII="/>
             <column name="id" value="23"/>
             <column name="name" value="3.6"/>
             <column name="content"/>
-            <column name="additive_id" value="7"/>
+            <column name="bean_id" value="7"/>
             <column name="status_id" value="1"/>
             <column name="upload_date" value="2021-03-17"/>
             <column name="modifications" value="Third Version release"/>
@@ -1726,7 +1726,7 @@ ABAiNAAAAf/3v/8PUWSwE7An84wAAAAASUVORK5CYII="/>
             <column name="id" value="24"/>
             <column name="name" value="4.8"/>
             <column name="content"/>
-            <column name="additive_id" value="7"/>
+            <column name="bean_id" value="7"/>
             <column name="status_id" value="3"/>
             <column name="upload_date" value="2021-05-17"/>
             <column name="modifications" value="Fourth Version release"/>
@@ -1739,7 +1739,7 @@ ABAiNAAAAf/3v/8PUWSwE7An84wAAAAASUVORK5CYII="/>
             <column name="id" value="25"/>
             <column name="name" value="5.1.36"/>
             <column name="content"/>
-            <column name="additive_id" value="7"/>
+            <column name="bean_id" value="7"/>
             <column name="status_id" value="2"/>
             <column name="upload_date" value="2022-02-18"/>
             <column name="modifications" value="Improved user controllers"/>

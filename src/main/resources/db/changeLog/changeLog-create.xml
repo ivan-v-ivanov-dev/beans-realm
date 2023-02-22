@@ -6,7 +6,7 @@
 
     <changeSet author="dragon" id="1" dbms="postgresql">
 
-        <createTable tableName="additives">
+        <createTable tableName="beans">
             <column autoIncrement="true" name="id" type="int">
                 <constraints primaryKey="true"/>
             </column>
@@ -84,27 +84,27 @@
             </column>
         </createTable>
 
-        <addForeignKeyConstraint baseTableName="additives"
+        <addForeignKeyConstraint baseTableName="beans"
                                  baseColumnNames="creator_id"
-                                 constraintName="pk_additives_users"
+                                 constraintName="pk_beans_users"
                                  referencedTableName="users"
                                  referencedColumnNames="id"/>
 
-        <addForeignKeyConstraint baseTableName="additives"
+        <addForeignKeyConstraint baseTableName="beans"
                                  baseColumnNames="device_id"
-                                 constraintName="pk_additives_devices"
+                                 constraintName="pk_beans_devices"
                                  referencedTableName="devices"
                                  referencedColumnNames="id"/>
 
-        <addForeignKeyConstraint baseTableName="additives"
+        <addForeignKeyConstraint baseTableName="beans"
                                  baseColumnNames="type_id"
-                                 constraintName="pk_additives_types"
+                                 constraintName="pk_beans_types"
                                  referencedTableName="types"
                                  referencedColumnNames="id"/>
 
-        <addForeignKeyConstraint baseTableName="additives"
+        <addForeignKeyConstraint baseTableName="beans"
                                  baseColumnNames="tag_id"
-                                 constraintName="pk_additives_tags"
+                                 constraintName="pk_beans_tags"
                                  referencedTableName="tags"
                                  referencedColumnNames="id"/>
 
@@ -118,7 +118,7 @@
             <column name="content" type="text">
                 <constraints nullable="true" unique="false"/>
             </column>
-            <column name="additive_id" type="int">
+            <column name="bean_id" type="int">
                 <constraints nullable="false" unique="false"/>
             </column>
             <column name="status_id" type="int">
@@ -151,9 +151,9 @@
         </createTable>
 
         <addForeignKeyConstraint baseTableName="versions"
-                                 baseColumnNames="additive_id"
-                                 constraintName="pk_versions_additives"
-                                 referencedTableName="additives"
+                                 baseColumnNames="bean_id"
+                                 constraintName="pk_versions_beans"
+                                 referencedTableName="beans"
                                  referencedColumnNames="id"/>
 
         <addForeignKeyConstraint baseTableName="versions"
