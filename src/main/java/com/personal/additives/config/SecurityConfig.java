@@ -12,6 +12,8 @@ import org.springframework.security.core.authority.mapping.SimpleAuthorityMapper
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.web.authentication.session.RegisterSessionAuthenticationStrategy;
 import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy;
+import org.springframework.security.web.firewall.HttpFirewall;
+import org.springframework.security.web.firewall.StrictHttpFirewall;
 
 @KeycloakConfiguration
 @EnableGlobalMethodSecurity(jsr250Enabled = true)
@@ -38,5 +40,12 @@ class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .anyRequest()
                 .permitAll();
+    }
+
+    @Bean
+    public HttpFirewall getHttpFirewall() {
+        StrictHttpFirewall strictHttpFirewall = new StrictHttpFirewall();
+        strictHttpFirewall.setAllowUrlEncodedDoubleSlash(true);
+        return strictHttpFirewall;
     }
 }
