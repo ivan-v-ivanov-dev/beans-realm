@@ -49,9 +49,6 @@
             <column name="username" type="varchar(20)">
                 <constraints nullable="false" unique="true"/>
             </column>
-            <column name="image" type="text">
-                <constraints nullable="true" unique="false"/>
-            </column>
             <column name="enabled" type="boolean" defaultValueBoolean="false">
                 <constraints nullable="false" unique="false"/>
             </column>

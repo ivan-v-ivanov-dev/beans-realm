@@ -1,5 +1,6 @@
 package com.personal.additives.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,9 +23,6 @@ public class User {
 
     @Column(name = "username")
     private String username;
-
-    @Column(name = "image")
-    private String image;
 
     @Column(name = "enabled")
     private boolean enabled;
