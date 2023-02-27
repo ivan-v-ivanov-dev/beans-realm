@@ -24,6 +24,8 @@ dependencies {
     implementation 'org.keycloak:keycloak-spring-boot-starter'
     implementation 'org.liquibase:liquibase-core'
     implementation 'com.zaxxer:HikariCP'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'redis.clients:jedis'
 
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'org.postgresql:postgresql'
