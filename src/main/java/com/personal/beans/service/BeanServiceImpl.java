@@ -33,13 +33,13 @@ public class BeanServiceImpl implements BeanService {
         if (redisCacheService.containsKey(LATEST_BEANS)) {
             log.info(RETRIEVE_LATEST_BEANS_FROM_REDIS_CACHE);
             return this.redisCacheService.retrieve(LATEST_BEANS, Bean.class);
-        } else {
-            List<Bean> beans = this.beanRepository.latest();
-            calculateBeansTotalDownloadCount(beans);
-            this.redisCacheService.saveBeans(LATEST_BEANS, beans);
-            log.info(RETRIEVE_LATEST_BEANS_FROM_POSTGRES_DB);
-            return beans;
         }
+
+        List<Bean> beans = this.beanRepository.latest();
+        calculateBeansTotalDownloadCount(beans);
+        this.redisCacheService.saveBeans(LATEST_BEANS, beans);
+        log.info(RETRIEVE_LATEST_BEANS_FROM_POSTGRES_DB);
+        return beans;
     }
 
     @Override
@@ -47,13 +47,13 @@ public class BeanServiceImpl implements BeanService {
         if (redisCacheService.containsKey(MOST_DOWNLOADED_BEANS)) {
             log.info(RETRIEVE_MOST_DOWNLOADED_BEANS_FROM_REDIS_CACHE);
             return this.redisCacheService.retrieve(MOST_DOWNLOADED_BEANS, Bean.class);
-        } else {
-            List<Bean> beans = this.beanRepository.mostDownloaded();
-            calculateBeansTotalDownloadCount(beans);
-            this.redisCacheService.saveBeans(MOST_DOWNLOADED_BEANS, beans);
-            log.info(RETRIEVE_MOST_DOWNLOADED_BEANS_FROM_POSTGRES_DB);
-            return beans;
         }
+
+        List<Bean> beans = this.beanRepository.mostDownloaded();
+        calculateBeansTotalDownloadCount(beans);
+        this.redisCacheService.saveBeans(MOST_DOWNLOADED_BEANS, beans);
+        log.info(RETRIEVE_MOST_DOWNLOADED_BEANS_FROM_POSTGRES_DB);
+        return beans;
     }
 
     @Override
@@ -61,13 +61,13 @@ public class BeanServiceImpl implements BeanService {
         if (redisCacheService.containsKey(TOP_RATED_BEANS)) {
             log.info(RETRIEVE_TOP_RATED_BEANS_FROM_REDIS_CACHE);
             return this.redisCacheService.retrieve(TOP_RATED_BEANS, Bean.class);
-        } else {
-            List<Bean> beans = this.beanRepository.topRated();
-            calculateBeansTotalDownloadCount(beans);
-            this.redisCacheService.saveBeans(TOP_RATED_BEANS, beans);
-            log.info(RETRIEVE_TOP_RATED_BEANS_FROM_POSTGRES_DB);
-            return beans;
         }
+
+        List<Bean> beans = this.beanRepository.topRated();
+        calculateBeansTotalDownloadCount(beans);
+        this.redisCacheService.saveBeans(TOP_RATED_BEANS, beans);
+        log.info(RETRIEVE_TOP_RATED_BEANS_FROM_POSTGRES_DB);
+        return beans;
     }
 
     @Override
