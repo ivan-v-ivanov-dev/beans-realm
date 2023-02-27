@@ -4,27 +4,29 @@ public class Constants {
 
     // Logger constants
     public static final String POSTGRESQL_CONNECTION_POOL = "PostgreSQL Connection Pool";
-    public static final String RETRIEVE_LATEST_BEANS_FROM_REDIS_CACHE = "Retrieve Latest Beans from Redis Cache";
-    public static final String RETRIEVE_LATEST_BEANS_FROM_POSTGRES_DB = "Retrieve Latest Beans from Postgres DB";
+    public static final String FROM_REDIS = "From REDIS :: ";
+    public static final String FROM_POSTGRES = "From POSTGRES :: ";
+    public static final String RETRIEVE_LATEST_BEANS_FROM_REDIS_CACHE = FROM_REDIS + "Retrieve Latest Beans";
+    public static final String RETRIEVE_LATEST_BEANS_FROM_POSTGRES_DB = FROM_POSTGRES + "Retrieve Latest Beans";
     public static final String RETRIEVE_MOST_DOWNLOADED_BEANS_FROM_REDIS_CACHE =
-            "Retrieve Most Downloaded Beans from Redis Cache";
+            FROM_REDIS + "Retrieve Most Downloaded Beans";
     public static final String RETRIEVE_MOST_DOWNLOADED_BEANS_FROM_POSTGRES_DB =
-            "Retrieve Most Downloaded Beans from Postgres DB";
-    public static final String RETRIEVE_TOP_RATED_BEANS_FROM_REDIS_CACHE = "Retrieve Top Rated Beans from Redis Cache";
-    public static final String RETRIEVE_TOP_RATED_BEANS_FROM_POSTGRES_DB = "Retrieve Top Rated Beans from Postgres DB";
+            FROM_POSTGRES + "Retrieve Most Downloaded Beans";
+    public static final String RETRIEVE_TOP_RATED_BEANS_FROM_REDIS_CACHE = FROM_REDIS + "Retrieve Top Rated Beans";
+    public static final String RETRIEVE_TOP_RATED_BEANS_FROM_POSTGRES_DB = FROM_POSTGRES + "Retrieve Top Rated Beans";
     public static final String RETRIEVE_TOTAL_APPROVED_BEANS_COUNT_FROM_REDIS_CACHE =
-            "Retrieve Total Approved Beans Count from Redis Cache";
+            FROM_REDIS + "Retrieve Total Approved Beans Count";
     public static final String RETRIEVE_TOTAL_APPROVED_BEANS_COUNT_FROM_POSTGRES_DB =
-            "Retrieve Total Approved Beans Count from Postgres DB";
+            FROM_POSTGRES + "Retrieve Total Approved Beans Count";
     public static final String RETRIEVE_TOTAL_DOWNLOAD_COUNT_FOR_ALL_APPROVED_BEANS_FROM_REDIS_CACHE =
-            "Retrieve Total Download Count For All Approved Beans from Redis Cache";
+            FROM_REDIS + "Retrieve Total Download Count For All Approved Beans";
     public static final String RETRIEVE_TOTAL_DOWNLOAD_COUNT_FOR_ALL_APPROVED_BEANS_FROM_POSTGRES_DB =
-            "Retrieve Total Download Count For All Approved Beans from Postgres DB";
+            FROM_POSTGRES + "Retrieve Total Download Count For All Approved Beans";
     public static final String RETRIEVE_TOTAL_REGISTERED_USERS_FROM_REDIS_CACHE =
-            "Retrieve Total Registered Users from Redis Cache";
+            FROM_REDIS + "Retrieve Total Registered Users";
     public static final String RETRIEVE_TOTAL_REGISTERED_USERS_FROM_POSTGRES_DB =
-            "Retrieve Total Registered Users from Postgres DB";
-    public static final String DELETE_REDIS_CACHE_AT_TIME_TEMPLATE = "Delete Redis cache at time :: %s";
+            FROM_POSTGRES + "Retrieve Total Registered Users";
+    public static final String DELETE_REDIS_CACHE_AT_TIME_TEMPLATE = "Delete REDIS cache at time :: %s";
 
     // Repository constants
     public static final String NAME = "name";
