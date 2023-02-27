@@ -25,7 +25,6 @@ public class Bean implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @JsonIgnore
     @Column(name = "image")
     private String image;
 
