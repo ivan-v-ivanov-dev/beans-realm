@@ -53,3 +53,11 @@ services:
       - 27017:27017
     environment:
       MONGO_INITDB_DATABASE: storage
+
+# Redis cache
+  redis:
+    image: redis
+    container_name: redis
+    ports:
+      - 6379:6379
+    command: '--requirepass root'
