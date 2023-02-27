@@ -4,8 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
@@ -13,7 +15,8 @@ import java.util.Date;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Bean {
+@ToString
+public class Bean implements Serializable {
 
     @Id
     @Column(name = "id")
@@ -55,4 +58,7 @@ public class Bean {
     @JsonIgnore
     @Column(name = "total_score")
     private int totalScore;
+
+    @Transient
+    private int totalDownloads;
 }

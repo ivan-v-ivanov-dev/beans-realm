@@ -3,18 +3,21 @@ package com.personal.beans.models;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "devices")
 @NoArgsConstructor
 @Getter
 @Setter
-public class Device {
+@ToString
+public class Device implements Serializable {
 
     @Id
     @Column(name = "id")
