@@ -12,6 +12,10 @@ public class Constants {
             "Retrieve Most Downloaded Beans from Postgres DB";
     public static final String RETRIEVE_TOP_RATED_BEANS_FROM_REDIS_CACHE = "Retrieve Top Rated Beans from Redis Cache";
     public static final String RETRIEVE_TOP_RATED_BEANS_FROM_POSTGRES_DB = "Retrieve Top Rated Beans from Postgres DB";
+    public static final String RETRIEVE_TOTAL_APPROVED_BEANS_COUNT_FROM_REDIS_CACHE =
+            "Retrieve Total Approved Beans Count from Redis Cache";
+    public static final String RETRIEVE_TOTAL_APPROVED_BEANS_COUNT_FROM_POSTGRES_DB =
+            "Retrieve Total Approved Beans Count from Postgres DB";
 
     // Repository constants
     public static final String NAME = "name";
@@ -27,6 +31,7 @@ public class Constants {
     public static final String LATEST_BEANS = "LATEST_BEANS";
     public static final String MOST_DOWNLOADED_BEANS = "MOST_DOWNLOADED_BEANS";
     public static final String TOP_RATED_BEANS = "TOP_RATED_BEANS";
+    public static final String TOTAL_APPROVED_BEANS_COUNT = "TOTAL_APPROVED_BEANS_COUNT";
 
 
     private Constants() {

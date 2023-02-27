@@ -37,4 +37,9 @@ public class RedisCacheServiceImpl implements RedisCacheService {
     public void saveBeans(String key, List<Bean> beans) {
         beans.forEach(currentBean -> this.redisTemplate.opsForHash().put(key, currentBean.getName(), currentBean));
     }
+
+    @Override
+    public void saveEntity(String key, int entity) {
+        this.redisTemplate.opsForHash().put(key, String.valueOf(entity), entity);
+    }
 }

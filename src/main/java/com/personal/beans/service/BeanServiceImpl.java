@@ -72,7 +72,15 @@ public class BeanServiceImpl implements BeanService {
 
     @Override
     public int beansCount() {
-        return this.beanRepository.beansCount();
+        if (redisCacheService.containsKey(TOTAL_APPROVED_BEANS_COUNT)) {
+            log.info(RETRIEVE_TOTAL_APPROVED_BEANS_COUNT_FROM_REDIS_CACHE);
+            return this.redisCacheService.retrieve(TOTAL_APPROVED_BEANS_COUNT, Integer.class).get(0);
+        }
+
+        int totalApprovedBeansCount = this.beanRepository.beansCount();
+        redisCacheService.saveEntity(TOTAL_APPROVED_BEANS_COUNT, totalApprovedBeansCount);
+        log.info(RETRIEVE_TOTAL_APPROVED_BEANS_COUNT_FROM_POSTGRES_DB);
+        return totalApprovedBeansCount;
     }
 
     @Override

@@ -11,4 +11,6 @@ public interface RedisCacheService {
     <T> List<T> retrieve(String key, Class<T> tClazz);
 
     void saveBeans(String key, List<Bean> beans);
+
+    void saveEntity(String key, int entity);
 }
