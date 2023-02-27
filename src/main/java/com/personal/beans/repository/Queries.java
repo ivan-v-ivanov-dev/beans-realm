@@ -43,6 +43,14 @@ public class Queries {
                     "   JOIN statuses s ON v.status_id = s.id " +
                     "   WHERE s.name = 'Approved' ";
 
+    public static final String BEAN_DOWNLOAD_COUNT =
+            "SELECT SUM(v.download_count) " +
+                    "FROM versions v " +
+                    "JOIN beans b ON v.bean_id = b.id " +
+                    "JOIN statuses s ON v.status_id = s.id " +
+                    "WHERE s.name = 'Approved' AND " +
+                    "b.name = :bean ";
+
     public static final String FILTER_BEANS =
             "SELECT * FROM beans b " +
                     "JOIN users us ON b.creator_id = us.id " +
