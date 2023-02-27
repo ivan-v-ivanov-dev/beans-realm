@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static com.personal.beans.constants.Constants.*;
+
 @Service
 @Slf4j
 public class BeanServiceImpl implements BeanService {
@@ -28,42 +30,42 @@ public class BeanServiceImpl implements BeanService {
 
     @Override
     public List<Bean> latest() {
-        if (redisCacheService.containsKey("LATEST_BEANS")) {
-            log.info("Retrieve Latest Beans from Redis Cache");
-            return this.redisCacheService.retrieve("LATEST_BEANS", Bean.class);
+        if (redisCacheService.containsKey(LATEST_BEANS)) {
+            log.info(RETRIEVE_LATEST_BEANS_FROM_REDIS_CACHE);
+            return this.redisCacheService.retrieve(LATEST_BEANS, Bean.class);
         } else {
             List<Bean> beans = this.beanRepository.latest();
             calculateBeansTotalDownloadCount(beans);
-            this.redisCacheService.saveBeans("LATEST_BEANS", beans);
-            log.info("Retrieve Latest Beans from Postgres DB");
+            this.redisCacheService.saveBeans(LATEST_BEANS, beans);
+            log.info(RETRIEVE_LATEST_BEANS_FROM_POSTGRES_DB);
             return beans;
         }
     }
 
     @Override
     public List<Bean> mostDownloaded() {
-        if (redisCacheService.containsKey("MOST_DOWNLOADED_BEANS")) {
-            log.info("Retrieve Most Downloaded Beans from Redis Cache");
-            return this.redisCacheService.retrieve("MOST_DOWNLOADED_BEANS", Bean.class);
+        if (redisCacheService.containsKey(MOST_DOWNLOADED_BEANS)) {
+            log.info(RETRIEVE_MOST_DOWNLOADED_BEANS_FROM_REDIS_CACHE);
+            return this.redisCacheService.retrieve(MOST_DOWNLOADED_BEANS, Bean.class);
         } else {
             List<Bean> beans = this.beanRepository.mostDownloaded();
             calculateBeansTotalDownloadCount(beans);
-            this.redisCacheService.saveBeans("MOST_DOWNLOADED_BEANS", beans);
-            log.info("Retrieve Most Downloaded Beans from Postgres DB");
+            this.redisCacheService.saveBeans(MOST_DOWNLOADED_BEANS, beans);
+            log.info(RETRIEVE_MOST_DOWNLOADED_BEANS_FROM_POSTGRES_DB);
             return beans;
         }
     }
 
     @Override
     public List<Bean> topRated() {
-        if (redisCacheService.containsKey("TOP_RATED_BEANS")) {
-            log.info("Retrieve Top Rated Beans from Redis Cache");
-            return this.redisCacheService.retrieve("TOP_RATED_BEANS", Bean.class);
+        if (redisCacheService.containsKey(TOP_RATED_BEANS)) {
+            log.info(RETRIEVE_TOP_RATED_BEANS_FROM_REDIS_CACHE);
+            return this.redisCacheService.retrieve(TOP_RATED_BEANS, Bean.class);
         } else {
             List<Bean> beans = this.beanRepository.topRated();
             calculateBeansTotalDownloadCount(beans);
-            this.redisCacheService.saveBeans("TOP_RATED_BEANS", beans);
-            log.info("Retrieve Top Rated Beans from Postgres DB");
+            this.redisCacheService.saveBeans(TOP_RATED_BEANS, beans);
+            log.info(RETRIEVE_TOP_RATED_BEANS_FROM_POSTGRES_DB);
             return beans;
         }
     }
