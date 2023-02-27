@@ -8,6 +8,8 @@ public interface VersionService {
 
     int totalDownloadCount();
 
+    int beanDownloadCount(String bean);
+
     List<Version> findByBean(String bean);
 
     List<Version> filterVersionsForApproval(String bean);
