@@ -30,7 +30,7 @@ public class BeanServiceImpl implements BeanService {
 
     @Override
     public List<Bean> latest() {
-        if (redisCacheService.containsKey(LATEST_BEANS)) {
+        if (this.redisCacheService.containsKey(LATEST_BEANS)) {
             log.info(RETRIEVE_LATEST_BEANS_FROM_REDIS_CACHE);
             return this.redisCacheService.retrieve(LATEST_BEANS, Bean.class);
         }
@@ -44,7 +44,7 @@ public class BeanServiceImpl implements BeanService {
 
     @Override
     public List<Bean> mostDownloaded() {
-        if (redisCacheService.containsKey(MOST_DOWNLOADED_BEANS)) {
+        if (this.redisCacheService.containsKey(MOST_DOWNLOADED_BEANS)) {
             log.info(RETRIEVE_MOST_DOWNLOADED_BEANS_FROM_REDIS_CACHE);
             return this.redisCacheService.retrieve(MOST_DOWNLOADED_BEANS, Bean.class);
         }
@@ -58,7 +58,7 @@ public class BeanServiceImpl implements BeanService {
 
     @Override
     public List<Bean> topRated() {
-        if (redisCacheService.containsKey(TOP_RATED_BEANS)) {
+        if (this.redisCacheService.containsKey(TOP_RATED_BEANS)) {
             log.info(RETRIEVE_TOP_RATED_BEANS_FROM_REDIS_CACHE);
             return this.redisCacheService.retrieve(TOP_RATED_BEANS, Bean.class);
         }
@@ -72,7 +72,7 @@ public class BeanServiceImpl implements BeanService {
 
     @Override
     public int beansCount() {
-        if (redisCacheService.containsKey(TOTAL_APPROVED_BEANS_COUNT)) {
+        if (this.redisCacheService.containsKey(TOTAL_APPROVED_BEANS_COUNT)) {
             log.info(RETRIEVE_TOTAL_APPROVED_BEANS_COUNT_FROM_REDIS_CACHE);
             return this.redisCacheService.retrieve(TOTAL_APPROVED_BEANS_COUNT, Integer.class).get(0);
         }
