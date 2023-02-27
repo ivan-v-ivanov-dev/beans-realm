@@ -78,7 +78,7 @@ public class BeanServiceImpl implements BeanService {
         }
 
         int totalApprovedBeansCount = this.beanRepository.beansCount();
-        redisCacheService.saveEntity(TOTAL_APPROVED_BEANS_COUNT, totalApprovedBeansCount);
+        this.redisCacheService.saveEntity(TOTAL_APPROVED_BEANS_COUNT, totalApprovedBeansCount);
         log.info(RETRIEVE_TOTAL_APPROVED_BEANS_COUNT_FROM_POSTGRES_DB);
         return totalApprovedBeansCount;
     }
