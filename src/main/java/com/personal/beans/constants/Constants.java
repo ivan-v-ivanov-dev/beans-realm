@@ -24,6 +24,7 @@ public class Constants {
             "Retrieve Total Registered Users from Redis Cache";
     public static final String RETRIEVE_TOTAL_REGISTERED_USERS_FROM_POSTGRES_DB =
             "Retrieve Total Registered Users from Postgres DB";
+    public static final String DELETE_REDIS_CACHE_AT_TIME_TEMPLATE = "Delete Redis cache at time :: %s";
 
     // Repository constants
     public static final String NAME = "name";
