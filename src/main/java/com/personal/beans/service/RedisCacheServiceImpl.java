@@ -1,6 +1,7 @@
 package com.personal.beans.service;
 
 import com.personal.beans.models.Bean;
+import com.personal.beans.models.Version;
 import com.personal.beans.service.contracts.RedisCacheService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -8,11 +9,13 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static com.personal.beans.constants.Constants.DELETE_REDIS_CACHE_AT_TIME_TEMPLATE;
+import static com.personal.beans.constants.Constants.TIME_FORMAT_TEMPLATE;
 
 @Service
 @Slf4j
@@ -41,8 +44,18 @@ public class RedisCacheServiceImpl implements RedisCacheService {
     }
 
     @Override
+    public void saveSingleBean(String key, Bean bean) {
+        this.redisTemplate.opsForHash().put(key, bean.getName(), bean);
+    }
+
+    @Override
     public void saveBeans(String key, List<Bean> beans) {
-        beans.forEach(currentBean -> this.redisTemplate.opsForHash().put(key, currentBean.getName(), currentBean));
+        beans.forEach(current -> this.saveSingleBean(key, current));
+    }
+
+    @Override
+    public void saveVersions(String key, List<Version> versions) {
+        versions.forEach(current -> this.redisTemplate.opsForHash().put(key, current.getName(), current));
     }
 
     @Override
@@ -53,6 +66,7 @@ public class RedisCacheServiceImpl implements RedisCacheService {
     @Scheduled(cron = "0 */2 * ? * *")
     public void cleanRedisCache() {
         Objects.requireNonNull(this.redisTemplate.getConnectionFactory()).getConnection().flushDb();
-        log.info(String.format(DELETE_REDIS_CACHE_AT_TIME_TEMPLATE, LocalDateTime.now()));
+        log.info(String.format(DELETE_REDIS_CACHE_AT_TIME_TEMPLATE,
+                DateTimeFormatter.ofPattern(TIME_FORMAT_TEMPLATE).format(LocalDateTime.now())));
     }
 }
