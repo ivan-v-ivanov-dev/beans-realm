@@ -36,7 +36,7 @@ public class BeanServiceImpl implements BeanService {
         }
 
         List<Bean> beans = this.beanRepository.latest();
-        calculateBeansTotalDownloadCount(beans);
+        calculateAllBeansDownloadCount(beans);
         this.redisCacheService.saveBeans(LATEST_BEANS, beans);
         log.info(RETRIEVE_LATEST_BEANS_FROM_POSTGRES_DB);
         return beans;
@@ -50,7 +50,7 @@ public class BeanServiceImpl implements BeanService {
         }
 
         List<Bean> beans = this.beanRepository.mostDownloaded();
-        calculateBeansTotalDownloadCount(beans);
+        calculateAllBeansDownloadCount(beans);
         this.redisCacheService.saveBeans(MOST_DOWNLOADED_BEANS, beans);
         log.info(RETRIEVE_MOST_DOWNLOADED_BEANS_FROM_POSTGRES_DB);
         return beans;
@@ -64,7 +64,7 @@ public class BeanServiceImpl implements BeanService {
         }
 
         List<Bean> beans = this.beanRepository.topRated();
-        calculateBeansTotalDownloadCount(beans);
+        calculateAllBeansDownloadCount(beans);
         this.redisCacheService.saveBeans(TOP_RATED_BEANS, beans);
         log.info(RETRIEVE_TOP_RATED_BEANS_FROM_POSTGRES_DB);
         return beans;
@@ -84,6 +84,22 @@ public class BeanServiceImpl implements BeanService {
     }
 
     @Override
+    public Bean findByName(String beanName) {
+        String hashKey = beanName.replace(EMPTY_SPACE, UNDERSCORE).toUpperCase();
+
+        if (this.redisCacheService.containsKey(hashKey)) {
+            log.info(String.format(RETRIEVE_SINGLE_BEAN_FROM_REDIS_CACHE_TEMPLATE, beanName));
+            return this.redisCacheService.retrieve(hashKey, Bean.class).get(0);
+        }
+
+        Bean bean = this.beanRepository.findByName(beanName);
+        calculateSingleBeanTotalDownloadCount(bean);
+        this.redisCacheService.saveSingleBean(hashKey, bean);
+        log.info(String.format(RETRIEVE_SINGLE_BEAN_FROM_POSTGRES_DB_TEMPLATE, beanName));
+        return bean;
+    }
+
+    @Override
     public Bean create(Bean bean) {
         return this.beanRepository.save(bean);
     }
@@ -99,9 +115,11 @@ public class BeanServiceImpl implements BeanService {
         return this.beanRepository.findByStatus(status, offset);
     }
 
-    private void calculateBeansTotalDownloadCount(List<Bean> beans) {
-        beans.forEach(currentBean ->
-                currentBean.setTotalDownloads(
-                        this.versionRepository.beanDownloadCount(currentBean.getName())));
+    private void calculateAllBeansDownloadCount(List<Bean> beans) {
+        beans.forEach(this::calculateSingleBeanTotalDownloadCount);
+    }
+
+    private void calculateSingleBeanTotalDownloadCount(Bean bean) {
+        bean.setTotalDownloads(this.versionRepository.beanDownloadCount(bean.getName()));
     }
 }

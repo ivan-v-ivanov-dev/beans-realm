@@ -24,6 +24,9 @@ public interface BeanRepository extends JpaRepository<Bean, Integer> {
     @Query(value = FIND_APPROVED_BEANS_COUNT, nativeQuery = true)
     int beansCount();
 
+    @Query(FIND_BEAN_BY_NAME)
+    Bean findByName(String beanName);
+
     @Query(value = FILTER_BEANS, nativeQuery = true)
     List<Bean> filter(@Param(BEAN) String bean, @Param(CREATOR) String creator,
                       @Param(TAG) String tag, @Param(TYPE) String type,

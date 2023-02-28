@@ -14,6 +14,8 @@ public interface BeanService {
 
     int beansCount();
 
+    Bean findByName(String beanName);
+
     Bean create(Bean bean);
 
     List<Bean> filter(String bean, String creator, String tag, String type, String device, int offset);

@@ -51,6 +51,10 @@ public class Queries {
                     "WHERE s.name = 'Approved' AND " +
                     "b.name = :bean ";
 
+    public static final String FIND_BEAN_BY_NAME =
+            "SELECT b FROM Bean b " +
+                    "WHERE b.name LIKE :beanName";
+
     public static final String FILTER_BEANS =
             "SELECT * FROM beans b " +
                     "JOIN users us ON b.creator_id = us.id " +
