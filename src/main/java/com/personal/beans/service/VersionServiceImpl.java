@@ -44,7 +44,17 @@ public class VersionServiceImpl implements VersionService {
 
     @Override
     public List<Version> findByBean(String bean) {
-        return this.versionRepository.filter(bean);
+        String hashKey = BEAN_ + bean.replace(EMPTY_SPACE, UNDERSCORE).toUpperCase() + _VERSIONS;
+
+        if (this.redisCacheService.containsKey(hashKey)) {
+            log.info(String.format(RETRIEVE_VERSIONS_FOR_BEAN_FROM_REDIS_CACHE_TEMPLATE, bean));
+            return this.redisCacheService.retrieve(hashKey, Version.class);
+        }
+
+        List<Version> versions = this.versionRepository.filter(bean);
+        this.redisCacheService.saveVersions(hashKey, versions);
+        log.info(String.format(RETRIEVE_VERSIONS_FOR_BEAN_FROM_POSTGRES_DB_TEMPLATE, bean));
+        return versions;
     }
 
     @Override
