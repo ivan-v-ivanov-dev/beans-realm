@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en" xmlns:th="http:/www.thymeleaf.org">
+
 <head>
     <!-- Meta data -->
     <meta charset="UTF-8">
@@ -50,6 +51,7 @@
 
 <!--Section-->
 <div class="banner-1 cover-image bg-background2" data-image-src="../assets/images/banners/banner4.jpg">
+
     <!--Topbar-->
     <div class="header-main">
         <div class="top-bar">
@@ -96,8 +98,7 @@
                                                 </div>
                                             </div>
                                             <div class="ml-auto text-center">
-                                                <!--                                                <a href="#" class="text-muted"><i class="fe fe-trash-2 fs-13"></i></a>-->
-                                                <!--                                                <div class="h5 text-dark mt-1 mb-0">$22</div>-->
+
                                             </div>
                                         </div>
                                     </div>
@@ -151,17 +152,9 @@
                                 </div>
                             </div><!-- MESSAGE-BOX -->
                             <div class="dropdown d-md-flex profile-1">
-                                <!--                                                                <a class="nav-link icon text-center" data-toggle="dropdown">-->
-                                <!--                                                                    <i class="fe fe-user"></i>-->
-                                <!--                                                                    <span class="pulse bg-success"></span>-->
-                                <!--                                                                </a>-->
+
                                 <div class="top-bar-right">
                                     <ul class="custom">
-                                        <li th:unless="${isAuthenticated}">
-                                            <a th:href="@{/auth/login}"
-                                               class="text-dark"><i class="fa fa-sign-in mr-1"></i>
-                                                <span>Login</span></a>
-                                        </li>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                             <div class="drop-heading">
 
@@ -196,9 +189,6 @@
                     <ul class="horizontalMenu-list">
                         <li aria-haspopup="true"><i class="fe fe-home"></i><a th:href="@{/}">Home </a></li>
                         <li aria-haspopup="true">
-                            <i class="fe fe-codepen"></i><a th:href="@{/beans}">All Beans</a>
-                        </li>
-                        <li aria-haspopup="true">
                             <i class="fe fe-codepen"></i><a th:href="@{/beans/filter}">Filter Beans</a>
                         </li>
                         <li aria-haspopup="true">
@@ -219,7 +209,7 @@
 
     </div><!--Topbar-->
 
-    <!--Section-->
+    <!--Search Section-->
     <section>
         <div class="sptb-2 sptb-tab">
             <div class="header-text mb-0">
@@ -247,7 +237,7 @@
                 </div>
             </div>
         </div>
-    </section><!--/Section-->
+    </section><!--Search Section-->
 
 </div><!--/Section-->
 
@@ -325,7 +315,7 @@
                             </div>
                         </div>
                         <div class="item-card2-icons">
-                            <a th:href="@{/beans/filter?beanName(beanName=${currentBean.getName()})}"
+                            <a th:href="@{/beans(beanName=${currentBean.getName()})}"
                                class="bg-info"
                                data-toggle="tooltip" data-placement="top"
                                title="View Details"><i class="fe fe-eye"></i></a>
@@ -347,9 +337,10 @@
                                 </div>
                                 <div class="ml-auto">
                                     <div class="item-card9-cost">
-                                        <i class="fe fe-download"></i> <h4 class=" mb-0">
-                                        <!-- th:text="${currentBean.getDownloadCount()}">-->
-                                        15</h4>
+                                        <i class="fe fe-download"></i>
+                                        <h4 class=" mb-0"
+                                            th:text="${currentBean.getTotalDownloads()}">
+                                            15</h4>
                                     </div>
                                 </div>
                             </div>
@@ -404,7 +395,7 @@
                             </div>
                         </div>
                         <div class="item-card2-icons">
-                            <a th:href="@{/beans/filter?beanName(beanName=${currentBean.getName()})}"
+                            <a th:href="@{/beans(beanName=${currentBean.getName()})}"
                                class="bg-info"
                                data-toggle="tooltip" data-placement="top"
                                title="View Details"><i class="fe fe-eye"></i></a>
@@ -426,9 +417,10 @@
                                 </div>
                                 <div class="ml-auto">
                                     <div class="item-card9-cost">
-                                        <i class="fe fe-download"></i> <h4 class=" mb-0">
-                                        <!-- th:text="${currentBean.getDownloadCount()}"> WRITE this method, do not use fild-->
-                                        15</h4>
+                                        <i class="fe fe-download"></i>
+                                        <h4 class=" mb-0"
+                                            th:text="${currentBean.getTotalDownloads()}">
+                                            15</h4>
                                     </div>
                                 </div>
                             </div>
@@ -483,7 +475,7 @@
                             </div>
                         </div>
                         <div class="item-card2-icons">
-                            <a th:href="@{/beans/filter?beanName(beanName=${currentBean.getName()})}"
+                            <a th:href="@{/beans(beanName=${currentBean.getName()})}"
                                class="bg-info"
                                data-toggle="tooltip" data-placement="top"
                                title="View Details"><i class="fe fe-eye"></i></a>
@@ -505,9 +497,10 @@
                                 </div>
                                 <div class="ml-auto">
                                     <div class="item-card9-cost">
-                                        <i class="fe fe-download"></i> <h4 class=" mb-0">
-                                        <!-- th:text="${currentBean.getDownloadCount()}">-->
-                                        15</h4>
+                                        <i class="fe fe-download"></i>
+                                        <h4 class=" mb-0"
+                                            th:text="${currentBean.getTotalDownloads()}">
+                                            15</h4>
                                     </div>
                                 </div>
                             </div>
