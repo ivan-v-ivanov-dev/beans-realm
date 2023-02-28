@@ -27,6 +27,14 @@ public class Constants {
     public static final String RETRIEVE_TOTAL_REGISTERED_USERS_FROM_POSTGRES_DB =
             FROM_POSTGRES + "Retrieve Total Registered Users";
     public static final String DELETE_REDIS_CACHE_AT_TIME_TEMPLATE = "Delete REDIS cache at time :: %s";
+    public static final String RETRIEVE_SINGLE_BEAN_FROM_REDIS_CACHE_TEMPLATE =
+            FROM_REDIS + "Retrieve Bean %s";
+    public static final String RETRIEVE_SINGLE_BEAN_FROM_POSTGRES_DB_TEMPLATE =
+            FROM_POSTGRES + "Retrieve Bean %s";
+    public static final String RETRIEVE_VERSIONS_FOR_BEAN_FROM_REDIS_CACHE_TEMPLATE =
+            FROM_REDIS + "Retrieve Versions for Bean %s";
+    public static final String RETRIEVE_VERSIONS_FOR_BEAN_FROM_POSTGRES_DB_TEMPLATE =
+            FROM_POSTGRES + "Retrieve Versions for Bean %s";
 
     // Repository constants
     public static final String NAME = "name";
@@ -46,6 +54,13 @@ public class Constants {
     public static final String TOTAL_DOWNLOAD_COUNT_FOR_ALL_APPROVED_BEANS = "TOTAL_DOWNLOAD_COUNT_FOR_ALL_APPROVED_BEANS";
     public static final String TOTAL_REGISTERED_USERS = "TOTAL_REGISTERED_USERS";
 
+
+    // Service constants
+    public static final String EMPTY_SPACE = " ";
+    public static final String UNDERSCORE = "_";
+    public static final String TIME_FORMAT_TEMPLATE = "dd-MM-yyyy HH:mm:ss";
+    public static final String BEAN_ = "BEAN_";
+    public static final String _VERSIONS = "_VERSIONS";
 
     private Constants() {
     }
