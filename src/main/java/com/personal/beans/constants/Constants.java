@@ -23,11 +23,16 @@ public class Constants {
     public static final String FROM_POSTGRES_SINGLE_BEAN_TEMPLATE = FROM_POSTGRES + "Bean %s";
     public static final String FROM_REDIS_VERSIONS_FOR_BEAN_TEMPLATE = FROM_REDIS + "Versions for Bean %s";
     public static final String FROM_POSTGRES_VERSIONS_FOR_BEAN_TEMPLATE = FROM_POSTGRES + "Versions for Bean %s";
+    public static final String FROM_REDIS_ALL_TAGS = FROM_REDIS + "All Tags";
+    public static final String FROM_POSTGRES_ALL_TAGS = FROM_POSTGRES + "All Tags";
+    public static final String FROM_REDIS_ALL_TYPES = FROM_REDIS + "All Types";
+    public static final String FROM_POSTGRES_ALL_TYPES = FROM_POSTGRES + "All Types";
+    public static final String FROM_REDIS_ALL_DEVICES = FROM_REDIS + "All Devices";
+    public static final String FROM_POSTGRES_ALL_DEVICES = FROM_POSTGRES + "All Devices";
 
     // Repository constants
     public static final String NAME = "name";
     public static final String BEAN = "bean";
-    public static final String CREATOR = "creator";
     public static final String TYPE = "type";
     public static final String TAG = "tag";
     public static final String DEVICE = "device";
@@ -41,6 +46,9 @@ public class Constants {
     public static final String TOTAL_APPROVED_BEANS_COUNT = "TOTAL_APPROVED_BEANS_COUNT";
     public static final String TOTAL_DOWNLOAD_COUNT_FOR_ALL_APPROVED_BEANS = "TOTAL_DOWNLOAD_COUNT_FOR_ALL_APPROVED_BEANS";
     public static final String TOTAL_REGISTERED_USERS = "TOTAL_REGISTERED_USERS";
+    public static final String ALL_TAGS = "ALL_TAGS";
+    public static final String ALL_TYPES = "ALL_TYPES";
+    public static final String ALL_DEVICES = "ALL_DEVICES";
 
 
     // Service constants
