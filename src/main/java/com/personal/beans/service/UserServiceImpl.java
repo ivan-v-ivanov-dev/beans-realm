@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
         }
 
         int totalRegisteredUsers = this.userRepository.userCount();
-        this.redisCacheService.saveEntity(TOTAL_REGISTERED_USERS, totalRegisteredUsers);
+        this.redisCacheService.save(TOTAL_REGISTERED_USERS, totalRegisteredUsers);
         log.info(FROM_POSTGRES_TOTAL_REGISTERED_USERS);
         return totalRegisteredUsers;
     }

@@ -32,7 +32,7 @@ public class VersionServiceImpl implements VersionService {
         }
 
         int totalDownloadCount = this.versionRepository.totalDownloadCount();
-        this.redisCacheService.saveEntity(TOTAL_DOWNLOAD_COUNT_FOR_ALL_APPROVED_BEANS, totalDownloadCount);
+        this.redisCacheService.save(TOTAL_DOWNLOAD_COUNT_FOR_ALL_APPROVED_BEANS, totalDownloadCount);
         log.info(FROM_POSTGRES_TOTAL_DOWNLOAD_COUNT_FOR_ALL_APPROVED_BEANS);
         return totalDownloadCount;
     }
@@ -52,7 +52,7 @@ public class VersionServiceImpl implements VersionService {
         }
 
         List<Version> versions = this.versionRepository.filter(bean);
-        this.redisCacheService.saveVersions(hashKey, versions);
+        this.redisCacheService.save(hashKey, versions);
         log.info(String.format(FROM_POSTGRES_VERSIONS_FOR_BEAN_TEMPLATE, bean));
         return versions;
     }
