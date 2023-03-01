@@ -1,7 +1,6 @@
 package com.personal.beans.service.contracts;
 
-import com.personal.beans.models.Bean;
-import com.personal.beans.models.Version;
+import com.personal.beans.models.*;
 
 import java.util.List;
 
@@ -11,12 +10,9 @@ public interface RedisCacheService {
 
     <T> List<T> retrieve(String key, Class<T> tClazz);
 
-    void saveSingleBean(String key, Bean bean);
+    void save(String key, int entity);
 
-    void saveBeans(String key, List<Bean> beans);
+    <T> void save(String key, List<T> entities);
 
-    void saveVersions(String key, List<Version> versions);
-
-    void saveEntity(String key, int entity);
-
+    <T> void save(String key, T entity);
 }

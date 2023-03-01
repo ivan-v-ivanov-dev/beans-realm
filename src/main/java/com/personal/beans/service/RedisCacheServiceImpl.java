@@ -1,7 +1,6 @@
 package com.personal.beans.service;
 
-import com.personal.beans.models.Bean;
-import com.personal.beans.models.Version;
+import com.personal.beans.models.BaseEntity;
 import com.personal.beans.service.contracts.RedisCacheService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -44,23 +43,18 @@ public class RedisCacheServiceImpl implements RedisCacheService {
     }
 
     @Override
-    public void saveSingleBean(String key, Bean bean) {
-        this.redisTemplate.opsForHash().put(key, bean.getName(), bean);
-    }
-
-    @Override
-    public void saveBeans(String key, List<Bean> beans) {
-        beans.forEach(current -> this.saveSingleBean(key, current));
-    }
-
-    @Override
-    public void saveVersions(String key, List<Version> versions) {
-        versions.forEach(current -> this.redisTemplate.opsForHash().put(key, current.getName(), current));
-    }
-
-    @Override
-    public void saveEntity(String key, int entity) {
+    public void save(String key, int entity) {
         this.redisTemplate.opsForHash().put(key, String.valueOf(entity), entity);
+    }
+
+    @Override
+    public <T> void save(String key, List<T> entities) {
+        entities.forEach(current -> this.save(key, current));
+    }
+
+    @Override
+    public <T> void save(String key, T entity) {
+        this.redisTemplate.opsForHash().put(key, ((BaseEntity) entity).getName(), entity);
     }
 
     @Scheduled(cron = "0 */2 * ? * *")
