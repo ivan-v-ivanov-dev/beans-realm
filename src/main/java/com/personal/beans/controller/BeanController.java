@@ -7,7 +7,6 @@ import com.personal.beans.service.contracts.VersionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -35,6 +34,10 @@ public class BeanController {
         model.addAttribute("latestBeans", this.beanService.latest());
         model.addAttribute("mostDownloadedBeans", this.beanService.mostDownloaded());
         model.addAttribute("topRatedBeans", this.beanService.topRated());
+        model.addAttribute("totalBeansCount", this.beanService.beansCount());
+        model.addAttribute("totalDownloadsCount", this.versionService.totalDownloadCount());
+        model.addAttribute("totalUsersCount", this.userService.userCount());
+        model.addAttribute("totalCommentsCount", this.commentService.count());
         return "index";
     }
 
@@ -45,23 +48,4 @@ public class BeanController {
         return "bean";
     }
 
-    @ModelAttribute("populateBeansCount")
-    public int beansCount() {
-        return this.beanService.beansCount();
-    }
-
-    @ModelAttribute("populateTotalDownloadsCount")
-    public int totalDownloadsCount() {
-        return this.versionService.totalDownloadCount();
-    }
-
-    @ModelAttribute("populateUsersCount")
-    public int usersCount() {
-        return userService.userCount();
-    }
-
-    @ModelAttribute("populateCommentsCount")
-    public int commentsCount() {
-        return commentService.count();
-    }
 }
