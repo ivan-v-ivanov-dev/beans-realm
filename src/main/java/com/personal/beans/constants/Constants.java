@@ -6,35 +6,23 @@ public class Constants {
     public static final String POSTGRESQL_CONNECTION_POOL = "PostgreSQL Connection Pool";
     public static final String FROM_REDIS = "From REDIS :: ";
     public static final String FROM_POSTGRES = "From POSTGRES :: ";
-    public static final String RETRIEVE_LATEST_BEANS_FROM_REDIS_CACHE = FROM_REDIS + "Retrieve Latest Beans";
-    public static final String RETRIEVE_LATEST_BEANS_FROM_POSTGRES_DB = FROM_POSTGRES + "Retrieve Latest Beans";
-    public static final String RETRIEVE_MOST_DOWNLOADED_BEANS_FROM_REDIS_CACHE =
-            FROM_REDIS + "Retrieve Most Downloaded Beans";
-    public static final String RETRIEVE_MOST_DOWNLOADED_BEANS_FROM_POSTGRES_DB =
-            FROM_POSTGRES + "Retrieve Most Downloaded Beans";
-    public static final String RETRIEVE_TOP_RATED_BEANS_FROM_REDIS_CACHE = FROM_REDIS + "Retrieve Top Rated Beans";
-    public static final String RETRIEVE_TOP_RATED_BEANS_FROM_POSTGRES_DB = FROM_POSTGRES + "Retrieve Top Rated Beans";
-    public static final String RETRIEVE_TOTAL_APPROVED_BEANS_COUNT_FROM_REDIS_CACHE =
-            FROM_REDIS + "Retrieve Total Approved Beans Count";
-    public static final String RETRIEVE_TOTAL_APPROVED_BEANS_COUNT_FROM_POSTGRES_DB =
-            FROM_POSTGRES + "Retrieve Total Approved Beans Count";
-    public static final String RETRIEVE_TOTAL_DOWNLOAD_COUNT_FOR_ALL_APPROVED_BEANS_FROM_REDIS_CACHE =
-            FROM_REDIS + "Retrieve Total Download Count For All Approved Beans";
-    public static final String RETRIEVE_TOTAL_DOWNLOAD_COUNT_FOR_ALL_APPROVED_BEANS_FROM_POSTGRES_DB =
-            FROM_POSTGRES + "Retrieve Total Download Count For All Approved Beans";
-    public static final String RETRIEVE_TOTAL_REGISTERED_USERS_FROM_REDIS_CACHE =
-            FROM_REDIS + "Retrieve Total Registered Users";
-    public static final String RETRIEVE_TOTAL_REGISTERED_USERS_FROM_POSTGRES_DB =
-            FROM_POSTGRES + "Retrieve Total Registered Users";
+    public static final String FROM_REDIS_LATEST_BEANS = FROM_REDIS + "Latest Beans";
+    public static final String FROM_POSTGRES_LATEST_BEANS = FROM_POSTGRES + "Latest Beans";
+    public static final String FROM_REDIS_MOST_DOWNLOADED_BEANS = FROM_REDIS + "Most Downloaded Beans";
+    public static final String FROM_POSTGRES_MOST_DOWNLOADED_BEANS = FROM_POSTGRES + "Most Downloaded Beans";
+    public static final String FROM_REDIS_TOP_RATED_BEANS = FROM_REDIS + "Top Rated Beans";
+    public static final String FROM_POSTGRES_TOP_RATED_BEANS = FROM_POSTGRES + "Top Rated Beans";
+    public static final String FROM_REDIS_TOTAL_APPROVED_BEANS_COUNT = FROM_REDIS + "Total Approved Beans Count";
+    public static final String FROM_POSTGRES_TOTAL_APPROVED_BEANS_COUNT = FROM_POSTGRES + "Total Approved Beans Count";
+    public static final String FROM_REDIS_TOTAL_DOWNLOAD_COUNT_FOR_ALL_APPROVED_BEANS = FROM_REDIS + "Total Download Count For All Approved Beans";
+    public static final String FROM_POSTGRES_TOTAL_DOWNLOAD_COUNT_FOR_ALL_APPROVED_BEANS = FROM_POSTGRES + "Total Download Count For All Approved Beans";
+    public static final String FROM_REDIS_TOTAL_REGISTERED_USERS = FROM_REDIS + "Total Registered Users";
+    public static final String FROM_POSTGRES_TOTAL_REGISTERED_USERS = FROM_POSTGRES + "Total Registered Users";
     public static final String DELETE_REDIS_CACHE_AT_TIME_TEMPLATE = "Delete REDIS cache at time :: %s";
-    public static final String RETRIEVE_SINGLE_BEAN_FROM_REDIS_CACHE_TEMPLATE =
-            FROM_REDIS + "Retrieve Bean %s";
-    public static final String RETRIEVE_SINGLE_BEAN_FROM_POSTGRES_DB_TEMPLATE =
-            FROM_POSTGRES + "Retrieve Bean %s";
-    public static final String RETRIEVE_VERSIONS_FOR_BEAN_FROM_REDIS_CACHE_TEMPLATE =
-            FROM_REDIS + "Retrieve Versions for Bean %s";
-    public static final String RETRIEVE_VERSIONS_FOR_BEAN_FROM_POSTGRES_DB_TEMPLATE =
-            FROM_POSTGRES + "Retrieve Versions for Bean %s";
+    public static final String FROM_REDIS_SINGLE_BEAN_TEMPLATE = FROM_REDIS + "Bean %s";
+    public static final String FROM_POSTGRES_SINGLE_BEAN_TEMPLATE = FROM_POSTGRES + "Bean %s";
+    public static final String FROM_REDIS_VERSIONS_FOR_BEAN_TEMPLATE = FROM_REDIS + "Versions for Bean %s";
+    public static final String FROM_POSTGRES_VERSIONS_FOR_BEAN_TEMPLATE = FROM_POSTGRES + "Versions for Bean %s";
 
     // Repository constants
     public static final String NAME = "name";

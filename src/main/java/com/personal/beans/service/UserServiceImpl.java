@@ -27,13 +27,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public int userCount() {
         if (this.redisCacheService.containsKey(TOTAL_REGISTERED_USERS)) {
-            log.info(RETRIEVE_TOTAL_REGISTERED_USERS_FROM_REDIS_CACHE);
+            log.info(FROM_REDIS_TOTAL_REGISTERED_USERS);
             return this.redisCacheService.retrieve(TOTAL_REGISTERED_USERS, Integer.class).get(0);
         }
 
         int totalRegisteredUsers = this.userRepository.userCount();
         this.redisCacheService.saveEntity(TOTAL_REGISTERED_USERS, totalRegisteredUsers);
-        log.info(RETRIEVE_TOTAL_REGISTERED_USERS_FROM_POSTGRES_DB);
+        log.info(FROM_POSTGRES_TOTAL_REGISTERED_USERS);
         return totalRegisteredUsers;
     }
 

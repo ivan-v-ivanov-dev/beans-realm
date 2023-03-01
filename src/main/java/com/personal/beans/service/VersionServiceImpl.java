@@ -27,13 +27,13 @@ public class VersionServiceImpl implements VersionService {
     @Override
     public int totalDownloadCount() {
         if (this.redisCacheService.containsKey(TOTAL_DOWNLOAD_COUNT_FOR_ALL_APPROVED_BEANS)) {
-            log.info(RETRIEVE_TOTAL_DOWNLOAD_COUNT_FOR_ALL_APPROVED_BEANS_FROM_REDIS_CACHE);
+            log.info(FROM_REDIS_TOTAL_DOWNLOAD_COUNT_FOR_ALL_APPROVED_BEANS);
             return this.redisCacheService.retrieve(TOTAL_DOWNLOAD_COUNT_FOR_ALL_APPROVED_BEANS, Integer.class).get(0);
         }
 
         int totalDownloadCount = this.versionRepository.totalDownloadCount();
         this.redisCacheService.saveEntity(TOTAL_DOWNLOAD_COUNT_FOR_ALL_APPROVED_BEANS, totalDownloadCount);
-        log.info(RETRIEVE_TOTAL_DOWNLOAD_COUNT_FOR_ALL_APPROVED_BEANS_FROM_POSTGRES_DB);
+        log.info(FROM_POSTGRES_TOTAL_DOWNLOAD_COUNT_FOR_ALL_APPROVED_BEANS);
         return totalDownloadCount;
     }
 
@@ -47,13 +47,13 @@ public class VersionServiceImpl implements VersionService {
         String hashKey = BEAN_ + bean.replace(EMPTY_SPACE, UNDERSCORE).toUpperCase() + _VERSIONS;
 
         if (this.redisCacheService.containsKey(hashKey)) {
-            log.info(String.format(RETRIEVE_VERSIONS_FOR_BEAN_FROM_REDIS_CACHE_TEMPLATE, bean));
+            log.info(String.format(FROM_REDIS_VERSIONS_FOR_BEAN_TEMPLATE, bean));
             return this.redisCacheService.retrieve(hashKey, Version.class);
         }
 
         List<Version> versions = this.versionRepository.filter(bean);
         this.redisCacheService.saveVersions(hashKey, versions);
-        log.info(String.format(RETRIEVE_VERSIONS_FOR_BEAN_FROM_POSTGRES_DB_TEMPLATE, bean));
+        log.info(String.format(FROM_POSTGRES_VERSIONS_FOR_BEAN_TEMPLATE, bean));
         return versions;
     }
 

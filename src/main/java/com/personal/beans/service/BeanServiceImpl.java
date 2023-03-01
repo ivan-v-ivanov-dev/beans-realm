@@ -31,55 +31,55 @@ public class BeanServiceImpl implements BeanService {
     @Override
     public List<Bean> latest() {
         if (this.redisCacheService.containsKey(LATEST_BEANS)) {
-            log.info(RETRIEVE_LATEST_BEANS_FROM_REDIS_CACHE);
+            log.info(FROM_REDIS_LATEST_BEANS);
             return this.redisCacheService.retrieve(LATEST_BEANS, Bean.class);
         }
 
         List<Bean> beans = this.beanRepository.latest();
         calculateAllBeansDownloadCount(beans);
         this.redisCacheService.saveBeans(LATEST_BEANS, beans);
-        log.info(RETRIEVE_LATEST_BEANS_FROM_POSTGRES_DB);
+        log.info(FROM_POSTGRES_LATEST_BEANS);
         return beans;
     }
 
     @Override
     public List<Bean> mostDownloaded() {
         if (this.redisCacheService.containsKey(MOST_DOWNLOADED_BEANS)) {
-            log.info(RETRIEVE_MOST_DOWNLOADED_BEANS_FROM_REDIS_CACHE);
+            log.info(FROM_REDIS_MOST_DOWNLOADED_BEANS);
             return this.redisCacheService.retrieve(MOST_DOWNLOADED_BEANS, Bean.class);
         }
 
         List<Bean> beans = this.beanRepository.mostDownloaded();
         calculateAllBeansDownloadCount(beans);
         this.redisCacheService.saveBeans(MOST_DOWNLOADED_BEANS, beans);
-        log.info(RETRIEVE_MOST_DOWNLOADED_BEANS_FROM_POSTGRES_DB);
+        log.info(FROM_POSTGRES_MOST_DOWNLOADED_BEANS);
         return beans;
     }
 
     @Override
     public List<Bean> topRated() {
         if (this.redisCacheService.containsKey(TOP_RATED_BEANS)) {
-            log.info(RETRIEVE_TOP_RATED_BEANS_FROM_REDIS_CACHE);
+            log.info(FROM_REDIS_TOP_RATED_BEANS);
             return this.redisCacheService.retrieve(TOP_RATED_BEANS, Bean.class);
         }
 
         List<Bean> beans = this.beanRepository.topRated();
         calculateAllBeansDownloadCount(beans);
         this.redisCacheService.saveBeans(TOP_RATED_BEANS, beans);
-        log.info(RETRIEVE_TOP_RATED_BEANS_FROM_POSTGRES_DB);
+        log.info(FROM_POSTGRES_TOP_RATED_BEANS);
         return beans;
     }
 
     @Override
     public int beansCount() {
         if (this.redisCacheService.containsKey(TOTAL_APPROVED_BEANS_COUNT)) {
-            log.info(RETRIEVE_TOTAL_APPROVED_BEANS_COUNT_FROM_REDIS_CACHE);
+            log.info(FROM_REDIS_TOTAL_APPROVED_BEANS_COUNT);
             return this.redisCacheService.retrieve(TOTAL_APPROVED_BEANS_COUNT, Integer.class).get(0);
         }
 
         int totalApprovedBeansCount = this.beanRepository.beansCount();
         this.redisCacheService.saveEntity(TOTAL_APPROVED_BEANS_COUNT, totalApprovedBeansCount);
-        log.info(RETRIEVE_TOTAL_APPROVED_BEANS_COUNT_FROM_POSTGRES_DB);
+        log.info(FROM_POSTGRES_TOTAL_APPROVED_BEANS_COUNT);
         return totalApprovedBeansCount;
     }
 
@@ -88,14 +88,14 @@ public class BeanServiceImpl implements BeanService {
         String hashKey = beanName.replace(EMPTY_SPACE, UNDERSCORE).toUpperCase();
 
         if (this.redisCacheService.containsKey(hashKey)) {
-            log.info(String.format(RETRIEVE_SINGLE_BEAN_FROM_REDIS_CACHE_TEMPLATE, beanName));
+            log.info(String.format(FROM_REDIS_SINGLE_BEAN_TEMPLATE, beanName));
             return this.redisCacheService.retrieve(hashKey, Bean.class).get(0);
         }
 
         Bean bean = this.beanRepository.findByName(beanName);
         calculateSingleBeanTotalDownloadCount(bean);
         this.redisCacheService.saveSingleBean(hashKey, bean);
-        log.info(String.format(RETRIEVE_SINGLE_BEAN_FROM_POSTGRES_DB_TEMPLATE, beanName));
+        log.info(String.format(FROM_POSTGRES_SINGLE_BEAN_TEMPLATE, beanName));
         return bean;
     }
 
