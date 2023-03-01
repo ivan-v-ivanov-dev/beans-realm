@@ -28,9 +28,8 @@ public interface BeanRepository extends JpaRepository<Bean, Integer> {
     Bean findByName(String beanName);
 
     @Query(value = FILTER_BEANS, nativeQuery = true)
-    List<Bean> filter(@Param(BEAN) String bean, @Param(CREATOR) String creator,
-                      @Param(TAG) String tag, @Param(TYPE) String type,
-                      @Param(DEVICE) String device, @Param(OFFSET) int offset);
+    List<Bean> filter(@Param(TAG) Integer tag, @Param(TYPE) Integer type,
+                      @Param(DEVICE) Integer device, @Param(OFFSET) Integer offset);
 
     @Query(value = FIND_BEANS_BY_STATUS, nativeQuery = true)
     List<Bean> findByStatus(@Param(STATUS) String status, @Param(OFFSET) int offset);

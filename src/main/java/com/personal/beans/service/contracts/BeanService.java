@@ -18,7 +18,7 @@ public interface BeanService {
 
     Bean create(Bean bean);
 
-    List<Bean> filter(String bean, String creator, String tag, String type, String device, int offset);
+    List<Bean> filter(Integer tag, Integer type, Integer device, Integer offset);
 
     List<Bean> findByStatus(String status, int offset);
 

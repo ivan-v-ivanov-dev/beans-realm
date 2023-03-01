@@ -37,7 +37,7 @@ public class BeanServiceImpl implements BeanService {
 
         List<Bean> beans = this.beanRepository.latest();
         calculateAllBeansDownloadCount(beans);
-        this.redisCacheService.saveBeans(LATEST_BEANS, beans);
+        this.redisCacheService.save(LATEST_BEANS, beans);
         log.info(FROM_POSTGRES_LATEST_BEANS);
         return beans;
     }
@@ -51,7 +51,7 @@ public class BeanServiceImpl implements BeanService {
 
         List<Bean> beans = this.beanRepository.mostDownloaded();
         calculateAllBeansDownloadCount(beans);
-        this.redisCacheService.saveBeans(MOST_DOWNLOADED_BEANS, beans);
+        this.redisCacheService.save(MOST_DOWNLOADED_BEANS, beans);
         log.info(FROM_POSTGRES_MOST_DOWNLOADED_BEANS);
         return beans;
     }
@@ -65,7 +65,7 @@ public class BeanServiceImpl implements BeanService {
 
         List<Bean> beans = this.beanRepository.topRated();
         calculateAllBeansDownloadCount(beans);
-        this.redisCacheService.saveBeans(TOP_RATED_BEANS, beans);
+        this.redisCacheService.save(TOP_RATED_BEANS, beans);
         log.info(FROM_POSTGRES_TOP_RATED_BEANS);
         return beans;
     }
@@ -78,7 +78,7 @@ public class BeanServiceImpl implements BeanService {
         }
 
         int totalApprovedBeansCount = this.beanRepository.beansCount();
-        this.redisCacheService.saveEntity(TOTAL_APPROVED_BEANS_COUNT, totalApprovedBeansCount);
+        this.redisCacheService.save(TOTAL_APPROVED_BEANS_COUNT, totalApprovedBeansCount);
         log.info(FROM_POSTGRES_TOTAL_APPROVED_BEANS_COUNT);
         return totalApprovedBeansCount;
     }
@@ -94,7 +94,7 @@ public class BeanServiceImpl implements BeanService {
 
         Bean bean = this.beanRepository.findByName(beanName);
         calculateSingleBeanTotalDownloadCount(bean);
-        this.redisCacheService.saveSingleBean(hashKey, bean);
+        this.redisCacheService.save(hashKey, bean);
         log.info(String.format(FROM_POSTGRES_SINGLE_BEAN_TEMPLATE, beanName));
         return bean;
     }
@@ -105,9 +105,8 @@ public class BeanServiceImpl implements BeanService {
     }
 
     @Override
-    public List<Bean> filter(String bean, String creator, String tag, String type,
-                             String device, int offset) {
-        return this.beanRepository.filter(bean, creator, tag, type, device, offset);
+    public List<Bean> filter(Integer tag, Integer type, Integer device, Integer offset) {
+        return this.beanRepository.filter(tag, type, device, offset);
     }
 
     @Override
