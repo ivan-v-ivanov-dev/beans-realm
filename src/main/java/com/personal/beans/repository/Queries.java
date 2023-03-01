@@ -57,22 +57,19 @@ public class Queries {
 
     public static final String FILTER_BEANS =
             "SELECT * FROM beans b " +
-                    "JOIN users us ON b.creator_id = us.id " +
                     "JOIN tags ta ON b.tag_id = ta.id " +
                     "JOIN types ty ON b.type_id = ty.id " +
                     "JOIN devices de ON b.device_id = de.id " +
-                    "WHERE (:bean is null OR b.name = :bean) " +
-                    "  AND (:creator is null OR us.username = :creator) " +
-                    "  AND (:tag is null OR ta.name = :tag) " +
-                    "  AND (:type is null OR ty.name = :type) " +
-                    "  AND (:device is null OR de.name = :device) " +
+                    "WHERE (:tag is null OR ta.id = :tag) " +
+                    "  AND (:type is null OR ty.id = :type) " +
+                    "  AND (:device is null OR de.id = :device) " +
                     "  AND b.id IN ( " +
                     "    SELECT ve.bean_id " +
                     "    FROM versions ve " +
                     "    JOIN statuses s ON ve.status_id = s.id " +
                     "    WHERE s.name = 'Approved') " +
                     "ORDER BY b.name ASC " +
-                    "LIMIT 10 OFFSET :offset";
+                    "LIMIT 5 OFFSET :offset";
 
     public static final String FIND_BEANS_BY_STATUS =
             "SELECT * FROM beans b " +
