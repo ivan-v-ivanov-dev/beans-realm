@@ -17,7 +17,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @ToString
-public class Device implements Serializable {
+public class Device extends BaseEntity implements Serializable {
 
     @Id
     @Column(name = "id")

@@ -16,7 +16,7 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
-public class Bean implements Serializable {
+public class Bean extends BaseEntity implements Serializable {
 
     @Id
     @Column(name = "id")

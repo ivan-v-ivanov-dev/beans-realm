@@ -17,7 +17,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @ToString
-public class Tag implements Serializable {
+public class Tag extends BaseEntity implements Serializable {
 
     @Id
     @Column(name = "id")
