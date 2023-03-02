@@ -1,13 +1,18 @@
 package com.personal.beans.service;
 
 import com.personal.beans.models.Bean;
+import com.personal.beans.models.Version;
+import com.personal.beans.models.dto.BeanDto;
 import com.personal.beans.repository.postgres.BeanRepository;
 import com.personal.beans.repository.postgres.VersionRepository;
 import com.personal.beans.service.contracts.BeanService;
+import com.personal.beans.service.contracts.MapperService;
 import com.personal.beans.service.contracts.RedisCacheService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import static com.personal.beans.constants.Constants.*;
@@ -19,13 +24,16 @@ public class BeanServiceImpl implements BeanService {
     private final BeanRepository beanRepository;
     private final VersionRepository versionRepository;
     private final RedisCacheService redisCacheService;
+    private final MapperService mapperService;
 
     public BeanServiceImpl(BeanRepository beanRepository,
                            VersionRepository versionRepository,
-                           RedisCacheService redisCacheService) {
+                           RedisCacheService redisCacheService,
+                           MapperService mapperService) {
         this.beanRepository = beanRepository;
         this.versionRepository = versionRepository;
         this.redisCacheService = redisCacheService;
+        this.mapperService = mapperService;
     }
 
     @Override
@@ -100,8 +108,15 @@ public class BeanServiceImpl implements BeanService {
     }
 
     @Override
-    public Bean create(Bean bean) {
-        return this.beanRepository.save(bean);
+    public void create(BeanDto beanDto) {
+        try {
+            Bean bean = this.mapperService.toBean(beanDto);
+            bean = this.beanRepository.save(bean);
+            Version version = this.mapperService.toFirstVersion(bean, beanDto);
+            this.versionRepository.save(version);
+        } catch (IOException | NoSuchAlgorithmException ioException) {
+            log.error(ioException.getMessage());
+        }
     }
 
     @Override

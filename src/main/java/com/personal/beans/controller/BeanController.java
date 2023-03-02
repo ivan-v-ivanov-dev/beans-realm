@@ -1,12 +1,13 @@
 package com.personal.beans.controller;
 
-import com.personal.beans.models.Bean;
+import com.personal.beans.models.dto.BeanDto;
 import com.personal.beans.service.contracts.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/")
@@ -73,6 +74,30 @@ public class BeanController {
         model.addAttribute("devices", this.deviceService.findAll());
         model.addAttribute("filteredBeans", this.beanService.filter(tag, type, device, offset));
         return "beans-filter-populated";
+    }
+
+    @GetMapping("beans/create")
+    public String create(Model model) {
+        model.addAttribute("tags", this.tagService.findAll());
+        model.addAttribute("types", this.typeService.findAll());
+        model.addAttribute("devices", this.deviceService.findAll());
+        model.addAttribute("beanDto", new BeanDto());
+        return "bean-create";
+    }
+
+    @PostMapping("beans/create")
+    public String createBean(@Valid @ModelAttribute("beanDto") BeanDto beanDto,
+                             BindingResult errors, Model model) {
+        model.addAttribute("tags", this.tagService.findAll());
+        model.addAttribute("types", this.typeService.findAll());
+        model.addAttribute("devices", this.deviceService.findAll());
+
+        if (errors.hasErrors()) {
+            return "bean-create";
+        }
+
+        this.beanService.create(beanDto);
+        return "redirect:/";
     }
 
 }

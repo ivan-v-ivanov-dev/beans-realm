@@ -1,6 +1,7 @@
 package com.personal.beans.service.contracts;
 
 import com.personal.beans.models.Bean;
+import com.personal.beans.models.dto.BeanDto;
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ public interface BeanService {
 
     Bean findByName(String beanName);
 
-    Bean create(Bean bean);
+    void create(BeanDto beanDto);
 
     List<Bean> filter(Integer tag, Integer type, Integer device, Integer offset);
 
