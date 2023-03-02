@@ -6,7 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "versions")
@@ -34,7 +34,7 @@ public class Version extends BaseEntity implements Serializable {
     private Status status;
 
     @Column(name = "upload_date")
-    private Date uploadDate;
+    private LocalDate uploadDate;
 
     @Column(name = "modifications")
     private String modifications;

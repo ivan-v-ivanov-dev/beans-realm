@@ -8,7 +8,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "beans")
@@ -48,7 +48,7 @@ public class Bean extends BaseEntity implements Serializable {
     private String description;
 
     @Column(name = "upload_date")
-    private Date uploadDate;
+    private LocalDate uploadDate;
 
     @JsonIgnore
     @Column(name = "total_voters")
