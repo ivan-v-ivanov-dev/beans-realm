@@ -18,4 +18,5 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query(FILTER_USERS)
     List<User> findAllUsersOrderedByUsernameAsc(boolean enabled, @Param("username") String username);
 
+    User findByName(String name);
 }
