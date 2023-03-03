@@ -6,7 +6,7 @@ import com.personal.beans.models.dto.BeanDto;
 import com.personal.beans.repository.postgres.BeanRepository;
 import com.personal.beans.repository.postgres.VersionRepository;
 import com.personal.beans.service.contracts.BeanService;
-import com.personal.beans.service.contracts.MapperService;
+import com.personal.beans.service.contracts.EntityMapperService;
 import com.personal.beans.service.contracts.RedisCacheService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -24,16 +24,16 @@ public class BeanServiceImpl implements BeanService {
     private final BeanRepository beanRepository;
     private final VersionRepository versionRepository;
     private final RedisCacheService redisCacheService;
-    private final MapperService mapperService;
+    private final EntityMapperService entityMapperService;
 
     public BeanServiceImpl(BeanRepository beanRepository,
                            VersionRepository versionRepository,
                            RedisCacheService redisCacheService,
-                           MapperService mapperService) {
+                           EntityMapperService entityMapperService) {
         this.beanRepository = beanRepository;
         this.versionRepository = versionRepository;
         this.redisCacheService = redisCacheService;
-        this.mapperService = mapperService;
+        this.entityMapperService = entityMapperService;
     }
 
     @Override
@@ -110,9 +110,9 @@ public class BeanServiceImpl implements BeanService {
     @Override
     public void create(BeanDto beanDto) {
         try {
-            Bean bean = this.mapperService.toBean(beanDto);
+            Bean bean = this.entityMapperService.toBean(beanDto);
             bean = this.beanRepository.save(bean);
-            Version version = this.mapperService.toFirstVersion(bean, beanDto);
+            Version version = this.entityMapperService.toFirstVersion(bean, beanDto);
             this.versionRepository.save(version);
         } catch (IOException | NoSuchAlgorithmException ioException) {
             log.error(ioException.getMessage());
