@@ -345,7 +345,7 @@
                         </div>
                         <!-- End of Tab 1-->
 
-                        <!-- Versions Reviews -->
+                        <!-- Versions  -->
                         <div class="tab-pane" id="tab-2">
                             <div class="border-left border-right p-5 bg-white border-bottom br-bl-3 br-br-3">
                                 <div class="row">
@@ -395,190 +395,64 @@
                             </div>
 
                         </div>
-                        <!-- End of Versions Reviews -->
+                        <!-- End of Versions  -->
 
                         <!-- Comments -->
                         <div class="tab-pane" id="tab-3">
                             <div class="border-left border-right p-5 bg-white border-bottom br-bl-3 br-br-3">
-                                <div class="card shadow-none">
+
+                                <div class="card shadow-none" th:each="currentComment : ${totalComment}">
                                     <div class="card-body">
                                         <div>
                                             <div class="media mt-0">
-                                                <img class="mr-3 bg-light" src="../assets/images/png/1.png"
-                                                     alt="Image description">
                                                 <div class="media-body">
                                                     <div class="d-md-flex align-items-center">
-                                                        <h4 class="mb-2">
+                                                        <h4 class="mb-2" th:text="${currentComment.getAuthor()}">
                                                             Marco Theme
                                                         </h4>
-                                                        <small class="text-muted ml-md-auto"><i
-                                                                class="fe fe-calendar mr-1"></i> 28 Dec 2019</small>
+                                                        <small class="text-muted ml-md-auto">
+                                                            <i class="fe fe-calendar mr-1">
+                                                                <a th:text="${currentComment.getPosted()}"></a>
+                                                            </i>
+                                                        </small>
                                                     </div>
-                                                    <a href="#" class="mr-2"><span
-                                                            class="badge badge-primary">Helpful</span></a>
-                                                    <a href="" class="mr-2 text-muted" data-toggle="modal"
-                                                       data-target="#Comment"><span
-                                                            class="badge badge-default">Comment</span></a>
-                                                    <a href="" class="mr-2 text-muted" data-toggle="modal"
-                                                       data-target="#report"><span
-                                                            class="badge badge-default">Report</span></a>
                                                 </div>
                                             </div>
-                                            <p class="fs-15  mb-0 mt-3">
-                                                Ut enim ad minim veniam, quis Neque porro quisquam est, qui dolorem
-                                                ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non
-                                                numquam eius modi tempora incidunt ut labore.
+                                            <p class="fs-15  mb-0 mt-3" th:text="${currentComment.getText()}">
+                                                Ut enim ad minim veniam, quis Neque porro quisquam est.
                                             </p>
                                         </div>
                                     </div>
+
                                 </div>
-                                <div class="card shadow-none">
-                                    <div class="card-body">
-                                        <div>
-                                            <div class="media mt-0">
-                                                <img class="mr-3 bg-light" src="../assets/images/png/2.png"
-                                                     alt="Image description">
-                                                <div class="media-body">
-                                                    <div class="d-md-flex align-items-center">
-                                                        <h4 class="mb-2">
-                                                            Lisa Theme
-                                                        </h4>
-                                                        <small class="text-muted ml-md-auto"><i
-                                                                class="fe fe-calendar mr-1"></i> 28 Dec 2019</small>
-                                                    </div>
-                                                    <a href="#" class="mr-2"><span
-                                                            class="badge badge-primary">Helpful</span></a>
-                                                    <a href="" class="mr-2 text-muted" data-toggle="modal"
-                                                       data-target="#Comment"><span
-                                                            class="badge badge-default">Comment</span></a>
-                                                    <a href="" class="mr-2 text-muted" data-toggle="modal"
-                                                       data-target="#report"><span
-                                                            class="badge badge-default">Report</span></a>
-                                                </div>
-                                            </div>
-                                            <p class="fs-15  mb-0 mt-3">
-                                                Ut enim ad minim veniam, quis Neque porro quisquam est, qui dolorem
-                                                ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non
-                                                numquam eius modi tempora incidunt ut labore.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card shadow-none">
-                                    <div class="card-body">
-                                        <div>
-                                            <div class="media mt-0">
-                                                <img class="mr-3 bg-light" src="../assets/images/png/3.png"
-                                                     alt="Image description">
-                                                <div class="media-body">
-                                                    <div class="d-md-flex align-items-center">
-                                                        <h4 class="mb-2">
-                                                            Marshall Theme
-                                                        </h4>
-                                                        <small class="text-muted ml-md-auto"><i
-                                                                class="fe fe-calendar mr-1"></i> 28 Dec 2019</small>
-                                                    </div>
-                                                    <a href="#" class="mr-2"><span
-                                                            class="badge badge-primary">Helpful</span></a>
-                                                    <a href="" class="mr-2 text-muted" data-toggle="modal"
-                                                       data-target="#Comment"><span
-                                                            class="badge badge-default">Comment</span></a>
-                                                    <a href="" class="mr-2 text-muted" data-toggle="modal"
-                                                       data-target="#report"><span
-                                                            class="badge badge-default">Report</span></a>
-                                                </div>
-                                            </div>
-                                            <p class="fs-15  mb-0 mt-3">
-                                                Ut enim ad minim veniam, quis Neque porro quisquam est, qui dolorem
-                                                ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non
-                                                numquam eius modi tempora incidunt ut labore.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card shadow-none">
-                                    <div class="card-body">
-                                        <div>
-                                            <div class="media mt-0">
-                                                <img class="mr-3 bg-light" src="../assets/images/png/4.png"
-                                                     alt="Image description">
-                                                <div class="media-body">
-                                                    <div class="d-md-flex align-items-center">
-                                                        <h4 class="mb-2">
-                                                            Chapman Theme
-                                                        </h4>
-                                                        <small class="text-muted ml-md-auto"><i
-                                                                class="fe fe-calendar mr-1"></i> 28 Dec 2019</small>
-                                                    </div>
-                                                    <a href="#" class="mr-2"><span
-                                                            class="badge badge-primary">Helpful</span></a>
-                                                    <a href="" class="mr-2 text-muted" data-toggle="modal"
-                                                       data-target="#Comment"><span
-                                                            class="badge badge-default">Comment</span></a>
-                                                    <a href="" class="mr-2 text-muted" data-toggle="modal"
-                                                       data-target="#report"><span
-                                                            class="badge badge-default">Report</span></a>
-                                                </div>
-                                            </div>
-                                            <p class="fs-15  mb-0 mt-3">
-                                                Ut enim ad minim veniam, quis Neque porro quisquam est, qui dolorem
-                                                ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non
-                                                numquam eius modi tempora incidunt ut labore.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card mb-0 shadow-none">
-                                    <div class="card-body">
-                                        <div>
-                                            <div class="media mt-0">
-                                                <img class="mr-3 bg-light" src="../assets/images/png/5.png"
-                                                     alt="Image description">
-                                                <div class="media-body">
-                                                    <div class="d-md-flex align-items-center">
-                                                        <h4 class="mb-2">
-                                                            Robic Theme
-                                                        </h4>
-                                                        <small class="text-muted ml-md-auto"><i
-                                                                class="fe fe-calendar mr-1"></i> 28 Dec 2019</small>
-                                                    </div>
-                                                    <a href="#" class="mr-2"><span
-                                                            class="badge badge-primary">Helpful</span></a>
-                                                    <a href="" class="mr-2 text-muted" data-toggle="modal"
-                                                       data-target="#Comment"><span
-                                                            class="badge badge-default">Comment</span></a>
-                                                    <a href="" class="mr-2 text-muted" data-toggle="modal"
-                                                       data-target="#report"><span
-                                                            class="badge badge-default">Report</span></a>
-                                                </div>
-                                            </div>
-                                            <p class="fs-15  mb-0 mt-3">
-                                                Ut enim ad minim veniam, quis Neque porro quisquam est, qui dolorem
-                                                ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non
-                                                numquam eius modi tempora incidunt ut labore.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
-                            <div class="card mt-5">
-                                <div class="card-header">
-                                    <h3 class="card-title">Write Your Comments</h3>
+
+                            <form th:action="@{/beans/{beanName}/comment(beanName=${currentBean.getName()})}"
+                                  th:object="${commentDto}" method="post">
+                                <div class="card mt-5">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Write Your Comments</h3>
+                                    </div>
+
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label style="color: red" class="error" th:errors="*{author}">Error
+                                                placeholder </label>
+                                            <input type="text" class="form-control" id="name1" placeholder="Your Name"
+                                                   th:field="*{author}">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label style="color: red" class="error" th:errors="*{text}">Error
+                                                placeholder </label>
+                                        <textarea class="form-control" name="example-textarea-input" rows="5"
+                                                  placeholder="Write Your Comment" th:field="*{text}"></textarea>
+                                        </div>
+                                        <button type="Submit" value="Save" class="btn ripple  btn-primary">Submit</button>
+                                    </div>
                                 </div>
-                                <div class="card-body">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="name1" placeholder="Your Name">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" id="email" placeholder="Email address">
-                                    </div>
-                                    <div class="form-group">
-                                        <textarea class="form-control" name="example-textarea-input" rows="6"
-                                                  placeholder="Write Your Comment"></textarea>
-                                    </div>
-                                    <a href="#" class="btn ripple  btn-primary">Submit</a>
-                                </div>
-                            </div>
+                            </form>
                         </div>
                         <!--End of Comments -->
 
@@ -586,8 +460,6 @@
                     <!-- End of Icons above picture    -->
 
                 </div>
-
-                <h3 class="mb-5 mt-6">Related Posts</h3>
 
             </div>
 
@@ -670,7 +542,8 @@
                             <div class="ml-5">
                                 <div class="">
                                     <p class="text-muted mb-0">Total Comments</p>
-                                    <p class="mb-0 font-weight-semibold fs-25">12</p>
+                                    <p class="mb-0 font-weight-semibold fs-25">
+                                        <a th:text="${totalCommentsCount}"></a></p>
                                 </div>
                             </div>
                         </div>
@@ -709,6 +582,11 @@
                                           th:text="${currentBean.getName()}">18 January 2019</span>
                                 </li>
                                 <li class="pt-2">
+                                    <span class="w-40 font-weight-semibold text-dark">Versions Count</span>
+                                    <span class="w-60 text-muted"
+                                          th:text="${totalVersionsCount}"></span>
+                                </li>
+                                <li class="pt-2">
                                     <span class="w-40 font-weight-semibold text-dark">Uploaded By</span>
                                     <span class="w-60 text-muted"
                                           th:text="${currentBean.getCreator().getUsername()}"></span>
@@ -728,6 +606,11 @@
                                 <li class="pt-2">
                                     <span class="w-40 font-weight-semibold text-dark">Tag</span>
                                     <span class="w-60 text-muted" th:text="${currentBean.getTag().getName()}"></span>
+                                </li>
+                                <li class="pt-2">
+                                    <span class="w-40 font-weight-semibold text-dark">Comments</span>
+                                    <span class="w-60 text-muted">
+                                        <a th:text="${totalCommentsCount}"></a></span>
                                 </li>
 
                             </ul>
