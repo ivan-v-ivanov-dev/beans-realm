@@ -9,4 +9,5 @@ public interface CommentRepository extends MongoRepository<Comment, String> {
 
     List<Comment> findByBeanNameOrderByPostedDesc(String beanName);
 
+    int countByBeanName(String beanName);
 }

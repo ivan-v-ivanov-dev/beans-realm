@@ -20,4 +20,20 @@ public class CommentServiceImpl implements CommentService {
     public List<Comment> findByBean(String beanName) {
         return this.commentRepository.findByBeanNameOrderByPostedDesc(beanName);
     }
+
+    @Override
+    public int count() {
+        return (int) this.commentRepository.count();
+    }
+
+    @Override
+    public int countByBeanName(String beanName) {
+        return this.commentRepository.countByBeanName(beanName);
+    }
+
+    @Override
+    public Comment save(Comment comment) {
+        return this.commentRepository.save(comment);
+    }
+
 }
