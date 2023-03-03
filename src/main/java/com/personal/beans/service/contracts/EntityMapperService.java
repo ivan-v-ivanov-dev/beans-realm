@@ -7,7 +7,7 @@ import com.personal.beans.models.dto.BeanDto;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
-public interface MapperService {
+public interface EntityMapperService {
 
     Bean toBean(BeanDto beanDto) throws IOException;
 

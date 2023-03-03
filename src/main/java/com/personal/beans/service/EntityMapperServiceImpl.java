@@ -4,17 +4,20 @@ import com.personal.beans.models.Bean;
 import com.personal.beans.models.Version;
 import com.personal.beans.models.dto.BeanDto;
 import com.personal.beans.repository.postgres.*;
-import com.personal.beans.service.contracts.MapperService;
+import com.personal.beans.service.contracts.EntityMapperService;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 import java.util.Base64;
+import java.util.Date;
 
 import static com.personal.beans.constants.Constants.*;
 
-public class MapperServiceImpl implements MapperService {
+@Service
+public class EntityMapperServiceImpl implements EntityMapperService {
 
     private final UserRepository userRepository;
     private final DeviceRepository deviceRepository;
@@ -22,11 +25,11 @@ public class MapperServiceImpl implements MapperService {
     private final TagRepository tagRepository;
     private final StatusRepository statusRepository;
 
-    public MapperServiceImpl(UserRepository userRepository,
-                             DeviceRepository deviceRepository,
-                             TypeRepository typeRepository,
-                             TagRepository tagRepository,
-                             StatusRepository statusRepository) {
+    public EntityMapperServiceImpl(UserRepository userRepository,
+                                   DeviceRepository deviceRepository,
+                                   TypeRepository typeRepository,
+                                   TagRepository tagRepository,
+                                   StatusRepository statusRepository) {
         this.userRepository = userRepository;
         this.deviceRepository = deviceRepository;
         this.typeRepository = typeRepository;
@@ -39,7 +42,7 @@ public class MapperServiceImpl implements MapperService {
         Bean bean = new Bean();
         bean.setName(beanDto.getName());
         bean.setImage(DATA_IMAGE_PNG_BASE64 + Base64.getEncoder().encodeToString(beanDto.getImage().getBytes()));
-        bean.setCreator(this.userRepository.findByName("user1"));
+        bean.setCreator(this.userRepository.findByUsername("user1"));
         bean.setDevice(this.deviceRepository.findById(beanDto.getDeviceId()).orElseThrow());
         bean.setType(this.typeRepository.findById(beanDto.getTypeId()).orElseThrow());
         bean.setTag(this.tagRepository.findById(beanDto.getTagId()).orElseThrow());
