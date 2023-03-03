@@ -1,6 +1,6 @@
 services:
 
-# PostreSQL
+  # PostreSQL
   postgres:
     image: postgres
     container_name: postgres
@@ -13,7 +13,7 @@ services:
     volumes:
       - ./bash_script:/docker-entrypoint-initdb.d
 
-# PostgreSQL UI client
+  # PostgreSQL UI client
   adminer:
     image: adminer
     container_name: postgres_adminer
@@ -45,7 +45,7 @@ services:
     volumes:
       - ./keycloak-realm-settings.json:/realm/keycloak-realm-settings.json
 
-# MongoDB
+  # MongoDB
   mongo:
     image: mongo
     container_name: mongodb
@@ -54,7 +54,7 @@ services:
     environment:
       MONGO_INITDB_DATABASE: storage
 
-# Redis cache
+  # Redis cache
   redis:
     image: redis
     container_name: redis
