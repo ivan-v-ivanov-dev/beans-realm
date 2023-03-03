@@ -6,6 +6,7 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.personal.beans.models.comments.Comment;
 import com.personal.beans.repository.mongo.CommentRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -15,8 +16,11 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 import java.time.LocalDate;
 
+import static com.personal.beans.config.ConfigConstants.*;
+
 @Configuration
 @EnableMongoRepositories(basePackages = {"com.personal.beans.repository.mongo"})
+@Slf4j
 public class MongoConfig {
 
     @Value("${spring.data.mongodb.uri}")
@@ -33,12 +37,16 @@ public class MongoConfig {
                         .applyConnectionString(connectionString)
                         .build();
 
-        return MongoClients.create(mongoClientSettings);
+        MongoClient mongoClient = MongoClients.create(mongoClientSettings);
+        log.info(MONGO_CONFIGURATION_MONGO_CLIENT_CREATED);
+        return mongoClient;
     }
 
     @Bean
     public MongoTemplate mongoTemplate() throws Exception {
-        return new MongoTemplate(mongo(), database);
+        MongoTemplate mongoTemplate = new MongoTemplate(mongo(), database);
+        log.info(MONGO_CONFIGURATION_MONGO_TEMPLATE_CREATED);
+        return mongoTemplate;
     }
 
     @Bean
@@ -46,6 +54,7 @@ public class MongoConfig {
         return strings -> {
             commentRepository.save(new Comment("1", "House of Mighty Heroes", "user1", "First Test comment", LocalDate.of(2023, 03, 02)));
             commentRepository.save(new Comment("2", "House of Mighty Heroes", "user1", "First Test comment", LocalDate.of(2023, 03, 03)));
+            log.info(MONGO_CONFIGURATION_SAMPLE_DATA_IMPORTED);
         };
     }
 }

@@ -1,5 +1,6 @@
 package com.personal.beans.config;
 
+import lombok.extern.slf4j.Slf4j;
 import org.keycloak.adapters.springsecurity.KeycloakConfiguration;
 import org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationProvider;
 import org.keycloak.adapters.springsecurity.config.KeycloakWebSecurityConfigurerAdapter;
@@ -15,8 +16,12 @@ import org.springframework.security.web.authentication.session.SessionAuthentica
 import org.springframework.security.web.firewall.HttpFirewall;
 import org.springframework.security.web.firewall.StrictHttpFirewall;
 
+import static com.personal.beans.config.ConfigConstants.SECURITY_CONFIGURATION_ALLOW_DOUBLE_SLASH_IN_STRICT_HTTP_FIREWALL;
+import static com.personal.beans.config.ConfigConstants.SECURITY_CONFIGURATION_REGISTER_SESSION_AUTHENTICATION_STRATEGY_CREATED;
+
 @KeycloakConfiguration
 @EnableGlobalMethodSecurity(jsr250Enabled = true)
+@Slf4j
 class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
 
     @Autowired
@@ -29,7 +34,9 @@ class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
     @Bean
     @Override
     protected SessionAuthenticationStrategy sessionAuthenticationStrategy() {
-        return new RegisterSessionAuthenticationStrategy(new SessionRegistryImpl());
+        RegisterSessionAuthenticationStrategy registerSessionAuthenticationStrategy = new RegisterSessionAuthenticationStrategy(new SessionRegistryImpl());
+        log.info(SECURITY_CONFIGURATION_REGISTER_SESSION_AUTHENTICATION_STRATEGY_CREATED);
+        return registerSessionAuthenticationStrategy;
     }
 
     @Override
@@ -46,6 +53,7 @@ class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
     public HttpFirewall getHttpFirewall() {
         StrictHttpFirewall strictHttpFirewall = new StrictHttpFirewall();
         strictHttpFirewall.setAllowUrlEncodedDoubleSlash(true);
+        log.info(SECURITY_CONFIGURATION_ALLOW_DOUBLE_SLASH_IN_STRICT_HTTP_FIREWALL);
         return strictHttpFirewall;
     }
 }
