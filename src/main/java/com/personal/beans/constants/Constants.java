@@ -2,8 +2,7 @@ package com.personal.beans.constants;
 
 public class Constants {
 
-    // Logger constants
-    public static final String POSTGRESQL_CONNECTION_POOL = "PostgreSQL Connection Pool";
+    // Service Layer Logger constants
     public static final String FROM_REDIS = "From REDIS :: ";
     public static final String FROM_POSTGRES = "From POSTGRES :: ";
     public static final String FROM_REDIS_LATEST_BEANS = FROM_REDIS + "Latest Beans";
@@ -62,7 +61,7 @@ public class Constants {
     public static final String ONE_AS_STRING = "1";
     public static final String DATA_IMAGE_PNG_BASE64 = "data:image/png;base64,";
 
-    // Error messages
+    // Entities Error messages
     public static final String NAME_CAN_NOT_BE_EMPTY = "Name can not be empty!";
     public static final String NAME_MUST_BE_BETWEEN_4_AND_30_SYMBOLS = "Name must be between 4 and 30 symbols!";
     public static final String YOU_MUST_SELECT_A_TYPE = "You must select a type!";
