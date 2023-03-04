@@ -28,6 +28,8 @@ public class Constants {
     public static final String FROM_POSTGRES_ALL_TYPES = FROM_POSTGRES + "All Types";
     public static final String FROM_REDIS_ALL_DEVICES = FROM_REDIS + "All Devices";
     public static final String FROM_POSTGRES_ALL_DEVICES = FROM_POSTGRES + "All Devices";
+    public static final String FROM_REDIS_VERSIONS_COUNT_FOR_BEAN_TEMPLATE = FROM_REDIS + "Versions count for Bean %s";
+    public static final String FROM_POSTGRES_VERSIONS_COUNT_FOR_BEAN_TEMPLATE = FROM_POSTGRES + "Versions count for Bean %s";
 
     // Repository constants
     public static final String NAME = "name";
@@ -48,13 +50,14 @@ public class Constants {
     public static final String ALL_TAGS = "ALL_TAGS";
     public static final String ALL_TYPES = "ALL_TYPES";
     public static final String ALL_DEVICES = "ALL_DEVICES";
+    public static final String BEAN_ = "BEAN_";
+    public static final String _VERSIONS = "_VERSIONS";
+    public static final String VERSIONS_COUNT_FOR_BEAN_ = "VERSIONS_COUNT_FOR_BEAN_";
 
     // Service constants
     public static final String EMPTY_SPACE = " ";
     public static final String UNDERSCORE = "_";
     public static final String TIME_FORMAT_TEMPLATE = "dd-MM-yyyy HH:mm:ss";
-    public static final String BEAN_ = "BEAN_";
-    public static final String _VERSIONS = "_VERSIONS";
     public static final String WAITING_APPROVAL = "Waiting approval";
     public static final String FIRST_VERSION = "First Version";
     public static final String SHA_256 = "SHA-256";
