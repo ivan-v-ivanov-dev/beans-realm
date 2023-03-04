@@ -28,19 +28,19 @@ public class Bean extends BaseEntity implements Serializable {
     @Column(name = "image")
     private String image;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "creator_id")
     private User creator;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "device_id")
     private Device device;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "type_id")
     private Type type;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "tag_id")
     private Tag tag;
 
