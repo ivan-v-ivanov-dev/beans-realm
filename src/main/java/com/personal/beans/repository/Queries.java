@@ -109,6 +109,13 @@ public class Queries {
                     "s.name NOT LIKE 'Approved' " +
                     "ORDER BY v.name DESC";
 
+    public static final String COUNT_APPROVED_VERSIONS_BY_BEAN_NAME =
+            "SELECT COUNT(v.id) FROM versions v " +
+                    "JOIN beans b ON v.bean_id = b.id " +
+                    "JOIN statuses s ON v.status_id = s.id " +
+                    "WHERE b.name = :beanName AND " +
+                    "s.name LIKE 'Approved' ";
+
     private Queries() {
     }
 }
