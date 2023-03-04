@@ -52,8 +52,12 @@ public class MongoConfig {
     @Bean
     CommandLineRunner commandLineRunner(CommentRepository commentRepository) {
         return strings -> {
-            commentRepository.save(new Comment("1", "House of Mighty Heroes", "user1", "First Test comment", LocalDate.of(2023, 03, 02)));
-            commentRepository.save(new Comment("2", "House of Mighty Heroes", "user1", "First Test comment", LocalDate.of(2023, 03, 03)));
+            commentRepository.save(Comment.builder().id("1").beanName("House of Mighty Heroes").author("user1").text("Very nice!").posted(LocalDate.of(2023, 03, 02)).build());
+            commentRepository.save(Comment.builder().id("2").beanName("House of Mighty Heroes").author("user1").text("Good job!").posted(LocalDate.of(2023, 03, 03)).build());
+            commentRepository.save(Comment.builder().id("3").beanName("Game_1").author("user1").text("Very nice!").posted(LocalDate.of(2023, 03, 01)).build());
+            commentRepository.save(Comment.builder().id("4").beanName("Game_1").author("user2").text("I have downloaded it.").posted(LocalDate.of(2023, 03, 02)).build());
+            commentRepository.save(Comment.builder().id("5").beanName("Game_1").author("user3").text("I like this game.").posted(LocalDate.of(2023, 03, 03)).build());
+            commentRepository.save(Comment.builder().id("6").beanName("Game_1").author("user4").text("Good Job").posted(LocalDate.of(2023, 02, 02)).build());
             log.info(MONGO_CONFIGURATION_SAMPLE_DATA_IMPORTED);
         };
     }
