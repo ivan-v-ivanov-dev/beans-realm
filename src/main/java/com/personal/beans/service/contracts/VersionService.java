@@ -14,4 +14,5 @@ public interface VersionService {
 
     List<Version> filterVersionsForApproval(String bean);
 
+    int countByBean(String beanName);
 }

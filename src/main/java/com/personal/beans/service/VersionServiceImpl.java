@@ -61,4 +61,19 @@ public class VersionServiceImpl implements VersionService {
     public List<Version> filterVersionsForApproval(String bean) {
         return this.versionRepository.filterVersionsForApproval(bean);
     }
+
+    @Override
+    public int countByBean(String beanName) {
+        String hashKey = VERSIONS_COUNT_FOR_BEAN_ + beanName.replace(EMPTY_SPACE, UNDERSCORE).toUpperCase();
+
+        if (this.redisCacheService.containsKey(hashKey)) {
+            log.info(String.format(FROM_REDIS_VERSIONS_COUNT_FOR_BEAN_TEMPLATE, beanName));
+            return this.redisCacheService.retrieve(hashKey, Integer.class).get(0);
+        }
+
+        int versionsCount = this.versionRepository.countByBeanName(beanName);
+        this.redisCacheService.save(hashKey, versionsCount);
+        log.info(String.format(FROM_POSTGRES_VERSIONS_COUNT_FOR_BEAN_TEMPLATE, beanName));
+        return versionsCount;
+    }
 }
