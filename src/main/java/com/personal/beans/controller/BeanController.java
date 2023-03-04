@@ -62,6 +62,7 @@ public class BeanController {
         return "bean";
     }
 
+    @RolesAllowed("authorised-user")
     @PostMapping("beans/{beanName}/comment")
     public String postComment(@PathVariable String beanName,
                               @Valid @ModelAttribute("commentDto") CommentDto commentDto,
@@ -100,6 +101,7 @@ public class BeanController {
         return "beans-filter-populated";
     }
 
+    @RolesAllowed("authorised-user")
     @GetMapping("beans/create")
     public String create(Model model) {
         model.addAttribute("tags", this.tagService.findAll());
@@ -109,6 +111,7 @@ public class BeanController {
         return "bean-create";
     }
 
+    @RolesAllowed("authorised-user")
     @PostMapping("beans/create")
     public String createBean(@Valid @ModelAttribute("beanDto") BeanDto beanDto,
                              BindingResult errors, Model model) {
