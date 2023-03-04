@@ -1,6 +1,7 @@
 package com.personal.beans.service.contracts;
 
 import com.personal.beans.models.comments.Comment;
+import com.personal.beans.models.dto.CommentDto;
 
 import java.util.List;
 
@@ -12,5 +13,5 @@ public interface CommentService {
 
     int countByBeanName(String beanName);
 
-    Comment save(Comment comment);
+    Comment save(String beanName, CommentDto commentDto);
 }

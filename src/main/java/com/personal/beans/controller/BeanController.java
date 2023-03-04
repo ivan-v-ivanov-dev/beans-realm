@@ -1,12 +1,14 @@
 package com.personal.beans.controller;
 
 import com.personal.beans.models.dto.BeanDto;
+import com.personal.beans.models.dto.CommentDto;
 import com.personal.beans.service.contracts.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 
 @Controller
@@ -53,7 +55,29 @@ public class BeanController {
     public String beanDetails(@PathVariable String beanName, Model model) {
         model.addAttribute("currentBean", this.beanService.findByName(beanName));
         model.addAttribute("currentBeanVersions", this.versionService.findByBean(beanName));
+        model.addAttribute("totalComment", this.commentService.findByBean(beanName));
+        model.addAttribute("totalVersionsCount", this.versionService.countByBean(beanName));
+        model.addAttribute("totalCommentsCount", this.commentService.countByBeanName(beanName));
+        model.addAttribute("commentDto", CommentDto.builder().build());
         return "bean";
+    }
+
+    @PostMapping("beans/{beanName}/comment")
+    public String postComment(@PathVariable String beanName,
+                              @Valid @ModelAttribute("commentDto") CommentDto commentDto,
+                              BindingResult errors, Model model) {
+        model.addAttribute("currentBean", this.beanService.findByName(beanName));
+        model.addAttribute("currentBeanVersions", this.versionService.findByBean(beanName));
+        model.addAttribute("totalComment", this.commentService.findByBean(beanName));
+        model.addAttribute("totalVersionsCount", this.versionService.countByBean(beanName));
+        model.addAttribute("totalCommentsCount", this.commentService.countByBeanName(beanName));
+        model.addAttribute("commentDto", CommentDto.builder().beanName(beanName).build());
+
+        if (errors.hasErrors()) {
+            return "bean";
+        }
+        this.commentService.save(beanName, commentDto);
+        return "redirect:/beans/" + beanName;
     }
 
     @GetMapping("beans/filter")
