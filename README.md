@@ -5,20 +5,35 @@ In this repopository i have designed a sample shareplace (Spring Web application
 # Brief overview
 
 ### Public access
-Application runs on http://localhost:8080. On the main page are displayed counters for the total number of beans, total Beans downloads, total registered users and total comments. There are also 3 sections with Beans - Latest, Most downloaded and Top Rated Beans. If you click on a Bean you will land on a single Bean page with detailed information for the current Bean. This page has 3 sections: 
-  - Details - diplaying the detailed information for the Bean;
-  - Versions - displaying the version which the Bean has. They can be downloaded through the DOWNLOAD button. 
-  - Reviews (Comments) - displaying the comments comments for the Beans leeft by other users. Only posting a comment requires authentication (Submit button will redirect you to Keycloak's login page).
+Index page available on http://localhost:8080.   
 
-From the Filter Beans page you can filter Beans according to certain criteria.
+**Home** page displays counters for the total number of beans, total Beans downloads, total registered users and total comments. There are also 3 sections with Beans - **Latest**, **Most downloaded** and **Top Rated Beans**. 
 
-### Restricted access
-The Upload Bean page is restricted for only for registered users. If you click on the page it will redirect you to Keycloak's login page.    
+![image](https://user-images.githubusercontent.com/51414119/222962593-d7f49339-da94-49c1-98f0-38370081c73c.png)
+
+**Single Bean** page contains detailed information for the current Bean. This page has 3 sections: 
+  - **Details** - diplaying the detailed information for the Bean;
+  - **Versions** - displaying the version which the Bean has. They can be downloaded through the DOWNLOAD button. 
+  - **Reviews (Comments)** - displaying the comments comments for the Beans leeft by other users. Only posting a comment requires authentication (Submit button will redirect you to Keycloak's login page).
+
+![image](https://user-images.githubusercontent.com/51414119/222962805-aa6b0d39-dd6e-406e-92f7-ebfd1d731d4f.png)
+
+**Filter Beans** page you can filter Beans according to certain criteria.
+
+![image](https://user-images.githubusercontent.com/51414119/222962831-3da5d8c6-dbfb-45ad-8d69-5be7a953ec74.png)
+
+### Restricted access  
+
+**Upload Bean** page is restricted for only for registered users. If you click on the page it will redirect you to Keycloak's login page.     
 
 Registered user credentials   
 
 username: **ivan**  
-password: **ivan**  
+password: **ivan**    
+
+![image](https://user-images.githubusercontent.com/51414119/222962730-b4bc71f6-9d63-4627-a3fe-7c23569a3915.png)
+
+![image](https://user-images.githubusercontent.com/51414119/222962755-ce76b82d-81a6-4243-9b29-14919b21c1ba.png)
 
 # Technical overview
 
@@ -28,13 +43,20 @@ Just clone the repository and Gradle bootRun the project in IntelliJ IDEA. All n
 
  - Note: In order to start the application you need to have Docker Desktop installed on your machine.
  
- ![image](https://user-images.githubusercontent.com/51414119/222919495-f7ace0dc-b946-4abb-9069-c38edbbd4e7e.png)
+ ![image](https://user-images.githubusercontent.com/51414119/222958784-e4a9d2fb-c715-4080-b2a4-b4f00a99da67.png)
 
-## Backend part
+## Databases
 
-### Databases 
+### Primary database 
 
-**Primary database:** PostgreSQL (official postgres Docker image). Adminer (offical adminer Docker image) used as database management tool to access and manipulate the PostgreSQL database through the browser.
+**PostgreSQL** (official postgres Docker image). 
+ - DB: **storage**.
+
+![image](https://user-images.githubusercontent.com/51414119/222958723-a6de941c-e042-46f1-9961-808390f59bfc.png)
+
+I chose the database design to have relation from **versions** table to **beans** because the binary content of the bean will be stored in each version. If we had the opposite relation (from **beans** to **versions**) we would load List of versions for each Bean.     
+
+**Adminer** (offical adminer Docker image) used as database management tool to access and manipulate the PostgreSQL database through the browser.
 
 Adminer GUI login credentials:  
 
@@ -45,10 +67,35 @@ Username: root
 Password: root  
 Database: storage  
  
- ![image](https://user-images.githubusercontent.com/51414119/222920142-094f473f-6405-4482-89b9-b7d5c6a93f4c.png)
+![image](https://user-images.githubusercontent.com/51414119/222959114-8a0845c7-6448-43da-9ebe-67d47f97b413.png)
 
-**Secondary database**: MongoDB (official mongo Docker image). Only the comments for the Beans are stored in MongoDB.  
+![image](https://user-images.githubusercontent.com/51414119/222959150-74f838a1-f20a-482a-a672-f734377aca35.png)
 
-### Databases Design
+### Secondary database
 
+**MongoDB** (official mongo Docker image). Only the comments for the Beans are stored in MongoDB.
 
+ - DB: **storage**.
+ - Collection: **comments**.
+
+![image](https://user-images.githubusercontent.com/51414119/222959348-8a955f40-a71c-4a89-b06f-0cf8d50b1669.png)
+
+## Backend 
+
+ - **Spring boot** used to create stand-alone application. 
+ - **Gradle** used as a build tool. 
+ - **Spring MVC framework** used to create the controllers and connec to the frontend.
+ - **Thymeleaf** used as a template engine to create and populate the html pages.
+ - **Keycloak** (as jboss/keycloak Docker image) used for authentication. The embedded H2 database in the jboss/keycloak's image in replaced with PostgreSQL database while Keycloak's Docker container is being instantiated on project startup using a bash script (both project's and keycloak's databases are created using the bash script). Keycloak's realm settings are imported via Docker volume using JSON configuration file (see **keycloak-realm-setting.json** in project root and **docker-compose.yml**). Endpoints secured with custom role for registered users **authorised-user** (credentials mentioned above).
+ - **Spring Data JPA** with native and JPQL queries adopted as reposity layer for both PostgreSQL and MongoDB (see **repository/postgres** and **repository/mongo** packages).
+ - **Liquibase** creates the tables and imports sample data in PostgreSQL DB on project starup (see **resources/db/chaneLog/changeLog.xml**).
+ - Sample data in Mongo DB are imported using the CommentRepository on (see **MongoConfig.java**)
+ - **Redis** cache (official redis Docker image) was adopted for user experience optimisation when retrieving resources (see **service/RedisCacheServiceImpl.java**). 
+ - **Crone expression** deletes regularly the cache every 3 minutes (time selected on perpose to demonstrate the action of deleting while testing the application - see **service/RedisCacheServiceImpl.java**).  
+ - **Slf4j** logs performed actions (also instantiating the configurations). Sample snapshot when loading the index page (http://localhost:8080)
+ 
+ ![image](https://user-images.githubusercontent.com/51414119/222961799-7b921287-d4d5-4710-aba7-10af316951a1.png)
+
+## Frontend
+
+ - **Paid bootstrap theme** used as base HTML page source
