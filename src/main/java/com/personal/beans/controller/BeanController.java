@@ -12,7 +12,6 @@ import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/")
 public class BeanController {
 
     private final BeanService beanService;
@@ -39,7 +38,7 @@ public class BeanController {
         this.deviceService = deviceService;
     }
 
-    @GetMapping
+    @GetMapping("/")
     public String home(Model model) {
         model.addAttribute("latestBeans", this.beanService.latest());
         model.addAttribute("mostDownloadedBeans", this.beanService.mostDownloaded());
@@ -51,7 +50,7 @@ public class BeanController {
         return "index";
     }
 
-    @GetMapping("beans/{beanName}")
+    @GetMapping("/beans/{beanName}")
     public String beanDetails(@PathVariable String beanName, Model model) {
         model.addAttribute("currentBean", this.beanService.findByName(beanName));
         model.addAttribute("currentBeanVersions", this.versionService.findByBean(beanName));
@@ -63,7 +62,7 @@ public class BeanController {
     }
 
     @RolesAllowed("authorised-user")
-    @PostMapping("beans/{beanName}/comment")
+    @PostMapping("/beans/{beanName}/comment")
     public String postComment(@PathVariable String beanName,
                               @Valid @ModelAttribute("commentDto") CommentDto commentDto,
                               BindingResult errors, Model model) {
@@ -81,7 +80,7 @@ public class BeanController {
         return "redirect:/beans/" + beanName;
     }
 
-    @GetMapping("beans/filter")
+    @GetMapping("/beans/filter")
     public String filter(Model model) {
         model.addAttribute("tags", this.tagService.findAll());
         model.addAttribute("types", this.typeService.findAll());
@@ -89,7 +88,7 @@ public class BeanController {
         return "beans-filter-empty";
     }
 
-    @PostMapping("beans/filter")
+    @PostMapping("/beans/filter")
     public String filterBeans(@RequestParam(required = false) Integer tag,
                               @RequestParam(required = false) Integer type,
                               @RequestParam(required = false) Integer device,
@@ -102,7 +101,7 @@ public class BeanController {
     }
 
     @RolesAllowed("authorised-user")
-    @GetMapping("beans/create")
+    @GetMapping("/beans/create")
     public String create(Model model) {
         model.addAttribute("tags", this.tagService.findAll());
         model.addAttribute("types", this.typeService.findAll());
@@ -112,7 +111,7 @@ public class BeanController {
     }
 
     @RolesAllowed("authorised-user")
-    @PostMapping("beans/create")
+    @PostMapping("/beans/create")
     public String createBean(@Valid @ModelAttribute("beanDto") BeanDto beanDto,
                              BindingResult errors, Model model) {
         model.addAttribute("tags", this.tagService.findAll());
