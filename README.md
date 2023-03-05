@@ -1,6 +1,6 @@
 # Beans Realm
 
-In this repopository i have designed a sample shareplace (Spring Web application) for Beans (non-realistic representation of software programs). Each person can upload and download Beans. The application has publicly available pages and restricted ones only for registered users. (still the project is under development)
+In this repopository i have designed a sample shareplace (Spring Web application) for Beans (non-realistic representation of software programs). Each person can upload and download Beans. The application has publicly available pages and restricted ones only for registered users. (still the project is **under development**)
 
 # Brief overview
 
@@ -110,3 +110,7 @@ Database: storage
 ## Frontend
 
  - **Paid bootstrap theme** used as base HTML page source
+
+# Disclaimer   
+
+This is personal coding skills training project. NO real software product are distrubuted and/or uploaded in the application. The term "Beans" serves a an non-realistic, non-profitable representation of dummy products. Official Docker images are used for the technologies. Paid bootstrap theme was used for the frontend view (for styled HTML sources). 
