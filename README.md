@@ -1,11 +1,11 @@
 # Beans Realm
 
-In this repopository i have designed a sample shareplace (Spring Web application) for Beans (non-realistic representation of software programs). Each person can upload and download Beans. The application has publicly available pages and restricted ones only for registered users. (still the project is under development)
+In this repopository i have designed a sample shareplace (Spring Web application) for Beans (non-realistic representation of software programs). Each person can upload and download Beans. The application has publicly available pages and restricted ones only for registered users. (still the project is **under development**)
 
 # Brief overview
 
-### Public access
-Index page available on http://localhost:8080.   
+### Public access pages    
+Index home page available on http://localhost:8080.   
 
 **Home** page displays counters for the total number of beans, total Beans downloads, total registered users and total comments. There are also 3 sections with Beans - **Latest**, **Most downloaded** and **Top Rated Beans**. 
 
@@ -22,7 +22,7 @@ Index page available on http://localhost:8080.
 
 ![image](https://user-images.githubusercontent.com/51414119/222962831-3da5d8c6-dbfb-45ad-8d69-5be7a953ec74.png)
 
-### Restricted access  
+### Restricted access pages    
 
 **Upload Bean** page is restricted for only for registered users. If you click on the page it will redirect you to Keycloak's login page.     
 
@@ -31,7 +31,7 @@ Registered user credentials
 username: **ivan**  
 password: **ivan**    
 
-![image](https://user-images.githubusercontent.com/51414119/222962730-b4bc71f6-9d63-4627-a3fe-7c23569a3915.png)
+![image](https://user-images.githubusercontent.com/51414119/222964073-a9163a98-752b-41a0-8ae0-bc5c3f37749d.png)    
 
 ![image](https://user-images.githubusercontent.com/51414119/222962755-ce76b82d-81a6-4243-9b29-14919b21c1ba.png)
 
@@ -39,7 +39,7 @@ password: **ivan**
 
 ## Start the application
 
-Just clone the repository and Gradle bootRun the project in IntelliJ IDEA. All needed components (PostgreSQL, PostgreSQL adminer, MongoDB, Keycloak and Redis) are instantiated on project starup in Docker containers (see docker-compose.yml in root folder). Sample data will be imported automatically in PostgreSQL via Liquibase. In MongoDB sample data will be imported automatically via CommandLineRunner (see MongoConfig.java file).  
+Just clone the repository and Gradle bootRun the project in IntelliJ IDEA. All needed components (PostgreSQL, PostgreSQL adminer, MongoDB, Keycloak and Redis) are instantiated on project starup in Docker containers (see **docker-compose.yml** in root folder). Sample data will be imported automatically in PostgreSQL via Liquibase. In MongoDB sample data will be imported automatically via CommentRepository (see MongoConfig.java file).  
 
  - Note: In order to start the application you need to have Docker Desktop installed on your machine.
  
@@ -86,16 +86,31 @@ Database: storage
  - **Gradle** used as a build tool. 
  - **Spring MVC framework** used to create the controllers and connec to the frontend.
  - **Thymeleaf** used as a template engine to create and populate the html pages.
- - **Keycloak** (as jboss/keycloak Docker image) used for authentication. The embedded H2 database in the jboss/keycloak's image in replaced with PostgreSQL database while Keycloak's Docker container is being instantiated on project startup using a bash script (both project's and keycloak's databases are created using the bash script). Keycloak's realm settings are imported via Docker volume using JSON configuration file (see **keycloak-realm-setting.json** in project root and **docker-compose.yml**). Endpoints secured with custom role for registered users **authorised-user** (credentials mentioned above).
+ - **Keycloak** (as jboss/keycloak Docker image) used for authentication. The embedded H2 database in the jboss/keycloak's image in replaced with PostgreSQL database while Keycloak's Docker container is being instantiated on project startup using a bash script (both project's and keycloak's databases are created using the bash script). Keycloak's realm settings are imported via Docker volume using JSON configuration file (see **keycloak-realm-setting.json** in project root and **docker-compose.yml**). Project's MVC endpoints secured with custom role for registered users **authorised-user** (credentials mentioned above). 
+ 
+ Keycloak administation console credentials:  
+ URL: http://localhost:8081/auth/   
+ username: admin    
+ password: admin 
+ 
+ ![image](https://user-images.githubusercontent.com/51414119/222963817-745bb1fa-5f56-47a3-b08a-a5033ba7c3e3.png)
+ 
  - **Spring Data JPA** with native and JPQL queries adopted as reposity layer for both PostgreSQL and MongoDB (see **repository/postgres** and **repository/mongo** packages).
  - **Liquibase** creates the tables and imports sample data in PostgreSQL DB on project starup (see **resources/db/chaneLog/changeLog.xml**).
  - Sample data in Mongo DB are imported using the CommentRepository on (see **MongoConfig.java**)
  - **Redis** cache (official redis Docker image) was adopted for user experience optimisation when retrieving resources (see **service/RedisCacheServiceImpl.java**). 
  - **Crone expression** deletes regularly the cache every 3 minutes (time selected on perpose to demonstrate the action of deleting while testing the application - see **service/RedisCacheServiceImpl.java**).  
  - **Slf4j** logs performed actions (also instantiating the configurations). Sample snapshot when loading the index page (http://localhost:8080)
- 
  ![image](https://user-images.githubusercontent.com/51414119/222961799-7b921287-d4d5-4710-aba7-10af316951a1.png)
+ 
+ - All tools instantiated as Docker containers on project startup.
+ 
+ ![image](https://user-images.githubusercontent.com/51414119/222963580-f13f6549-1d10-4432-ab84-c3f9a93b012b.png)
 
 ## Frontend
 
  - **Paid bootstrap theme** used as base HTML page source
+
+# Disclaimer   
+
+This is personal coding skills training project. NO real software product are distrubuted and/or uploaded in the application. The term "Beans" serves a an non-realistic, non-profitable representation of dummy products. Official Docker images are used for the technologies. Paid bootstrap theme was used for the frontend view (for styled HTML sources). 
