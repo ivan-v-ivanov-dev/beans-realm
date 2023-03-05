@@ -22,6 +22,7 @@ public class Version extends BaseEntity implements Serializable {
     @Column(name = "name")
     private String name;
 
+    @Lob
     @Column(name = "content")
     private byte[] content;
 
