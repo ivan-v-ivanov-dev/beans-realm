@@ -238,100 +238,101 @@
 
 </div><!--/Section-->
 
-<form method="POST" th:action="@{/beans/approve}">
+<!--Section-->
+<section class="sptb">
+    <div class="container">
 
-    <!--Section-->
-    <section class="sptb">
-        <div class="container">
+        <div class="row">
+            <div class="col-xl-8 col-lg-8 col-md-12" style="margin:auto">
+                <div class="mb-lg-0">
+                    <div class="">
+                        <div class="item2-gl">
+                            <h2> Beans with unapproved versions </h2>
 
-            <div class="row">
-                <div class="col-xl-8 col-lg-8 col-md-12" style="margin:auto">
-                    <div class="mb-lg-0">
-                        <div class="">
-                            <div class="item2-gl">
-                                <h2> Beans with unapproved versions </h2>
+                            <div class="tab-content Marketplace">
+                                <div class="tab-pane active" id="tab-11">
 
-                                <div class="tab-content Marketplace">
-                                    <div class="tab-pane active" id="tab-11">
+                                    <!-- Single Bean-->
+                                    <div class="card overflow-hidden card-list-item1"
+                                         th:each="bean : ${notApprovedBeans}">
 
-                                        <!-- Single Bean-->
-                                        <div class="card overflow-hidden card-list-item1"
-                                             th:each="bean : ${notApprovedBeans}">
-
-                                            <div class="d-md-flex">
-                                                <div class="item-card9-img">
-                                                    <div class="item-card9-imgs">
-                                                        <a href="page-details.html"></a>
-                                                        <div id="carousel-controls"
-                                                             class="carousel slide property-slide"
-                                                             data-ride="carousel" data-interval="false">
-                                                            <div class="carousel-inner">
-                                                                <div class="carousel-item active">
-                                                                    <img th:src=${bean.getImage()}
-                                                                         src="../assets/images/media/pictures/thumb-list/1.jpg"
-                                                                         alt="img" class="cover-image d-block w-100"
-                                                                         data-holder-rendered="true">
-                                                                </div>
+                                        <div class="d-md-flex">
+                                            <div class="item-card9-img">
+                                                <div class="item-card9-imgs">
+                                                    <a href="page-details.html"></a>
+                                                    <div id="carousel-controls"
+                                                         class="carousel slide property-slide"
+                                                         data-ride="carousel" data-interval="false">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active">
+                                                                <img th:src=${bean.getImage()}
+                                                                     src="../assets/images/media/pictures/thumb-list/1.jpg"
+                                                                     alt="img" class="cover-image d-block w-100"
+                                                                     data-holder-rendered="true">
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="item-card9-icons">
-                                                        <a class="item-card9-icons1 bg-purple"
-                                                           data-toggle="tooltip" data-placement="top" title="Share">
-                                                            <i class="icon icon-share"></i></a>
                                                     </div>
                                                 </div>
-                                                <div class="card border-0 mb-0">
-                                                    <div class="d-md-flex">
-                                                        <div class="item-card9 w-65">
-                                                            <div class="card-body pt-4 pb-4">
-                                                                <a href="page-details.html" class="text-dark">
-                                                                    <h3 class="" th:text="${bean.getName()}">
-                                                                        HTML Template</h3></a>
-                                                                <ul class="list-unstyled widget-spec1 mt-3 mb-0">
-                                                                    <li class="mb-1">
-                                                                        <i class="fa fa-circle-o text-muted"
-                                                                           aria-hidden="true"></i><h5 th:text="${bean.getTag().getName()}"></h5>
-                                                                    </li>
-                                                                    <li class="mb-1">
-                                                                        <i class="fa fa-circle-o text-muted"
-                                                                           aria-hidden="true" ></i> <h5 th:text="${bean.getType().getName()}"></h5>
-                                                                    </li>
-                                                                    <li class="mb-1">
-                                                                        <i class="fa fa-circle-o text-muted"
-                                                                           aria-hidden="true"></i> <h5 th:text="${bean.getDevice().getName()}"></h5>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
+                                                <div class="item-card9-icons">
+                                                    <a class="item-card9-icons1 bg-purple"
+                                                       data-toggle="tooltip" data-placement="top" title="Share">
+                                                        <i class="icon icon-share"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="card border-0 mb-0">
+                                                <div class="d-md-flex">
+                                                    <div class="item-card9 w-65">
+                                                        <div class="card-body pt-4 pb-4">
+                                                            <a href="page-details.html" class="text-dark">
+                                                                <h3 class="" th:text="${bean.getName()}">
+                                                                    HTML Template</h3></a>
+                                                            <ul class="list-unstyled widget-spec1 mt-3 mb-0">
+                                                                <li class="mb-1">
+                                                                    <i class="fa fa-circle-o text-muted"
+                                                                       aria-hidden="true"></i>
+                                                                    <h5 th:text="${bean.getTag().getName()}"></h5>
+                                                                </li>
+                                                                <li class="mb-1">
+                                                                    <i class="fa fa-circle-o text-muted"
+                                                                       aria-hidden="true"></i>
+                                                                    <h5 th:text="${bean.getType().getName()}"></h5>
+                                                                </li>
+                                                                <li class="mb-1">
+                                                                    <i class="fa fa-circle-o text-muted"
+                                                                       aria-hidden="true"></i>
+                                                                    <h5 th:text="${bean.getDevice().getName()}"></h5>
+                                                                </li>
+                                                            </ul>
                                                         </div>
-
                                                     </div>
-                                                    <div class="card-footer pt-1 pl-3 pr-3 pb-1">
-                                                        <div class="footerimg d-sm-flex mt-0 mb-0">
-                                                            <div class="d-flex footerimg-l mb-0 mt-4">
 
-                                                                <a th:text="${bean.getCreator().getUsername()}"
-                                                                   class="time-title text-muted p-0 leading-normal mt-2">Emily
-                                                                    <i class="fe fe-check-circle text-success fs-12 ml-1"
-                                                                       data-toggle="tooltip" data-placement="top"
-                                                                       title="verified"></i></a>
-                                                            </div>
-                                                            <div class="footerimg-r ml-auto">
-                                                                <div class="btn  btn-list">
-                                                                    <a th:href="@{/versions/{beanName}/unapproved/(beanName=${bean.getName()})}"
-                                                                       class="btn ripple  btn-primary">
-                                                                        <i class="fe fe-airplay mr-1"></i>View Not Approved Version</a>
-                                                                </div>
+                                                </div>
+                                                <div class="card-footer pt-1 pl-3 pr-3 pb-1">
+                                                    <div class="footerimg d-sm-flex mt-0 mb-0">
+                                                        <div class="d-flex footerimg-l mb-0 mt-4">
+
+                                                            <a th:text="${bean.getCreator().getUsername()}"
+                                                               class="time-title text-muted p-0 leading-normal mt-2">Emily
+                                                                <i class="fe fe-check-circle text-success fs-12 ml-1"
+                                                                   data-toggle="tooltip" data-placement="top"
+                                                                   title="verified"></i></a>
+                                                        </div>
+                                                        <div class="footerimg-r ml-auto">
+                                                            <div class="btn  btn-list">
+                                                                <a th:href="@{/versions/{beanName}/unapproved/(beanName=${bean.getName()})}"
+                                                                   class="btn ripple  btn-primary">
+                                                                    <i class="fe fe-airplay mr-1"></i>View Not Approved
+                                                                    Versions</a>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
-                                        <!-- End of Single Bean-->
 
                                     </div>
+                                    <!-- End of Single Bean-->
+
                                 </div>
                             </div>
                         </div>
@@ -339,10 +340,9 @@
                 </div>
             </div>
         </div>
+    </div>
 
-    </section><!--Section-->
-
-</form>
+</section><!--Section-->
 
 <!--Footer Section-->
 <section>
