@@ -21,6 +21,5 @@ public interface BeanService {
 
     List<Bean> filter(Integer tag, Integer type, Integer device, Integer offset);
 
-    List<Bean> findByStatus(String status, int offset);
-
+    List<Bean> notApproved();
 }

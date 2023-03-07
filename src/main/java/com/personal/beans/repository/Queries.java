@@ -71,15 +71,14 @@ public class Queries {
                     "ORDER BY b.name ASC " +
                     "LIMIT 5 OFFSET :offset";
 
-    public static final String FIND_BEANS_BY_STATUS =
+    public static final String FIND_NOT_APPROVED_BEANS =
             "SELECT * FROM beans b " +
                     "WHERE b.id IN ( " +
                     "   SELECT ve.bean_id " +
                     "   FROM versions ve " +
                     "   JOIN statuses s ON ve.status_id = s.id " +
-                    "   WHERE s.name = :status) " +
-                    "ORDER BY b.name ASC " +
-                    "LIMIT 10 OFFSET :offset";
+                    "   WHERE s.name LIKE 'Waiting approval' ) " +
+                    "ORDER BY b.name ASC ";
 
     public static final String FIND_ENABLED_USER_COUNT =
             "SELECT COUNT(u.id) FROM users u " +

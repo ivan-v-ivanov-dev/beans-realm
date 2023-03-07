@@ -126,4 +126,10 @@ public class BeanController {
         return "redirect:/";
     }
 
+    @GetMapping("/beans/approve")
+    public String approveBeans(Model model) {
+        model.addAttribute("notApprovedBeans", this.beanService.notApproved());
+        return "beans-not-approved";
+    }
+
 }

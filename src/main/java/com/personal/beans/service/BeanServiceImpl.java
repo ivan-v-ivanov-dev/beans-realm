@@ -125,8 +125,8 @@ public class BeanServiceImpl implements BeanService {
     }
 
     @Override
-    public List<Bean> findByStatus(String status, int offset) {
-        return this.beanRepository.findByStatus(status, offset);
+    public List<Bean> notApproved() {
+        return this.beanRepository.notApproved();
     }
 
     private void calculateAllBeansDownloadCount(List<Bean> beans) {
