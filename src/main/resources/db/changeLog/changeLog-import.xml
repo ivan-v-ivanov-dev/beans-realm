@@ -333,7 +333,7 @@
             <column name="modifications" value="New Heroes"/>
             <column name="repository_url" value="https://github.com/ivanovbiol/unknown-name"/>
             <column name="sha256_checksum" value="e37f3debe7f93d10c53ddbac2d40bba47d76a33bf3ec3fd21e196b5319059f7f"/>
-            <column name="download_count"/>
+            <column name="download_count" value="4"/>
         </insert>
 
         <!-- Mine all Resources 2 Versions -->
@@ -577,7 +577,7 @@
             <column name="modifications" value="Fourth Version release"/>
             <column name="repository_url" value="https://github.com/ivanovbiol/unknown-name"/>
             <column name="sha256_checksum" value="e37f3debe7f93d10c53ddbac2d40bba47d76a33bf3ec3fd21e196b5319059f7f"/>
-            <column name="download_count"/>
+            <column name="download_count" value="763"/>
         </insert>
 
         <insert tableName="versions">
