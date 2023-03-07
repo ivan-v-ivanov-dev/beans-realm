@@ -38,7 +38,6 @@ public class Constants {
     public static final String TAG = "tag";
     public static final String DEVICE = "device";
     public static final String OFFSET = "offset";
-    public static final String STATUS = "status";
 
     // Redis keys constants
     public static final String LATEST_BEANS = "LATEST_BEANS";
