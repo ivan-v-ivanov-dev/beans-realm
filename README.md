@@ -39,7 +39,7 @@ password: **ivan**
 
 ## Start the application
 
-Just clone the repository and Gradle bootRun the project in IntelliJ IDEA. All needed components (PostgreSQL, PostgreSQL adminer, MongoDB, Keycloak and Redis) are instantiated on project starup in Docker containers (see **docker-compose.yml** in root folder). Sample data will be imported automatically in PostgreSQL via Liquibase. In MongoDB sample data will be imported automatically via CommentRepository (see MongoConfig.java file).  
+Just clone (**git clone https://github.com/ivanovbiol/beans-realm.git**) the repository and Gradle **bootRun** the project in IntelliJ IDEA. All needed components (PostgreSQL, PostgreSQL adminer, MongoDB, Keycloak and Redis) are instantiated on project starup in Docker containers (see **docker-compose.yml** in root folder). Sample data will be imported automatically in PostgreSQL via Liquibase. In MongoDB sample data will be imported automatically via CommentRepository (see **config/MongoConfig** file).  
 
  - Note: In order to start the application you need to have Docker Desktop installed on your machine.
  
@@ -113,4 +113,4 @@ Database: storage
 
 # Disclaimer   
 
-This is personal coding skills training project. NO real software product are distrubuted and/or uploaded in the application. The term "Beans" serves a an non-realistic, non-profitable representation of dummy products. Official Docker images are used for the technologies. Paid bootstrap theme was used for the frontend view (for styled HTML sources). 
+This is personal coding skills training project. NO real software product are distrubuted and/or uploaded in the application. The term "Beans" serves a an non-realistic, non-profitable representation of dummy products. Official Docker images are used for the technologies. Paid bootstrap theme was used for the frontend view (for styled HTML sources). Sample images obtained from https://pixabay.com/bg/.
