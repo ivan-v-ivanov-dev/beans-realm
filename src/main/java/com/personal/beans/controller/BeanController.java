@@ -134,7 +134,7 @@ public class BeanController {
 
     @GetMapping("/versions/{beanName}/unapproved")
     public String unapprovedVersionsForBean(@PathVariable String beanName, Model model) {
-        model.addAttribute("notApprovedVersions", this.versionService.unapprovedForBean(beanName));
+        model.addAttribute("notApprovedVersions", this.versionService.notApprovedByBean(beanName));
         model.addAttribute("beanName", beanName);
         return "bean-versions-not-approved";
     }

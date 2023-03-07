@@ -58,7 +58,7 @@ public class VersionServiceImpl implements VersionService {
     }
 
     @Override
-    public List<Version> unapprovedForBean(String bean) {
+    public List<Version> notApprovedByBean(String bean) {
         String hashKey = BEAN_ + bean.replace(EMPTY_SPACE, UNDERSCORE).toUpperCase() + _NOT_APPROVED_VERSIONS;
 
         if (this.redisCacheService.containsKey(hashKey)) {
@@ -66,7 +66,7 @@ public class VersionServiceImpl implements VersionService {
             return this.redisCacheService.retrieve(hashKey, Version.class);
         }
 
-        List<Version> versions = this.versionRepository.unapprovedForBean(bean);
+        List<Version> versions = this.versionRepository.notApprovedByBean(bean);
         this.redisCacheService.save(hashKey, versions);
         log.info(String.format(FROM_POSTGRES_NOT_APPROVED_VERSIONS_FOR_BEAN_TEMPLATE, bean));
         return versions;

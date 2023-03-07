@@ -22,7 +22,7 @@ public interface VersionRepository extends JpaRepository<Version, Integer> {
     List<Version> filter(@Param(BEAN) String bean);
 
     @Query(FILTER_UNAPPROVED_VERSION_FOR_BEANS)
-    List<Version> unapprovedForBean(@Param(BEAN) String bean);
+    List<Version> notApprovedByBean(@Param(BEAN) String bean);
 
     @Query(value = COUNT_APPROVED_VERSIONS_BY_BEAN_NAME, nativeQuery = true)
     int countByBeanName(String beanName);
