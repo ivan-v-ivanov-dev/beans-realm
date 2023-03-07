@@ -30,6 +30,10 @@ public class Constants {
     public static final String FROM_POSTGRES_ALL_DEVICES = FROM_POSTGRES + "All Devices";
     public static final String FROM_REDIS_VERSIONS_COUNT_FOR_BEAN_TEMPLATE = FROM_REDIS + "Versions count for Bean %s";
     public static final String FROM_POSTGRES_VERSIONS_COUNT_FOR_BEAN_TEMPLATE = FROM_POSTGRES + "Versions count for Bean %s";
+    public static final String FROM_REDIS_BEANS_WITH_NOT_APPROVED_VERSIONS = FROM_REDIS + "Beans with unapproved versions";
+    public static final String FROM_POSTGRES_BEANS_WITH_NOT_APPROVED_VERSIONS = FROM_POSTGRES + "Beans with unapproved versions";
+    public static final String FROM_REDIS_NOT_APPROVED_VERSIONS_FOR_BEAN_TEMPLATE = FROM_REDIS + "Unapproved versions for Bean %s";
+    public static final String FROM_POSTGRES_NOT_APPROVED_VERSIONS_FOR_BEAN_TEMPLATE = FROM_POSTGRES + "Unapproved versions for Bean %s";
 
     // Repository constants
     public static final String NAME = "name";
@@ -51,7 +55,9 @@ public class Constants {
     public static final String ALL_DEVICES = "ALL_DEVICES";
     public static final String BEAN_ = "BEAN_";
     public static final String _VERSIONS = "_VERSIONS";
+    public static final String _NOT_APPROVED_VERSIONS = "_NOT_APPROVED_VERSIONS";
     public static final String VERSIONS_COUNT_FOR_BEAN_ = "VERSIONS_COUNT_FOR_BEAN_";
+    public static final String BEANS_WITH_NOT_APPROVED_VERSIONS = "BEANS_WITH_NOT_APPROVED_VERSIONS";
 
     // Service constants
     public static final String EMPTY_SPACE = " ";
