@@ -190,7 +190,7 @@
                             <i class="fe fe-upload"></i> <a th:href="@{/beans/create}">Upload Bean</a></li>
                         <li aria-haspopup="true">
                         <li aria-haspopup="true">
-                            <i class="fe fe-codepen"></i><a th:href="@{/beans/approve}">Approve New Beans</a>
+                            <i class="fe fe-codepen"></i><a th:href="@{/beans/unapproved}">Approve New Beans</a>
                         </li>
                         <li aria-haspopup="true">
                             <i class="fe fe-users"></i><a th:href="@{/users}">All Users</a>
@@ -310,7 +310,6 @@
                                                 <div class="card-footer pt-1 pl-3 pr-3 pb-1">
                                                     <div class="footerimg d-sm-flex mt-0 mb-0">
                                                         <div class="d-flex footerimg-l mb-0 mt-4">
-
                                                             <a th:text="${bean.getCreator().getUsername()}"
                                                                class="time-title text-muted p-0 leading-normal mt-2">Emily
                                                                 <i class="fe fe-check-circle text-success fs-12 ml-1"
@@ -319,17 +318,15 @@
                                                         </div>
                                                         <div class="footerimg-r ml-auto">
                                                             <div class="btn  btn-list">
-                                                                <a th:href="@{/versions/{beanName}/unapproved/(beanName=${bean.getName()})}"
+                                                                <a th:href="@{/beans/{beanName}/versions/unapproved/(beanName=${bean.getName()})}"
                                                                    class="btn ripple  btn-primary">
-                                                                    <i class="fe fe-airplay mr-1"></i>View Not Approved
-                                                                    Versions</a>
+                                                                    <i class="fe fe-airplay mr-1"></i>View Not Approved Versions</a>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
                                     <!-- End of Single Bean-->
 
