@@ -100,12 +100,12 @@ public class Queries {
                     "s.name = 'Approved' " +
                     "ORDER BY v.name DESC";
 
-    public static final String FILTER_BEANS_TO_APPROVE =
+    public static final String FILTER_UNAPPROVED_VERSION_FOR_BEANS =
             "SELECT v FROM Version v " +
                     "JOIN v.bean b " +
                     "JOIN v.status s " +
                     "WHERE b.name = :bean AND " +
-                    "s.name NOT LIKE 'Approved' " +
+                    "s.name LIKE 'Waiting approval' " +
                     "ORDER BY v.name DESC";
 
     public static final String COUNT_APPROVED_VERSIONS_BY_BEAN_NAME =

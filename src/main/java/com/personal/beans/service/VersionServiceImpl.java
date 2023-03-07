@@ -58,8 +58,8 @@ public class VersionServiceImpl implements VersionService {
     }
 
     @Override
-    public List<Version> filterVersionsForApproval(String bean) {
-        return this.versionRepository.filterVersionsForApproval(bean);
+    public List<Version> unapprovedForBean(String bean) {
+        return this.versionRepository.unapprovedForBean(bean);
     }
 
     @Override

@@ -12,7 +12,7 @@ public interface VersionService {
 
     List<Version> findByBean(String bean);
 
-    List<Version> filterVersionsForApproval(String bean);
+    List<Version> unapprovedForBean(String bean);
 
     int countByBean(String beanName);
 }
