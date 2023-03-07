@@ -126,17 +126,23 @@ public class BeanController {
         return "redirect:/";
     }
 
-    @GetMapping("/beans/approve")
+    @GetMapping("/beans/unapproved")
     public String approveBeans(Model model) {
         model.addAttribute("notApprovedBeans", this.beanService.notApproved());
         return "beans-not-approved";
     }
 
-    @GetMapping("/versions/{beanName}/unapproved")
+    @GetMapping("/beans/{beanName}/versions/unapproved")
     public String unapprovedVersionsForBean(@PathVariable String beanName, Model model) {
         model.addAttribute("notApprovedVersions", this.versionService.notApprovedByBean(beanName));
-        model.addAttribute("beanName", beanName);
+        model.addAttribute("beanNameFromModel", beanName);
         return "bean-versions-not-approved";
     }
 
+    @PostMapping("/beans/versions/approve")
+    public String approveVersionForBean(@RequestParam("versionName") String versionName,
+                                        @RequestParam("beanName") String beanName) {
+        this.versionService.approveByBean(versionName, beanName);
+        return "redirect:/beans/" + beanName + "/versions/unapproved";
+    }
 }
