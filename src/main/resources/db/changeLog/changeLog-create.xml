@@ -115,7 +115,7 @@
             <column name="name" type="varchar(50)">
                 <constraints nullable="false" unique="false"/>
             </column>
-            <column name="content" type="bytea">
+            <column name="content" type="blob">
                 <constraints nullable="true" unique="false"/>
             </column>
             <column name="bean_id" type="int">
