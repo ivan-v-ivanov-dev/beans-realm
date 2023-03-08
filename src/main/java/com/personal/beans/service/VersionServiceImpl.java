@@ -1,6 +1,8 @@
 package com.personal.beans.service;
 
+import com.personal.beans.models.Status;
 import com.personal.beans.models.Version;
+import com.personal.beans.repository.postgres.StatusRepository;
 import com.personal.beans.repository.postgres.VersionRepository;
 import com.personal.beans.service.contracts.RedisCacheService;
 import com.personal.beans.service.contracts.VersionService;
@@ -17,11 +19,14 @@ public class VersionServiceImpl implements VersionService {
 
     private final VersionRepository versionRepository;
     private final RedisCacheService redisCacheService;
+    private final StatusRepository statusRepository;
 
     public VersionServiceImpl(VersionRepository versionRepository,
-                              RedisCacheService redisCacheService) {
+                              RedisCacheService redisCacheService,
+                              StatusRepository statusRepository) {
         this.versionRepository = versionRepository;
         this.redisCacheService = redisCacheService;
+        this.statusRepository = statusRepository;
     }
 
     @Override
@@ -59,17 +64,7 @@ public class VersionServiceImpl implements VersionService {
 
     @Override
     public List<Version> notApprovedByBean(String bean) {
-        String hashKey = BEAN_ + bean.replace(EMPTY_SPACE, UNDERSCORE).toUpperCase() + _NOT_APPROVED_VERSIONS;
-
-        if (this.redisCacheService.containsKey(hashKey)) {
-            log.info(String.format(FROM_REDIS_NOT_APPROVED_VERSIONS_FOR_BEAN_TEMPLATE, bean));
-            return this.redisCacheService.retrieve(hashKey, Version.class);
-        }
-
-        List<Version> versions = this.versionRepository.notApprovedByBean(bean);
-        this.redisCacheService.save(hashKey, versions);
-        log.info(String.format(FROM_POSTGRES_NOT_APPROVED_VERSIONS_FOR_BEAN_TEMPLATE, bean));
-        return versions;
+        return this.versionRepository.notApprovedByBean(bean);
     }
 
     @Override
@@ -85,5 +80,14 @@ public class VersionServiceImpl implements VersionService {
         this.redisCacheService.save(hashKey, versionsCount);
         log.info(String.format(FROM_POSTGRES_VERSIONS_COUNT_FOR_BEAN_TEMPLATE, beanName));
         return versionsCount;
+    }
+
+    @Override
+    public void approveByBean(String versionName, String beanName) {
+        Version version = this.versionRepository.findByNameAndBeanName(versionName, beanName);
+        Status approvedStatus = this.statusRepository.findByName(APPROVED);
+        version.setStatus(approvedStatus);
+        this.versionRepository.save(version);
+        log.info(String.format(APPROVE_VERSION_FOR_BEAN_TEMPLATE, version.getName(), beanName));
     }
 }

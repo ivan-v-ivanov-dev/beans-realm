@@ -26,4 +26,6 @@ public interface VersionRepository extends JpaRepository<Version, Integer> {
 
     @Query(value = COUNT_APPROVED_VERSIONS_BY_BEAN_NAME, nativeQuery = true)
     int countByBeanName(String beanName);
+
+    Version findByNameAndBeanName(String name, String beanName);
 }

@@ -15,4 +15,6 @@ public interface VersionService {
     List<Version> notApprovedByBean(String bean);
 
     int countByBean(String beanName);
+
+    void approveByBean(String beanName, String versionName);
 }
