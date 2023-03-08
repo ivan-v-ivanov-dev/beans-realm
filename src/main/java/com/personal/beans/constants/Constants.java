@@ -30,10 +30,7 @@ public class Constants {
     public static final String FROM_POSTGRES_ALL_DEVICES = FROM_POSTGRES + "All Devices";
     public static final String FROM_REDIS_VERSIONS_COUNT_FOR_BEAN_TEMPLATE = FROM_REDIS + "Versions count for Bean %s";
     public static final String FROM_POSTGRES_VERSIONS_COUNT_FOR_BEAN_TEMPLATE = FROM_POSTGRES + "Versions count for Bean %s";
-    public static final String FROM_REDIS_BEANS_WITH_NOT_APPROVED_VERSIONS = FROM_REDIS + "Beans with unapproved versions";
-    public static final String FROM_POSTGRES_BEANS_WITH_NOT_APPROVED_VERSIONS = FROM_POSTGRES + "Beans with unapproved versions";
-    public static final String FROM_REDIS_NOT_APPROVED_VERSIONS_FOR_BEAN_TEMPLATE = FROM_REDIS + "Unapproved versions for Bean %s";
-    public static final String FROM_POSTGRES_NOT_APPROVED_VERSIONS_FOR_BEAN_TEMPLATE = FROM_POSTGRES + "Unapproved versions for Bean %s";
+    public static final String APPROVE_VERSION_FOR_BEAN_TEMPLATE = "Approve version %s for bean %s";
 
     // Repository constants
     public static final String NAME = "name";
@@ -55,15 +52,14 @@ public class Constants {
     public static final String ALL_DEVICES = "ALL_DEVICES";
     public static final String BEAN_ = "BEAN_";
     public static final String _VERSIONS = "_VERSIONS";
-    public static final String _NOT_APPROVED_VERSIONS = "_NOT_APPROVED_VERSIONS";
     public static final String VERSIONS_COUNT_FOR_BEAN_ = "VERSIONS_COUNT_FOR_BEAN_";
-    public static final String BEANS_WITH_NOT_APPROVED_VERSIONS = "BEANS_WITH_NOT_APPROVED_VERSIONS";
 
     // Service constants
     public static final String EMPTY_SPACE = " ";
     public static final String UNDERSCORE = "_";
     public static final String TIME_FORMAT_TEMPLATE = "dd-MM-yyyy HH:mm:ss";
     public static final String WAITING_APPROVAL = "Waiting approval";
+    public static final String APPROVED = "Approved";
     public static final String FIRST_VERSION = "First Version";
     public static final String SHA_256 = "SHA-256";
     public static final String ONE_AS_STRING = "1";
@@ -80,7 +76,6 @@ public class Constants {
     public static final String REPOSITORY_URL_CAN_NOT_BE_EMPTY = "Repository URL can not be empty!";
     public static final String REPOSITORY_URL_REG_EX_PATTERN = "https://github\\.com/.+/.+";
     public static final String REPOSITORY_URL_MUST_BE_A_GIT_HUB_REPOSITORY = "Repository URL must be a GitHub repository!";
-
 
     private Constants() {
     }
