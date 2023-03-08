@@ -126,14 +126,8 @@ public class BeanServiceImpl implements BeanService {
 
     @Override
     public List<Bean> notApproved() {
-        if (this.redisCacheService.containsKey(BEANS_WITH_NOT_APPROVED_VERSIONS)) {
-            log.info(FROM_REDIS_BEANS_WITH_NOT_APPROVED_VERSIONS);
-            return this.redisCacheService.retrieve(BEANS_WITH_NOT_APPROVED_VERSIONS, Bean.class);
-        }
         List<Bean> beans = this.beanRepository.notApproved();
         calculateAllBeansDownloadCount(beans);
-        this.redisCacheService.save(BEANS_WITH_NOT_APPROVED_VERSIONS, beans);
-        log.info(FROM_POSTGRES_BEANS_WITH_NOT_APPROVED_VERSIONS);
         return beans;
     }
 
