@@ -50,7 +50,7 @@ public class BeanController {
         return "index";
     }
 
-    @GetMapping("/beans/{beanName}")
+    @GetMapping("/bean/{beanName}")
     public String beanDetails(@PathVariable String beanName, Model model) {
         model.addAttribute("currentBean", this.beanService.findByName(beanName));
         model.addAttribute("currentBeanVersions", this.versionService.findByBean(beanName));
@@ -62,7 +62,7 @@ public class BeanController {
     }
 
     @RolesAllowed("authorised-user")
-    @PostMapping("/beans/{beanName}/comment")
+    @PostMapping("/bean/{beanName}/comment")
     public String postComment(@PathVariable String beanName,
                               @Valid @ModelAttribute("commentDto") CommentDto commentDto,
                               BindingResult errors, Model model) {
@@ -77,10 +77,10 @@ public class BeanController {
             return "bean";
         }
         this.commentService.save(beanName, commentDto);
-        return "redirect:/beans/" + beanName;
+        return "redirect:/bean/" + beanName;
     }
 
-    @GetMapping("/beans/filter")
+    @GetMapping("/beans")
     public String filter(Model model) {
         model.addAttribute("tags", this.tagService.findAll());
         model.addAttribute("types", this.typeService.findAll());
@@ -88,7 +88,7 @@ public class BeanController {
         return "beans-filter-empty";
     }
 
-    @PostMapping("/beans/filter")
+    @PostMapping("/beans")
     public String filterBeans(@RequestParam(required = false) Integer tag,
                               @RequestParam(required = false) Integer type,
                               @RequestParam(required = false) Integer device,
@@ -101,7 +101,7 @@ public class BeanController {
     }
 
     @RolesAllowed("authorised-user")
-    @GetMapping("/beans/create")
+    @GetMapping("/bean")
     public String create(Model model) {
         model.addAttribute("tags", this.tagService.findAll());
         model.addAttribute("types", this.typeService.findAll());
@@ -111,7 +111,7 @@ public class BeanController {
     }
 
     @RolesAllowed("authorised-user")
-    @PostMapping("/beans/create")
+    @PostMapping("/bean")
     public String createBean(@Valid @ModelAttribute("beanDto") BeanDto beanDto,
                              BindingResult errors, Model model) {
         model.addAttribute("tags", this.tagService.findAll());
@@ -132,17 +132,17 @@ public class BeanController {
         return "beans-not-approved";
     }
 
-    @GetMapping("/beans/{beanName}/versions/unapproved")
+    @GetMapping("/bean/{beanName}/versions/unapproved")
     public String unapprovedVersionsForBean(@PathVariable String beanName, Model model) {
         model.addAttribute("notApprovedVersions", this.versionService.notApprovedByBean(beanName));
         model.addAttribute("beanNameFromModel", beanName);
         return "bean-versions-not-approved";
     }
 
-    @PostMapping("/beans/versions/approve")
+    @PostMapping("/bean/version/approve")
     public String approveVersionForBean(@RequestParam("versionName") String versionName,
                                         @RequestParam("beanName") String beanName) {
         this.versionService.approveByBean(versionName, beanName);
-        return "redirect:/beans/" + beanName + "/versions/unapproved";
+        return "redirect:/bean/" + beanName + "/versions/unapproved";
     }
 }
