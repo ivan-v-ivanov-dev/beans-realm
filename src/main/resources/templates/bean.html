@@ -189,17 +189,19 @@
                     <ul class="horizontalMenu-list">
                         <li aria-haspopup="true"><i class="fe fe-home"></i><a th:href="@{/}">Home </a></li>
                         <li aria-haspopup="true">
-                            <i class="fe fe-codepen"></i><a th:href="@{/beans/filter}">Filter Beans</a>
+                            <i class="fe fe-codepen"></i><a th:href="@{/beans}">Filter Beans</a>
                         </li>
                         <li aria-haspopup="true">
-                            <i class="fe fe-upload"></i> <a th:href="@{/beans/create}">Upload Bean</a></li>
+                            <i class="fe fe-upload"></i> <a th:href="@{/bean}">Upload Bean</a></li>
                         <li aria-haspopup="true">
                         <li aria-haspopup="true">
                             <i class="fe fe-codepen"></i><a th:href="@{/beans/unapproved}">Approve New Beans</a>
                         </li>
                         <li aria-haspopup="true">
-                            <i class="fe fe-users"></i><a th:href="@{/users}">All Users</a></li>
-                        <li aria-haspopup="true"><i class="fe fe-globe"></i><a th:href="@{/contact}"> Contacts</a>
+                            <i class="fe fe-users"></i><a th:href="@{/users}">All Users</a>
+                        </li>
+                        <li aria-haspopup="true">
+                            <i class="fe fe-globe"></i><a th:href="@{/contact}"> Contacts</a>
                         </li>
                     </ul>
                 </nav>
@@ -428,7 +430,7 @@
 
                             </div>
 
-                            <form th:action="@{/beans/{beanName}/comment(beanName=${currentBean.getName()})}"
+                            <form th:action="@{/bean/{beanName}/comment(beanName=${currentBean.getName()})}"
                                   th:object="${commentDto}" method="post">
                                 <div class="card mt-5">
                                     <div class="card-header">

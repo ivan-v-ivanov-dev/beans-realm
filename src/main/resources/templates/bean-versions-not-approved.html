@@ -184,10 +184,10 @@
                     <ul class="horizontalMenu-list">
                         <li aria-haspopup="true"><i class="fe fe-home"></i><a th:href="@{/}">Home </a></li>
                         <li aria-haspopup="true">
-                            <i class="fe fe-codepen"></i><a th:href="@{/beans/filter}">Filter Beans</a>
+                            <i class="fe fe-codepen"></i><a th:href="@{/beans}">Filter Beans</a>
                         </li>
                         <li aria-haspopup="true">
-                            <i class="fe fe-upload"></i> <a th:href="@{/beans/create}">Upload Bean</a></li>
+                            <i class="fe fe-upload"></i> <a th:href="@{/bean}">Upload Bean</a></li>
                         <li aria-haspopup="true">
                         <li aria-haspopup="true">
                             <i class="fe fe-codepen"></i><a th:href="@{/beans/unapproved}">Approve New Beans</a>
@@ -257,7 +257,7 @@
                                     <div class="card overflow-hidden card-list-item1"
                                          th:each="version : ${notApprovedVersions}">
 
-                                        <form th:action="@{/beans/versions/approve/}" method="post">
+                                        <form th:action="@{/bean/version/approve}" method="post">
 
                                             <div class="d-md-flex">
                                                 <div class="card border-0 mb-0">

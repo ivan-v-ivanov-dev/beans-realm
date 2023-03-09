@@ -188,10 +188,10 @@
                     <ul class="horizontalMenu-list">
                         <li aria-haspopup="true"><i class="fe fe-home"></i><a th:href="@{/}">Home </a></li>
                         <li aria-haspopup="true">
-                            <i class="fe fe-codepen"></i><a th:href="@{/beans/filter}">Filter Beans</a>
+                            <i class="fe fe-codepen"></i><a th:href="@{/beans}">Filter Beans</a>
                         </li>
                         <li aria-haspopup="true">
-                            <i class="fe fe-upload"></i> <a th:href="@{/beans/create}">Upload Bean</a></li>
+                            <i class="fe fe-upload"></i> <a th:href="@{/bean}">Upload Bean</a></li>
                         <li aria-haspopup="true">
                         <li aria-haspopup="true">
                             <i class="fe fe-codepen"></i><a th:href="@{/beans/unapproved}">Approve New Beans</a>
@@ -242,7 +242,7 @@
 
 </div><!--/Section-->
 
-<form method="POST" th:action="@{/beans/filter}">
+<form method="POST" th:action="@{/beans}">
 
     <!--Section-->
     <section class="sptb">

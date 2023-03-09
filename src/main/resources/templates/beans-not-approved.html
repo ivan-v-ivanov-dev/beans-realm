@@ -184,10 +184,10 @@
                     <ul class="horizontalMenu-list">
                         <li aria-haspopup="true"><i class="fe fe-home"></i><a th:href="@{/}">Home </a></li>
                         <li aria-haspopup="true">
-                            <i class="fe fe-codepen"></i><a th:href="@{/beans/filter}">Filter Beans</a>
+                            <i class="fe fe-codepen"></i><a th:href="@{/beans}">Filter Beans</a>
                         </li>
                         <li aria-haspopup="true">
-                            <i class="fe fe-upload"></i> <a th:href="@{/beans/create}">Upload Bean</a></li>
+                            <i class="fe fe-upload"></i> <a th:href="@{/bean}">Upload Bean</a></li>
                         <li aria-haspopup="true">
                         <li aria-haspopup="true">
                             <i class="fe fe-codepen"></i><a th:href="@{/beans/unapproved}">Approve New Beans</a>
@@ -318,7 +318,7 @@
                                                         </div>
                                                         <div class="footerimg-r ml-auto">
                                                             <div class="btn  btn-list">
-                                                                <a th:href="@{/beans/{beanName}/versions/unapproved/(beanName=${bean.getName()})}"
+                                                                <a th:href="@{/bean/{beanName}/versions/unapproved/(beanName=${bean.getName()})}"
                                                                    class="btn ripple  btn-primary">
                                                                     <i class="fe fe-airplay mr-1"></i>View Not Approved Versions</a>
                                                             </div>
