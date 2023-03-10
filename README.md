@@ -9,31 +9,38 @@ Index home page available on http://localhost:8080.
 
 **Home** page displays counters for the total number of beans, total Beans downloads, total registered users and total comments. There are also 3 sections with Beans - **Latest**, **Most downloaded** and **Top Rated Beans**. 
 
-![image](https://user-images.githubusercontent.com/51414119/222962593-d7f49339-da94-49c1-98f0-38370081c73c.png)
+![image](https://user-images.githubusercontent.com/51414119/224305946-0626bbef-f012-4854-8b76-f3ebdb7c1675.png)
 
 **Single Bean** page contains detailed information for the current Bean. This page has 3 sections: 
   - **Details** - diplaying the detailed information for the Bean;
   - **Versions** - displaying the version which the Bean has. They can be downloaded through the DOWNLOAD button. 
   - **Reviews (Comments)** - displaying the comments comments for the Beans leeft by other users. Only posting a comment requires authentication (Submit button will redirect you to Keycloak's login page).
 
-![image](https://user-images.githubusercontent.com/51414119/222962805-aa6b0d39-dd6e-406e-92f7-ebfd1d731d4f.png)
+![image](https://user-images.githubusercontent.com/51414119/224306147-291fc983-d3ea-4e0b-b3d9-603e431cec11.png)
 
 **Filter Beans** page you can filter Beans according to certain criteria.
 
-![image](https://user-images.githubusercontent.com/51414119/222962831-3da5d8c6-dbfb-45ad-8d69-5be7a953ec74.png)
+![image](https://user-images.githubusercontent.com/51414119/224306367-ea86b45c-2d53-4eb0-843c-b1be0aeca5af.png)
 
-### Restricted access pages    
+### Restricted access pages     
 
-**Upload Bean** page is restricted for only for registered users. If you click on the page it will redirect you to Keycloak's login page.     
+**Upload Bean** page is restricted for only for **registered users** and **admin**.    
 
-Registered user credentials   
+**Approve New Beans** is restricted only for **admin**. If you click on the pages it will redirect you to Keycloak's login page.      
 
-username: **ivan**  
+Admin credentials      
+
+username: **admin**    
+password: **admin**       
+
+Registered user credentials      
+
+username: **ivan**   
 password: **ivan**    
 
 ![image](https://user-images.githubusercontent.com/51414119/222964073-a9163a98-752b-41a0-8ae0-bc5c3f37749d.png)    
 
-![image](https://user-images.githubusercontent.com/51414119/222962755-ce76b82d-81a6-4243-9b29-14919b21c1ba.png)
+![image](https://user-images.githubusercontent.com/51414119/224306606-ee4d9af0-66e7-46e8-aae8-a291649ba6ac.png)
 
 # Technical overview
 
