@@ -26,16 +26,15 @@ Index home page available on http://localhost:8080.
 
 **Upload Bean** page is restricted for only for **registered users** and **admin**.    
 
-**Approve New Beans** and *View not approved versions** are restricted only for **admin**. If you click on the pages it will redirect you to Keycloak's login page.    
-Admin credentials      
+**Approve New Beans** and **View not approved versions** are restricted only for **admin**. If you click on the pages it will redirect you to Keycloak's login page.     
 
-username: **admin**    
-password: **admin**       
+Admin credentials        
+username: **admin**      
+password: **admin**         
 
-Registered user credentials      
-
-username: **ivan**   
-password: **ivan**    
+Registered user credentials        
+username: **ivan**     
+password: **ivan**      
 
 ![image](https://user-images.githubusercontent.com/51414119/222964073-a9163a98-752b-41a0-8ae0-bc5c3f37749d.png)    
 
