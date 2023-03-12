@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.personal.beans.constants.Constants.*;
+import static com.personal.beans.service.constants.LoggerConstants.*;
+import static com.personal.beans.service.constants.RedisKeysConstants.*;
+import static com.personal.beans.service.constants.ServiceConstants.*;
 
 @Service
 @Slf4j

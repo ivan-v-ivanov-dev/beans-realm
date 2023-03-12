@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.personal.beans.constants.Constants.*;
+import static com.personal.beans.service.constants.LoggerConstants.FROM_POSTGRES_TOTAL_REGISTERED_USERS;
+import static com.personal.beans.service.constants.LoggerConstants.FROM_REDIS_TOTAL_REGISTERED_USERS;
+import static com.personal.beans.service.constants.RedisKeysConstants.TOTAL_REGISTERED_USERS;
 
 @Service
 @Slf4j

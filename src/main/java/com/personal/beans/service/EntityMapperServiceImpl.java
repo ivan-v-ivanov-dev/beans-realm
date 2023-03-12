@@ -12,9 +12,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 import java.util.Base64;
-import java.util.Date;
 
-import static com.personal.beans.constants.Constants.*;
+import static com.personal.beans.service.constants.ServiceConstants.*;
 
 @Service
 public class EntityMapperServiceImpl implements EntityMapperService {

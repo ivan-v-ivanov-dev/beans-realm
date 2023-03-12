@@ -13,8 +13,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import static com.personal.beans.constants.Constants.DELETE_REDIS_CACHE_AT_TIME_TEMPLATE;
-import static com.personal.beans.constants.Constants.TIME_FORMAT_TEMPLATE;
+import static com.personal.beans.service.constants.LoggerConstants.DELETE_REDIS_CACHE_AT_TIME_TEMPLATE;
+import static com.personal.beans.service.constants.ServiceConstants.TIME_FORMAT_TEMPLATE;
 
 @Service
 @Slf4j

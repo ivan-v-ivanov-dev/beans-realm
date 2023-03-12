@@ -11,7 +11,7 @@ import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
-import static com.personal.beans.constants.Constants.*;
+import static com.personal.beans.service.constants.ModelEntityConstants.*;
 
 @NoArgsConstructor
 @Getter

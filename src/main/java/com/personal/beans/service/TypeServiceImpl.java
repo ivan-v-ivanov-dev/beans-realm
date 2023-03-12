@@ -10,7 +10,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.personal.beans.constants.Constants.*;
+import static com.personal.beans.service.constants.LoggerConstants.FROM_POSTGRES_ALL_TYPES;
+import static com.personal.beans.service.constants.LoggerConstants.FROM_REDIS_ALL_TYPES;
+import static com.personal.beans.service.constants.RedisKeysConstants.ALL_TYPES;
+import static com.personal.beans.service.constants.ServiceConstants.NAME;
 
 @Service
 @Slf4j
