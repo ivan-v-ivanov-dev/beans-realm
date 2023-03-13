@@ -7,7 +7,6 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-import static com.personal.beans.constants.Constants.*;
 import static com.personal.beans.repository.Queries.*;
 
 public interface BeanRepository extends JpaRepository<Bean, Integer> {
@@ -28,8 +27,8 @@ public interface BeanRepository extends JpaRepository<Bean, Integer> {
     Bean findByName(String beanName);
 
     @Query(value = FILTER_BEANS, nativeQuery = true)
-    List<Bean> filter(@Param(TAG) Integer tag, @Param(TYPE) Integer type,
-                      @Param(DEVICE) Integer device, @Param(OFFSET) Integer offset);
+    List<Bean> filter(@Param("tag") Integer tag, @Param("type") Integer type,
+                      @Param("device") Integer device, @Param("offset") Integer offset);
 
     @Query(value = FIND_NOT_APPROVED_BEANS, nativeQuery = true)
     List<Bean> notApproved();

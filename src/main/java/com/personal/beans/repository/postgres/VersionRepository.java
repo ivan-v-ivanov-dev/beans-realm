@@ -7,7 +7,6 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-import static com.personal.beans.constants.Constants.BEAN;
 import static com.personal.beans.repository.Queries.*;
 
 public interface VersionRepository extends JpaRepository<Version, Integer> {
@@ -16,13 +15,13 @@ public interface VersionRepository extends JpaRepository<Version, Integer> {
     int totalDownloadCount();
 
     @Query(value = BEAN_DOWNLOAD_COUNT, nativeQuery = true)
-    int beanDownloadCount(@Param(BEAN) String bean);
+    int beanDownloadCount(@Param("bean") String bean);
 
     @Query(FILTER_BEANS_APPROVED_VERSIONS)
-    List<Version> filter(@Param(BEAN) String bean);
+    List<Version> filter(@Param("bean") String bean);
 
     @Query(FILTER_UNAPPROVED_VERSION_FOR_BEANS)
-    List<Version> notApprovedByBean(@Param(BEAN) String bean);
+    List<Version> notApprovedByBean(@Param("bean") String bean);
 
     @Query(value = COUNT_APPROVED_VERSIONS_BY_BEAN_NAME, nativeQuery = true)
     int countByBeanName(String beanName);
