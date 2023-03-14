@@ -1,6 +1,7 @@
 package com.personal.beans.service;
 
 import com.personal.beans.models.User;
+import com.personal.beans.repository.postgres.BeanRepository;
 import com.personal.beans.repository.postgres.UserRepository;
 import com.personal.beans.service.contracts.RedisCacheService;
 import com.personal.beans.service.contracts.UserService;
@@ -18,11 +19,14 @@ import static com.personal.beans.service.constants.RedisKeysConstants.TOTAL_REGI
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final BeanRepository beanRepository;
     private final RedisCacheService redisCacheService;
 
     public UserServiceImpl(UserRepository userRepository,
+                           BeanRepository beanRepository,
                            RedisCacheService redisCacheService) {
         this.userRepository = userRepository;
+        this.beanRepository = beanRepository;
         this.redisCacheService = redisCacheService;
     }
 
@@ -40,22 +44,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findAllUsers(boolean enabled, String username) {
-        return this.userRepository.findAllUsersOrderedByUsernameAsc(enabled, username);
+    public List<User> findAll() {
+        List<User> users = this.userRepository.findAllUsers();
+        findUploadedBeansForEachUser(users);
+        return users;
     }
 
-    @Override
-    public User create(User user) {
-        return this.userRepository.save(user);
-    }
-
-    @Override
-    public User update(User user) {
-        return this.userRepository.save(user);
-    }
-
-    @Override
-    public void delete(User user) {
-        this.userRepository.delete(user);
+    private void findUploadedBeansForEachUser(List<User> users) {
+        users.forEach(user -> user.setUploadedBeans(this.beanRepository.findBeansCountByUsername(user.getUsername())));
     }
 }

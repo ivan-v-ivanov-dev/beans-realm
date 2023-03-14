@@ -148,4 +148,12 @@ public class BeanController {
         this.versionService.approveByBean(versionName, beanName);
         return "redirect:/bean/" + beanName + "/versions/unapproved";
     }
+
+    @GetMapping("/users")
+    public String users(Model model) {
+        model.addAttribute("users", this.userService.findAll());
+        model.addAttribute("usersCount", this.userService.userCount());
+        return "users";
+    }
+
 }
