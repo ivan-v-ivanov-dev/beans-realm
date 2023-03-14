@@ -33,4 +33,6 @@ public interface BeanRepository extends JpaRepository<Bean, Integer> {
     @Query(value = FIND_NOT_APPROVED_BEANS, nativeQuery = true)
     List<Bean> notApproved();
 
+    @Query(value = FIND_APPROVED_BEANS_COUNT_BY_USERNAME, nativeQuery = true)
+    int findBeansCountByUsername(@Param("username") String username);
 }
