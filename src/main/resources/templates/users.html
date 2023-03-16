@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 
 <head>
     <!-- Meta data -->
@@ -282,51 +282,68 @@
 
                 <div class="card shadow-none">
 
-                    <div class="card-body p-3" th:each="user : ${users}">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="media mt-0">
-                                    <div class="media-body ml-3">
-                                        <div class="ml-3 mt-1">
-                                            <h4 class="font-weight-semibold mt-0"
-                                                th:text="${user.getUsername()}"></h4>
+                    <div class="card-body p-3" th:each="currentUser : ${users}">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="media mt-0">
+                                        <div class="media-body ml-3">
+                                            <div class="ml-3 mt-1">
+                                                <h4 class="font-weight-semibold mt-0"
+                                                    th:text="${currentUser.getUsername()}">
+                                                </h4>
+
+                                                <a th:if="${currentUser.isEnabled()}" class="badge badge-success">Active</a>
+                                                <a th:unless="${currentUser.isEnabled()}" class="badge badge-danger">Blocked</a>
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-md-3">
-                                <div class="mt-1">
+                                <div class="col-md-3">
+                                    <div class="mt-1">
 
-                                    <a th:if="${user.isEnabled()}" class="badge badge-success">Active</a>
-                                    <a th:unless="${user.isEnabled()}" class="badge badge-danger">Blocked</a>
+                                        <form method="post" th:action="@{/user}">
+                                        <button type="submit" class="btn ripple  btn-danger btn-sm text-white "
+                                                data-toggle="tooltip" data-original-title="Disable User">
+                                            <input type="hidden"
+                                                   th:name="username" th:value="${currentUser.getUsername()}"/>
+                                            <input type="hidden"
+                                                   th:name="action" th:value="disable"/>
+                                            <!--                                            th:href="@{/user/{username}/disable(username=${user.getUsername()})}"-->
+                                            <i class="fa fa-lock"></i></button>
+                                        </form>
 
-                                    <a class="btn ripple  btn-danger btn-sm text-white "
-                                       th:href="@{/user/{username}/enable(username=${user.getUsername()})}"
-                                       data-toggle="tooltip"
-                                       data-original-title="Disable User">
-                                        <i class="fa fa-lock"></i></a>
+                                        <br/>
 
-                                    <a class="btn ripple  btn-green btn-sm text-white"
-                                       th:href="@{/user/{username}/disable(username=${user.getUsername()})}"
-                                       data-toggle="tooltip" data-original-title="Enable User">
-                                        <i class="fa fa-unlock"></i></a>
+                                        <form method="post" th:action="@{/user}">
+                                        <button type="submit" class="btn ripple  btn-green btn-sm text-white"
+                                                data-toggle="tooltip" data-original-title="Enable User">
+                                        <input type="hidden"
+                                               th:name="username" th:value="${currentUser.getUsername()}"/>
+                                        <input type="hidden"
+                                               th:name="action" th:value="enable"/>
+                                            <!--                                            th:href="@{/user/{username}/enable(username=${user.getUsername()})}"-->
+                                            <i class="fa fa-unlock"></i></button>
+                                        </form>
 
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="text-lg-center mt-3 mt-md-0">
-                                    <h4 class=" text-dark fs-25 mb-0 mt-3 mt-md-0"
-                                        th:text="${user.getUploadedBeans()}"></h4>
-                                    <span class="text-muted fs-13">Uploaded Beans</span>
-                                    <div class="mt-2">
                                     </div>
                                 </div>
-                            </div>
 
-                        </div>
+                                <div class="col-md-3">
+                                    <div class="text-lg-center mt-3 mt-md-0">
+                                        <h4 class=" text-dark fs-25 mb-0 mt-3 mt-md-0"
+                                            th:text="${currentUser.getUploadedBeans()}"></h4>
+                                        <span class="text-muted fs-13">Uploaded Beans</span>
+<!--                                        <div class="mt-2">-->
+<!--                                        </div>-->
+                                    </div>
+                                </div>
+
+                            </div>
                     </div>
+
                 </div>
 
             </div>
