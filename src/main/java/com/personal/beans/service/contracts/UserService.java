@@ -9,4 +9,6 @@ public interface UserService {
     int userCount();
 
     List<User> findAll();
+
+    void modifyStatus(String username, String action);
 }

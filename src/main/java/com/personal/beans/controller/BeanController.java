@@ -156,4 +156,11 @@ public class BeanController {
         return "users";
     }
 
+    @PostMapping("/user")
+    public String enableUser(@RequestParam("username") String username,
+                             @RequestParam("action") String action) {
+        this.userService.modifyStatus(username, action);
+        return "redirect:/users";
+    }
+
 }
