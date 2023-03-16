@@ -5,10 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -31,4 +28,7 @@ public class User implements Serializable {
 
     @Column(name = "admin")
     private boolean admin;
+
+    @Transient
+    private int uploadedBeans;
 }
