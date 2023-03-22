@@ -14,8 +14,8 @@ public class LoggerConstants {
     public static final String FROM_POSTGRES_TOTAL_APPROVED_BEANS_COUNT = FROM_POSTGRES + "Total Approved Beans Count";
     public static final String FROM_REDIS_TOTAL_DOWNLOAD_COUNT_FOR_ALL_APPROVED_BEANS = FROM_REDIS + "Total Download Count For All Approved Beans";
     public static final String FROM_POSTGRES_TOTAL_DOWNLOAD_COUNT_FOR_ALL_APPROVED_BEANS = FROM_POSTGRES + "Total Download Count For All Approved Beans";
-    public static final String FROM_REDIS_TOTAL_REGISTERED_USERS = FROM_REDIS + "Total Registered Users";
-    public static final String FROM_POSTGRES_TOTAL_REGISTERED_USERS = FROM_POSTGRES + "Total Registered Users";
+    public static final String FROM_REDIS_ALL_REGISTERED_USERS_COUNT = FROM_REDIS + "Registered Users count";
+    public static final String FROM_POSTGRES_ALL_REGISTERED_USERS_COUNT = FROM_POSTGRES + "Registered Users count";
     public static final String DELETE_REDIS_CACHE_AT_TIME_TEMPLATE = "Delete REDIS cache at time :: %s";
     public static final String FROM_REDIS_SINGLE_BEAN_TEMPLATE = FROM_REDIS + "Bean %s";
     public static final String FROM_POSTGRES_SINGLE_BEAN_TEMPLATE = FROM_POSTGRES + "Bean %s";
@@ -30,6 +30,13 @@ public class LoggerConstants {
     public static final String FROM_REDIS_VERSIONS_COUNT_FOR_BEAN_TEMPLATE = FROM_REDIS + "Versions count for Bean %s";
     public static final String FROM_POSTGRES_VERSIONS_COUNT_FOR_BEAN_TEMPLATE = FROM_POSTGRES + "Versions count for Bean %s";
     public static final String APPROVE_VERSION_FOR_BEAN_TEMPLATE = "Approve version %s for bean %s";
+    public static final String CHANGE_STATUS_OF_USER_TEMPLATE = "Change status of %s to %s";
+    public static final String FROM_POSTGRES_ALL_USERS = FROM_POSTGRES + "All users";
+    public static final String FROM_POSTGRES_NOT_APPROVED_BEANS = FROM_POSTGRES + "Unapproved Beans";
+    public static final String FROM_POSTGRES_BEAN_DOWNLOAD_COUNT_FOR_BEAN_TEMPLATE = FROM_POSTGRES + "Bean download count for Beans %s";
+    public static final String FROM_MONGO_TOTAL_COMMENTS_COUNT = "From MONGO :: Total Comments count";
+    public static final String FROM_MONGO_COMMENTS_COUNT_PER_BEAN_TEMPLATE = "From MONGO :: Comments count per Bean %s";
+    public static final String FROM_MONGO_COMMENTS_FOR_ALL_BEANS_TEMPLATE = "From MONGO :: Comments for Bean %s";
 
     private LoggerConstants() {
     }

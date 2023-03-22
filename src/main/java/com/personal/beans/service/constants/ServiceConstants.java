@@ -12,6 +12,7 @@ public class ServiceConstants {
     public static final String ONE_AS_STRING = "1";
     public static final String DATA_IMAGE_PNG_BASE64 = "data:image/png;base64,";
     public static final String NAME = "name";
+    public static final String ENABLE = "enable";
 
     private ServiceConstants() {
     }
