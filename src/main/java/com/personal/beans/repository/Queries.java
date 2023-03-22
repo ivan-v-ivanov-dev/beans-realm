@@ -85,11 +85,9 @@ public class Queries {
                     "WHERE u.enabled = true AND " +
                     "u.admin = false ";
 
-    public static final String FILTER_USERS =
+    public static final String FIND_ALL_USERS_ORDER_BY_USERNAME_ASC =
             "SELECT u FROM User u " +
-                    "WHERE u.admin = false AND " +
-                    "u.enabled = :enabled AND " +
-                    "(:username is null OR username = :username) " +
+                    "WHERE u.admin = false " +
                     "ORDER BY u.username ASC";
 
     public static final String FILTER_BEANS_APPROVED_VERSIONS =
@@ -114,6 +112,15 @@ public class Queries {
                     "JOIN statuses s ON v.status_id = s.id " +
                     "WHERE b.name = :beanName AND " +
                     "s.name LIKE 'Approved' ";
+
+    public static final String FIND_APPROVED_BEANS_COUNT_BY_USERNAME =
+            "SELECT COUNT(*) FROM beans b " +
+                    "JOIN users u ON b.creator_id = u.id " +
+                    "WHERE b.id IN ( " +
+                    "   SELECT v.bean_id FROM versions v " +
+                    "   JOIN statuses s ON v.status_id = s.id " +
+                    "   WHERE s.name = 'Approved') AND " +
+                    "   u.username = :username";
 
     private Queries() {
     }
