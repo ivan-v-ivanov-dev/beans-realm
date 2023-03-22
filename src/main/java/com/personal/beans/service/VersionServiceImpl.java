@@ -46,7 +46,9 @@ public class VersionServiceImpl implements VersionService {
 
     @Override
     public int beanDownloadCount(String bean) {
-        return versionRepository.beanDownloadCount(bean);
+        int count = versionRepository.beanDownloadCount(bean);
+        log.info(String.format(FROM_POSTGRES_BEAN_DOWNLOAD_COUNT_FOR_BEAN_TEMPLATE, bean));
+        return count;
     }
 
     @Override

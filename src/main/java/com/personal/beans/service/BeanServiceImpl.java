@@ -131,6 +131,7 @@ public class BeanServiceImpl implements BeanService {
     public List<Bean> notApproved() {
         List<Bean> beans = this.beanRepository.notApproved();
         calculateAllBeansDownloadCount(beans);
+        log.info(FROM_POSTGRES_NOT_APPROVED_BEANS);
         return beans;
     }
 
