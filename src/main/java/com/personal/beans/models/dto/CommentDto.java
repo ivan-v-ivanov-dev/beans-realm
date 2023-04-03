@@ -6,8 +6,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
-import static com.personal.beans.constants.Constants.DESCRIPTION_CAN_NOT_BE_EMPTY;
-import static com.personal.beans.constants.Constants.DESCRIPTION_MUST_BE_AT_LEAST_10_SYMBOLS;
+import static com.personal.beans.service.constants.ModelEntityConstants.*;
 
 @NoArgsConstructor
 @Getter
@@ -18,8 +17,8 @@ public class CommentDto implements Serializable {
 
     private String beanName;
 
-    @NotBlank(message = "Username can not be empty!")
-    @Size(min = 4, max = 20, message = "Username must be between 4 and 12 symbols!")
+    @NotBlank(message = USERNAME_CAN_NOT_BE_EMPTY)
+    @Size(min = 4, max = 20, message = USERNAME_MUST_BE_BETWEEN_4_AND_12_SYMBOLS)
     private String author;
 
     @NotBlank(message = DESCRIPTION_CAN_NOT_BE_EMPTY)
