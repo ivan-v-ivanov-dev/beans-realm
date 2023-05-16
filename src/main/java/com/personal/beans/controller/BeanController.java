@@ -149,6 +149,7 @@ public class BeanController {
         return "redirect:/bean/" + beanName + "/versions/unapproved";
     }
 
+    @RolesAllowed("admin")
     @GetMapping("/users")
     public String users(Model model) {
         model.addAttribute("users", this.userService.findAll());
@@ -156,6 +157,7 @@ public class BeanController {
         return "users";
     }
 
+    @RolesAllowed("admin")
     @PostMapping("/user")
     public String enableUser(@RequestParam("username") String username,
                              @RequestParam("action") String action) {
