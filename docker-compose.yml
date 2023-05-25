@@ -61,3 +61,24 @@ services:
     ports:
       - 6379:6379
     command: '--requirepass root'
+
+  # Liquibase
+  liquibase:
+    image: liquibase/liquibase:4.9.1
+    container_name: liquibase
+    depends_on:
+      - postgres
+    volumes:
+      - ./src/main/resources/db/changeLog:/liquibase/changelog
+    environment:
+      - DATABASE_URL=jdbc:postgresql://127.0.0.1:5432/storage
+      - DATABASE_USERNAME=root
+      - DATABASE_PASSWORD=root
+      - DATABASE_CHANGELOG=/liquibase/changelog/changeLog.xml
+      - CLASSPATH=/liquibase/changelog
+    command:
+      - --changeLogFile=changeLog.xml
+      - --url=jdbc:postgresql://postgres:5432/storage
+      - --username=root
+      - --password=root
+      - update
