@@ -1,6 +1,6 @@
 # Beans Realm
 
-In this repopository i have designed a sample shareplace (Spring Web application) for Beans (non-realistic representation of software programs). Each person can upload and download Beans. The application has publicly available pages and restricted ones only for registered users. (still the project is **under development**)
+In this repopository i have designed a sample shareplace (Spring Web application) for Beans (non-realistic representation of software programs). Each person can upload and download Beans. The application has publicly available pages and restricted ones only for registered users.
 
 # Brief overview
 
