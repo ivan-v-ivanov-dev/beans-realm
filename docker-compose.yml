@@ -1,3 +1,5 @@
+version: '3.5'
+
 services:
 
   # PostreSQL
@@ -12,23 +14,29 @@ services:
       POSTGRES_PASSWORD: root
     volumes:
       - ./bash_script:/docker-entrypoint-initdb.d
+    networks:
+      - beans-network
 
   # PostgreSQL UI client
   adminer:
     image: adminer
+    depends_on:
+      - postgres
     container_name: postgres_adminer
     restart: always
     ports:
-      - 8082:8080
+      - 8082:8082
+    networks:
+      - beans-network
 
   # Keycloak Security Authentication
   keycloak:
-    image: jboss/keycloak
+    image: jboss/keycloak:16.1.1
     container_name: keycloak
     depends_on:
       - postgres
     ports:
-      - 8081:8080
+      - 8081:8081
     environment:
       DB_VENDOR: POSTGRES
       DB_ADDR: postgres
@@ -44,6 +52,8 @@ services:
       KEYCLOAK_MIGRATION_ACTION: IMPORT
     volumes:
       - ./keycloak-realm-settings.json:/realm/keycloak-realm-settings.json
+    networks:
+      - beans-network
 
   # MongoDB
   mongo:
@@ -53,6 +63,8 @@ services:
       - 27017:27017
     environment:
       MONGO_INITDB_DATABASE: storage
+    networks:
+      - beans-network
 
   # Redis cache
   redis:
@@ -61,6 +73,8 @@ services:
     ports:
       - 6379:6379
     command: '--requirepass root'
+    networks:
+      - beans-network
 
   # Liquibase
   liquibase:
@@ -71,7 +85,7 @@ services:
     volumes:
       - ./src/main/resources/db/changeLog:/liquibase/changelog
     environment:
-      - DATABASE_URL=jdbc:postgresql://127.0.0.1:5432/storage
+      - DATABASE_URL=jdbc:postgresql://postgres:5432/storage
       - DATABASE_USERNAME=root
       - DATABASE_PASSWORD=root
       - DATABASE_CHANGELOG=/liquibase/changelog/changeLog.xml
@@ -82,3 +96,28 @@ services:
       - --username=root
       - --password=root
       - update
+    networks:
+      - beans-network
+
+  # Spring boot application
+  beans:
+    container_name: beans
+    depends_on:
+      - postgres
+      - keycloak
+      - redis
+      - mongo
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    networks:
+      - beans-network
+    restart: on-failure
+
+# Docker container network (name attribute is needed!)
+networks:
+  beans-network:
+    name: beans-network
+    driver: bridge
