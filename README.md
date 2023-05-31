@@ -1,3 +1,7 @@
+This repository contains 2 branches: **main** and **gradle-bootrun-configuration**
+
+In this **gradle-bootrun-configuration** branch:
+
 # Beans Realm
 
 In this repopository i have designed a sample shareplace (Spring Web application) for Beans (non-realistic representation of software programs). Each person can upload and download Beans. The application has publicly available pages and restricted ones only for registered users.
@@ -101,14 +105,14 @@ Database: storage
  ![image](https://user-images.githubusercontent.com/51414119/222963817-745bb1fa-5f56-47a3-b08a-a5033ba7c3e3.png)
  
  - **Spring Data JPA** with native and JPQL queries adopted as reposity layer for both PostgreSQL and MongoDB (see **repository/postgres** and **repository/mongo** packages).
- - **Liquibase** creates the tables and imports sample data in PostgreSQL DB on project starup (see **resources/db/chaneLog/changeLog.xml**).
+ - **Liquibase** (as Gradle dependency) creates the tables and imports sample data in PostgreSQL DB on project starup (see **resources/db/chaneLog/changeLog.xml**).
  - Sample data in Mongo DB are imported using the CommentRepository on (see **MongoConfig.java**)
  - **Redis** cache (official redis Docker image) was adopted for user experience optimisation when retrieving resources (see **service/RedisCacheServiceImpl.java**). 
  - **Crone expression** deletes regularly the cache every 3 minutes (time selected on perpose to demonstrate the action of deleting while testing the application - see **service/RedisCacheServiceImpl.java**).  
  - **Slf4j** logs performed actions (also instantiating the configurations). Sample snapshot when loading the index page (http://localhost:8080)
  ![image](https://user-images.githubusercontent.com/51414119/222961799-7b921287-d4d5-4710-aba7-10af316951a1.png)
  
- - All tools instantiated as Docker containers on project startup.
+ - All tools instantiated as Docker containers on project startup (on Gradle bootRun).
  
  ![image](https://user-images.githubusercontent.com/51414119/222963580-f13f6549-1d10-4432-ab84-c3f9a93b012b.png)
 
