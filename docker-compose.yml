@@ -9,49 +9,9 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_MULTIPLE_DATABASES: storage,keycloakdb
+      POSTGRES_DB: storage
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root
-    volumes:
-      - ./bash_script:/docker-entrypoint-initdb.d
-    networks:
-      - beans-network
-
-  # PostgreSQL UI client
-  adminer:
-    image: adminer
-    depends_on:
-      - postgres
-    container_name: postgres_adminer
-    restart: always
-    ports:
-      - 8082:8082
-    networks:
-      - beans-network
-
-  # Keycloak Security Authentication
-  keycloak:
-    image: jboss/keycloak:16.1.1
-    container_name: keycloak
-    depends_on:
-      - postgres
-    ports:
-      - 8081:8081
-    environment:
-      DB_VENDOR: POSTGRES
-      DB_ADDR: postgres
-      DB_PORT: 5432
-      DB_SCHEMA: public
-      DB_DATABASE: keycloakdb
-      DB_USER: root
-      DB_PASSWORD: root
-
-      KEYCLOAK_USER: admin
-      KEYCLOAK_PASSWORD: admin
-      KEYCLOAK_IMPORT: /realm/keycloak-realm-settings.json
-      KEYCLOAK_MIGRATION_ACTION: IMPORT
-    volumes:
-      - ./keycloak-realm-settings.json:/realm/keycloak-realm-settings.json
     networks:
       - beans-network
 
@@ -104,7 +64,6 @@ services:
     container_name: beans
     depends_on:
       - postgres
-      - keycloak
       - redis
       - mongo
     build:
@@ -116,7 +75,7 @@ services:
       - beans-network
     restart: on-failure
 
-# Docker container network (name attribute is needed!)
+# Docker containers network (name attribute is needed!)
 networks:
   beans-network:
     name: beans-network
