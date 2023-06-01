@@ -8,17 +8,6 @@ public class ConfigConstants {
     public static final String MONGO_CONFIGURATION_MONGO_TEMPLATE_CREATED = MONGO_CONFIGURATION + "MongoTemplate Created";
     public static final String MONGO_CONFIGURATION_MONGO_CLIENT_CREATED = MONGO_CONFIGURATION + "MongoClient Created";
 
-    // Keycloak Configuration Logger Constants
-    public static final String KEYCLOAK_SPRING_BOOT_CONFIGURATION_RESOLVER_CREATED =
-            "Keycloak Configuration :: Keycloak Spring Boot Configuration Resolver Created";
-
-    // Security Configuration Logger Constants
-    public static final String SECURITY_CONFIGURATION = "Security Configuration :: ";
-    public static final String SECURITY_CONFIGURATION_REGISTER_SESSION_AUTHENTICATION_STRATEGY_CREATED =
-            SECURITY_CONFIGURATION + "Register Session Authentication Strategy Created";
-    public static final String SECURITY_CONFIGURATION_ALLOW_DOUBLE_SLASH_IN_STRICT_HTTP_FIREWALL =
-            SECURITY_CONFIGURATION + "Allow double slash in StrictHttpFirewall";
-
     // Postgres Configuration Logger Constants
     public static final String POSTGRES_CONNECTION_POOL = "Postgres Connection Pool";
     public static final String POSTGRES_CONFIGURATION = "Postgres Configuration :: ";

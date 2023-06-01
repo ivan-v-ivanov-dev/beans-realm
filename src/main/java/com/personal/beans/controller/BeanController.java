@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 
 @Controller
@@ -61,7 +60,6 @@ public class BeanController {
         return "bean";
     }
 
-    @RolesAllowed({"authorised-user", "admin"})
     @PostMapping("/bean/{beanName}/comment")
     public String postComment(@PathVariable String beanName,
                               @Valid @ModelAttribute("commentDto") CommentDto commentDto,
@@ -100,7 +98,6 @@ public class BeanController {
         return "beans-filter-populated";
     }
 
-    @RolesAllowed({"authorised-user", "admin"})
     @GetMapping("/bean")
     public String create(Model model) {
         model.addAttribute("tags", this.tagService.findAll());
@@ -110,7 +107,6 @@ public class BeanController {
         return "bean-create";
     }
 
-    @RolesAllowed({"authorised-user", "admin"})
     @PostMapping("/bean")
     public String createBean(@Valid @ModelAttribute("beanDto") BeanDto beanDto,
                              BindingResult errors, Model model) {
@@ -126,14 +122,12 @@ public class BeanController {
         return "redirect:/";
     }
 
-    @RolesAllowed("admin")
     @GetMapping("/beans/unapproved")
     public String approveBeans(Model model) {
         model.addAttribute("notApprovedBeans", this.beanService.notApproved());
         return "beans-not-approved";
     }
 
-    @RolesAllowed("admin")
     @GetMapping("/bean/{beanName}/versions/unapproved")
     public String unapprovedVersionsForBean(@PathVariable String beanName, Model model) {
         model.addAttribute("notApprovedVersions", this.versionService.notApprovedByBean(beanName));
@@ -141,7 +135,6 @@ public class BeanController {
         return "bean-versions-not-approved";
     }
 
-    @RolesAllowed("admin")
     @PostMapping("/bean/version/approve")
     public String approveVersionForBean(@RequestParam("versionName") String versionName,
                                         @RequestParam("beanName") String beanName) {
@@ -149,7 +142,6 @@ public class BeanController {
         return "redirect:/bean/" + beanName + "/versions/unapproved";
     }
 
-    @RolesAllowed("admin")
     @GetMapping("/users")
     public String users(Model model) {
         model.addAttribute("users", this.userService.findAll());
@@ -157,7 +149,6 @@ public class BeanController {
         return "users";
     }
 
-    @RolesAllowed("admin")
     @PostMapping("/user")
     public String enableUser(@RequestParam("username") String username,
                              @RequestParam("action") String action) {
