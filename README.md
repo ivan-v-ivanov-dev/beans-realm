@@ -1,6 +1,6 @@
-This repository contains 2 branches: **main** and **gradle-bootrun-configuration**
+This repository contains 2 branches: **main** and **gradle-bootrun-configuration** - check them both
 
-**This branch is under development (need to imlement Spring Security). Please build the other gradle-bootrun-configuration branch**
+**This branch is under development (need to implement Spring Security). Please build the other gradle-bootrun-configuration branch**
 
 In this **main** branch:
 
