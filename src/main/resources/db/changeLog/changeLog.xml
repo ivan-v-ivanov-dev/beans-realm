@@ -4,7 +4,7 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <changeSet author="dragon" id="1" dbms="postgresql">
+    <changeSet author="Ivan" id="Create tables" dbms="postgresql">
 
         <createTable tableName="beans">
             <column autoIncrement="true" name="id" type="int">
@@ -42,6 +42,15 @@
             </column>
         </createTable>
 
+        <createTable tableName="roles">
+            <column autoIncrement="true" name="id" type="int">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(10)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+
         <createTable tableName="users">
             <column autoIncrement="true" name="id" type="int">
                 <constraints primaryKey="true"/>
@@ -49,13 +58,25 @@
             <column name="username" type="varchar(20)">
                 <constraints nullable="false" unique="true"/>
             </column>
+            <column name="password" type="varchar(70)">
+                <constraints nullable="false" unique="false"/>
+            </column>
             <column name="enabled" type="boolean" defaultValueBoolean="false">
                 <constraints nullable="false" unique="false"/>
             </column>
             <column name="admin" type="boolean" defaultValueBoolean="false">
                 <constraints nullable="false" unique="false"/>
             </column>
+            <column name="role_id" type="int">
+                <constraints nullable="false" unique="false"/>
+            </column>
         </createTable>
+
+        <addForeignKeyConstraint baseTableName="users"
+                                 baseColumnNames="role_id"
+                                 constraintName="pk_users_roles"
+                                 referencedTableName="roles"
+                                 referencedColumnNames="id"/>
 
         <createTable tableName="types">
             <column autoIncrement="true" name="id" type="int">
@@ -164,57 +185,84 @@
 
     </changeSet>
 
-    <changeSet id="12345" author="ivanZ">
+    <changeSet id="Import data" author="Ivan">
+
+        <!--Roles import -->
+
+        <insert tableName="roles">
+            <column name="id" value="1"/>
+            <column name="name" value="admin"/>
+        </insert>
+
+        <insert tableName="roles">
+            <column name="id" value="2"/>
+            <column name="name" value="user"/>
+        </insert>
 
         <!-- User import -->
 
         <insert tableName="users">
             <column name="id" value="1"/>
             <column name="username" value="admin"/>
+            <column name="password" value="$2a$10$SXoTrpOzU48LHN4HobnWi.dLJPPlMBuz3IlnxNGhpZCIigdsljw3."/>
             <column name="enabled" value="true"/>
             <column name="admin" value="true"/>
+            <column name="role_id" value="1"/>
         </insert>
 
         <insert tableName="users">
             <column name="id" value="2"/>
             <column name="username" value="user1"/>
+            <column name="password" value="$2a$10$XMNKJSn7b0NUeNC7SSkf7ujP5TzFwsyNFB003fqCUSBtH.uEjWBUS"/>
             <column name="enabled" value="true"/>
             <column name="admin" value="false"/>
+            <column name="role_id" value="2"/>
         </insert>
 
         <insert tableName="users">
             <column name="id" value="3"/>
             <column name="username" value="user2"/>
+            <column name="password" value="$2a$10$hIGJmCWx715C6o1Z8Z91EuRLHulw6f6lCdY.caMqV7k/OJMe9AOo6"/>
             <column name="enabled" value="true"/>
             <column name="admin" value="false"/>
+            <column name="role_id" value="2"/>
         </insert>
 
         <insert tableName="users">
             <column name="id" value="4"/>
             <column name="username" value="user3"/>
+            <column name="password" value="$2a$10$3N3JZZzC6jA4BHHiO1a6O.6O1mg.HMEMlCQO0y00Puh/iczlfKiHe"/>
             <column name="enabled" value="true"/>
             <column name="admin" value="false"/>
+            <column name="role_id" value="2"/>
         </insert>
 
         <insert tableName="users">
             <column name="id" value="5"/>
             <column name="username" value="user4"/>
+            <column name="password" value="$2a$10$yFhsBPaQVxZ9qIYIhlp5gOeOy5uDgiwmYPdmTWGwXqcN9c5yClTaS"/>
             <column name="enabled" value="true"/>
             <column name="admin" value="false"/>
+            <column name="role_id" value="2"/>
         </insert>
 
         <insert tableName="users">
             <column name="id" value="6"/>
             <column name="username" value="user5"/>
+            <column name="password" value="$2a$10$PyQX9CO.tcrY9HsVFt/bY.q3MQZtEv5TA85AdP1cULBhhuELgUU6O"/>
             <column name="enabled" value="true"/>
             <column name="admin" value="false"/>
+            <column name="role_id" value="2"/>
         </insert>
 
         <insert tableName="users">
             <column name="id" value="7"/>
             <column name="username" value="user6"/>
+            <column name="password" value="$2a$10$VdXAn1hByblAxvjBcK1fbO5qRyp3AvSNqrrd56V8es.Ez.MuZH2VW"/>
             <column name="enabled" value="false"/>
             <column name="admin" value="false"/>
+            <column name="role_id" value="2"/>
+
         </insert>
 
         <!-- Types import -->
