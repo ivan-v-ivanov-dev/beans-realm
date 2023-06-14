@@ -6,12 +6,15 @@ import com.personal.beans.repository.postgres.UserRepository;
 import com.personal.beans.service.contracts.RedisCacheService;
 import com.personal.beans.service.contracts.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 import static com.personal.beans.service.constants.LoggerConstants.*;
 import static com.personal.beans.service.constants.RedisKeysConstants.TOTAL_REGISTERED_USERS;
+import static com.personal.beans.service.constants.ServiceConstants.COULD_NOT_FIND_USER;
 import static com.personal.beans.service.constants.ServiceConstants.ENABLE;
 
 @Service
@@ -61,5 +64,16 @@ public class UserServiceImpl implements UserService {
 
     private void findUploadedBeansForEachUser(List<User> users) {
         users.forEach(user -> user.setUploadedBeans(this.beanRepository.findBeansCountByUsername(user.getUsername())));
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findByUsername(username);
+
+        if (user == null) {
+            throw new UsernameNotFoundException(COULD_NOT_FIND_USER);
+        }
+
+        return user;
     }
 }
