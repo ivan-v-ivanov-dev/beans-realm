@@ -13,6 +13,7 @@ public class ServiceConstants {
     public static final String DATA_IMAGE_PNG_BASE64 = "data:image/png;base64,";
     public static final String NAME = "name";
     public static final String ENABLE = "enable";
+    public static final String COULD_NOT_FIND_USER = "Could not find user";
 
     private ServiceConstants() {
     }
