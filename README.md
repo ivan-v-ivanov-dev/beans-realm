@@ -1,4 +1,4 @@
-This repository contains 2 branches: **main** and **gradle-bootrun-configuration** - check them both.
+This repository contains 2 branches: **main** and **gradle-bootrun-configuration** - check them both. This project was build 1 year ago.
 
 In this **main** branch:
 
