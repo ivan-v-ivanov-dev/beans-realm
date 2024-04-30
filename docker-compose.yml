@@ -4,7 +4,7 @@ services:
 
   # PostreSQL
   postgres:
-    image: postgres
+    image: postgres:12
     container_name: postgres
     ports:
       - 5432:5432
@@ -17,7 +17,7 @@ services:
 
   # MongoDB
   mongo:
-    image: mongo
+    image: mongo:7.0
     container_name: mongodb
     ports:
       - 27017:27017
@@ -28,7 +28,7 @@ services:
 
   # Redis cache
   redis:
-    image: redis
+    image: redis:7.2
     container_name: redis
     ports:
       - 6379:6379
